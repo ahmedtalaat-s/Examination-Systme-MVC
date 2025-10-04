@@ -12,5 +12,7 @@ namespace Domains
         [Key]
         public int SubjectId { get; set; }
         public string SubjectName { get; set; }
+        public virtual List<UserSubject> UserSubjects { get; set; }
+        public virtual List<Exam> Exams { get; set; } = new List<Exam>();
     }
 }
