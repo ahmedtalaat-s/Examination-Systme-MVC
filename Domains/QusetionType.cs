@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Domains
 {
-    internal class QusetionType
+    public enum QusetionType
     {
+        trueorFalse,
+        ChoiceOneAnswer,
+        ChoiceMultiAnswer,
     }
 }
