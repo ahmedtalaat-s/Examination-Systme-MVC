@@ -8,4 +8,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Admin\" />
+    <Folder Include="Instructor\" />
+    <Folder Include="Authentication\" />
+    <Folder Include="Shared\" />
+    <Folder Include="Student\" />
+  </ItemGroup>
+
 </Project>
