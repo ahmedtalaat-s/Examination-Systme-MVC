@@ -31,6 +31,7 @@
             label1 = new Label();
             button1 = new Button();
             dataGridView1 = new DataGridView();
+            btnBack = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -47,14 +48,16 @@
             // 
             // button1
             // 
-            button1.BackColor = SystemColors.InactiveBorder;
+            button1.BackColor = SystemColors.HotTrack;
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(12, 90);
+            button1.ForeColor = SystemColors.Control;
+            button1.Location = new Point(25, 104);
             button1.Name = "button1";
             button1.Size = new Size(185, 41);
             button1.TabIndex = 2;
             button1.Text = "Add Exam";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // dataGridView1
             // 
@@ -63,18 +66,29 @@
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.GridColor = SystemColors.HighlightText;
-            dataGridView1.Location = new Point(12, 180);
+            dataGridView1.Location = new Point(0, 180);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(858, 361);
+            dataGridView1.Size = new Size(881, 371);
             dataGridView1.TabIndex = 3;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // btnBack
+            // 
+            btnBack.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBack.Location = new Point(25, 24);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(94, 29);
+            btnBack.TabIndex = 8;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = true;
             // 
             // ExamList
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(882, 553);
+            Controls.Add(btnBack);
             Controls.Add(dataGridView1);
             Controls.Add(button1);
             Controls.Add(label1);
@@ -95,5 +109,6 @@
         private Label label1;
         private Button button1;
         private DataGridView dataGridView1;
+        private Button btnBack;
     }
 }
