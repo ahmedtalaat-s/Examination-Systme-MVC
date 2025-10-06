@@ -8,7 +8,7 @@ public interface ITeacher
     void EditExam( Exam exam);
     void DeleteExam(int id);
     Exam GetExamById(int id);
-    List<Exam> GetAll();
+    List<Exam> GetAllExams();
 
 
 

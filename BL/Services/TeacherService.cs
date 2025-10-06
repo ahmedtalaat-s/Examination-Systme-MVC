@@ -82,7 +82,7 @@ public class TeacherService : ITeacher
             
         }
     }
-    public List<Exam> GetAll()
+    public List<Exam> GetAllExams()
     {
         try
         {
