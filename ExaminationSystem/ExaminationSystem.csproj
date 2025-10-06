@@ -9,9 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Admin\" />
     <Folder Include="assets\" />
-    <Folder Include="Shared\" />
   </ItemGroup>
 
   <ItemGroup>
