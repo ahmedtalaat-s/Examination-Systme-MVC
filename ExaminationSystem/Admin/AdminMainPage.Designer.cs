@@ -63,6 +63,7 @@ partial class AdminMainPage
         btnLogou.TabIndex = 6;
         btnLogou.Text = "Logout";
         btnLogou.UseVisualStyleBackColor = true;
+        btnLogou.Click += btnLogou_Click;
         // 
         // btnProfilee
         // 
