@@ -12,7 +12,7 @@ namespace Domains
     {
         [Key]
         public int StudentAnswersId { get; set; }
-        public int IsCorrect { get; set; }
+        public bool IsCorrect { get; set; }
 
         [ForeignKey("Choice")]
         public int ChoiceId { get; set; }
