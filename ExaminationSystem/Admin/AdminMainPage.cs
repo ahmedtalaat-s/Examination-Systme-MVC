@@ -8,15 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ExaminationSystem.Student;
-public partial class StudentMainPage : Form
+namespace ExaminationSystem.Admin;
+public partial class AdminMainPage : Form
 {
-    public StudentMainPage()
+    public AdminMainPage()
     {
         InitializeComponent();
     }
 
-    private void panel2_Paint(object sender, PaintEventArgs e)
+    private void lbWelcome_Click(object sender, EventArgs e)
     {
 
     }

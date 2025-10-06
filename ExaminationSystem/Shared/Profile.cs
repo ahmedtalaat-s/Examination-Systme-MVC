@@ -8,16 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ExaminationSystem.Student;
-public partial class StudentMainPage : Form
+namespace ExaminationSystem.Shared;
+public partial class Profile : Form
 {
-    public StudentMainPage()
+    public Profile()
     {
         InitializeComponent();
-    }
-
-    private void panel2_Paint(object sender, PaintEventArgs e)
-    {
-
     }
 }
