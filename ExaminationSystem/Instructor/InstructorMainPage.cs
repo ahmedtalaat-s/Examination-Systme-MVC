@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domains;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,8 +12,11 @@ using System.Windows.Forms;
 namespace ExaminationSystem.Instructor;
 public partial class InstructorMainPage : Form
 {
-    public InstructorMainPage()
+    private User _user;
+
+    public InstructorMainPage(User user)
     {
+        _user = user;
         InitializeComponent();
     }
 
