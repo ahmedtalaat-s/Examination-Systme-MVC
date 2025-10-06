@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <Folder Include="Admin\" />
-    <Folder Include="Instructor\" />
     <Folder Include="assets\" />
     <Folder Include="Shared\" />
   </ItemGroup>

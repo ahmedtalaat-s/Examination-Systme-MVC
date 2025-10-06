@@ -1,4 +1,5 @@
 using ExaminationSystem.Admin;
+using ExaminationSystem.Instructor;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ExaminationSystem
@@ -19,7 +20,7 @@ namespace ExaminationSystem
 
             //Resolve the main form
             //var form = serviceProvider.GetRequiredService<StudentExamForm>();
-            Application.Run(new LoginForm());
+            Application.Run(new ExamList());
         }
     }
 }
