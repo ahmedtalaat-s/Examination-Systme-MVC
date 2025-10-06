@@ -21,6 +21,10 @@ namespace DAL.ExaminationnContext
         public virtual DbSet<Subject> Subject { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<StudentAnswers> StudentAnswers { get; set; }
+        public virtual DbSet<UserSubject> UserSubjects { get; set; }
+        public virtual DbSet<UserTakeExam> UserExams { get; set; }
+
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
