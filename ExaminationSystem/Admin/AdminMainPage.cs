@@ -1,4 +1,6 @@
-﻿using Domains;
+﻿using BL.Services;
+using DAL.ExaminationnContext;
+using Domains;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,17 +42,25 @@ public partial class AdminMainPage : Form
                                      "Logout",
                                      MessageBoxButtons.YesNo,
                                      MessageBoxIcon.Question);
-        
+
 
         if (result == DialogResult.Yes)
         {
             this.Hide();
 
-            var loginForm = new LoginForm();
+            var loginForm = new LoginForm(new AuthenticationService(new ExaminationContext()));
 
             loginForm.FormClosed += (s, args) => this.Close();
 
             loginForm.Show();
         }
+    }
+
+    private void btnMngSubject_Click(object sender, EventArgs e)
+    {
+        Hide();
+        var mngSubject = new SubjectManagement(_user);
+        mngSubject.FormClosed += (s, args) =>  this.Show() ;
+        mngSubject.Show();
     }
 }

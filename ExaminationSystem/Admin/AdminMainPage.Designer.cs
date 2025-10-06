@@ -120,6 +120,7 @@ partial class AdminMainPage
         btnMngSubject.TabIndex = 5;
         btnMngSubject.Text = "Manage Subject";
         btnMngSubject.UseVisualStyleBackColor = true;
+        btnMngSubject.Click += btnMngSubject_Click;
         // 
         // AdminMainPage
         // 

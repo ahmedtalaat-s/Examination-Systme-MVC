@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domains;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,13 +12,21 @@ using System.Windows.Forms;
 namespace ExaminationSystem.Admin;
 public partial class SubjectManagement : Form
 {
-    public SubjectManagement()
+    private User _user;
+    
+    public SubjectManagement(User user)
     {
+        _user = user;
         InitializeComponent();
     }
 
     private void button2_Click(object sender, EventArgs e)
     {
 
+    }
+
+    private void btnBack_Click(object sender, EventArgs e)
+    {
+        Close();
     }
 }

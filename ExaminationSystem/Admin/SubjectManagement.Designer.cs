@@ -80,6 +80,7 @@ partial class SubjectManagement
         btnBack.TabIndex = 7;
         btnBack.Text = "Back";
         btnBack.UseVisualStyleBackColor = true;
+        btnBack.Click += btnBack_Click;
         // 
         // SubjectManagement
         // 
