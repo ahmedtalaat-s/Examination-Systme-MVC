@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BL.Services;
 
 namespace ExaminationSystem.Admin;
 public partial class LoginForm : Form
@@ -21,17 +22,7 @@ public partial class LoginForm : Form
 
     }
 
-    private void lbEmail_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void lbPassword_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void button1_Click(object sender, EventArgs e)
+    private void btnLogin_Click(object sender, EventArgs e)
     {
 
     }

@@ -18,7 +18,7 @@ namespace ExaminationSystem
 
             // Register DbContext
             services.AddDbContext<ExaminationContext>(options =>
-                options.UseSqlServer("Your_Connection_String"));
+                options.UseSqlServer("Data Source=.;Initial Catalog=EduDB;Integrated Security=True;Trust Server Certificate=True"));
 
             // Register Services
             services.AddScoped<StudentService>();

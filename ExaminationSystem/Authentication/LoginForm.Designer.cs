@@ -68,7 +68,6 @@ partial class LoginForm
         lbEmail.Size = new Size(75, 31);
         lbEmail.TabIndex = 2;
         lbEmail.Text = "Email";
-        lbEmail.Click += lbEmail_Click;
         // 
         // lbPassword
         // 
@@ -79,7 +78,6 @@ partial class LoginForm
         lbPassword.Size = new Size(119, 31);
         lbPassword.TabIndex = 3;
         lbPassword.Text = "Password";
-        lbPassword.Click += lbPassword_Click;
         // 
         // txtEmail
         // 
@@ -129,7 +127,7 @@ partial class LoginForm
         btnLogin.TabIndex = 8;
         btnLogin.Text = "Login";
         btnLogin.UseVisualStyleBackColor = false;
-        btnLogin.Click += button1_Click;
+        btnLogin.Click += btnLogin_Click;
         // 
         // LoginForm
         // 
