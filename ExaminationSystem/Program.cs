@@ -1,6 +1,7 @@
 using BL.Services;
 using DAL.ExaminationnContext;
 using ExaminationSystem.Admin;
+using ExaminationSystem.Instructor;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ExaminationSystem
