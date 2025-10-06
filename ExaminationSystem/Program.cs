@@ -1,3 +1,5 @@
+using BL.Services;
+using DAL.ExaminationnContext;
 using ExaminationSystem.Admin;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,11 +17,11 @@ namespace ExaminationSystem
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             // Configure Dependency Injection
-            //var serviceProvider = DependencyContainer.Configure();
+            var serviceProvider = DependencyContainer.Configure();
 
             //Resolve the main form
             //var form = serviceProvider.GetRequiredService<StudentExamForm>();
-            Application.Run(new LoginForm());
+            Application.Run(new LoginForm(new AuthenticationService(new ExaminationContext())));
         }
     }
 }
