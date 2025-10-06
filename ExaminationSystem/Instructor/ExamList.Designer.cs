@@ -47,8 +47,9 @@
             // 
             // button1
             // 
-            button1.BackColor = SystemColors.InactiveBorder;
+            button1.BackColor = SystemColors.HotTrack;
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
             button1.Location = new Point(12, 90);
             button1.Name = "button1";
             button1.Size = new Size(185, 41);
@@ -83,7 +84,7 @@
             MinimumSize = new Size(900, 600);
             Name = "ExamList";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Exam Management";
             Load += ExamList_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

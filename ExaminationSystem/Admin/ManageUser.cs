@@ -1,5 +1,4 @@
 ﻿using BL.Contracts;
-using BL.Services;
 using Domains;
 using System;
 using System.Collections.Generic;
@@ -11,30 +10,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ExaminationSystem.Instructor
+namespace ExaminationSystem.Admin
 {
-
-    public partial class ExamList : Form
+    public partial class ManageUser : Form
     {
-        private readonly ITeacher _context;
-        public ExamList(ITeacher context)
+        private readonly IAdmin _context;
+        public ManageUser(IAdmin context)
         {
             _context = context;
             InitializeComponent();
         }
 
-        private void ExamList_Load(object sender, EventArgs e)
+        private void ManageUser_Load(object sender, EventArgs e)
         {
-            var exams = _context.GetAllExams();
- 
+            var exams = _context.GetAllUsers();
+
             // Make sure the DataGridView does not auto-generate columns
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.Columns.Clear();
+            lstStudent.AutoGenerateColumns = false;
+            lstStudent.Columns.Clear();
 
             // Define columns manually
 
             // ExamName
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            lstStudent.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "ExamName",
                 HeaderText = "Exam Name",
@@ -42,7 +40,7 @@ namespace ExaminationSystem.Instructor
             });
 
             // Status
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            lstStudent.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "Status",
                 HeaderText = "Status",
@@ -50,7 +48,7 @@ namespace ExaminationSystem.Instructor
             });
 
             // Subject
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            lstStudent.Columns.Add(new DataGridViewTextBoxColumn
             {
                 HeaderText = "Subject",
                 Width = 150,
@@ -58,7 +56,7 @@ namespace ExaminationSystem.Instructor
             });
 
             // ExamType
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            lstStudent.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "ExamType",
                 HeaderText = "Exam Type",
@@ -73,7 +71,7 @@ namespace ExaminationSystem.Instructor
                 UseColumnTextForButtonValue = true,
                 Width = 80
             };
-            dataGridView1.Columns.Add(editButton);
+            lstStudent.Columns.Add(editButton);
 
             // Delete Button
             DataGridViewButtonColumn deleteButton = new DataGridViewButtonColumn
@@ -83,13 +81,13 @@ namespace ExaminationSystem.Instructor
                 UseColumnTextForButtonValue = true,
                 Width = 80
             };
-            dataGridView1.Columns.Add(deleteButton);
+            lstStudent.Columns.Add(deleteButton);
 
             // Bind data
-            dataGridView1.DataSource = exams;
+            lstStudent.DataSource = exams;
 
             // Handle displaying Subject name manually
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            foreach (DataGridViewRow row in lstStudent.Rows)
             {
                 var exam = row.DataBoundItem as Exam;
                 if (exam != null && exam.Subject != null)
@@ -98,26 +96,21 @@ namespace ExaminationSystem.Instructor
                 }
             }
 
-            dataGridView1.ReadOnly = true;
-            foreach (DataGridViewColumn col in dataGridView1.Columns)
+            lstStudent.ReadOnly = true;
+            foreach (DataGridViewColumn col in lstStudent.Columns)
             {
                 if (col is DataGridViewButtonColumn)
                 {
                     col.ReadOnly = false;
                 }
             }
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.HotTrack;
-            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
-            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.SteelBlue;
+            lstStudent.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            lstStudent.EnableHeadersVisualStyles = false;
+            lstStudent.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.HotTrack;
+            lstStudent.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            lstStudent.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            lstStudent.DefaultCellStyle.SelectionBackColor = Color.SteelBlue;
             //// Handle button clicks
-            //dataGridView1.CellContentClick += DataGridView1_CellContentClick;
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
         }
     }
