@@ -33,9 +33,10 @@ partial class InstructorMainPage
         label1 = new Label();
         lbWelcome = new Label();
         panel2 = new Panel();
-        button3 = new Button();
-        button1 = new Button();
+        btnMngExam = new Button();
+        btnMngStud = new Button();
         button2 = new Button();
+        btnProfile = new Button();
         panel1.SuspendLayout();
         panel2.SuspendLayout();
         SuspendLayout();
@@ -43,6 +44,7 @@ partial class InstructorMainPage
         // panel1
         // 
         panel1.BackColor = SystemColors.ButtonHighlight;
+        panel1.Controls.Add(btnProfile);
         panel1.Controls.Add(button2);
         panel1.Controls.Add(btnLogout);
         panel1.Controls.Add(label1);
@@ -70,7 +72,7 @@ partial class InstructorMainPage
         label1.AutoSize = true;
         label1.Font = new Font("Segoe UI Symbol", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
         label1.ForeColor = SystemColors.HotTrack;
-        label1.Location = new Point(209, 26);
+        label1.Location = new Point(193, 22);
         label1.Name = "label1";
         label1.Size = new Size(217, 38);
         label1.TabIndex = 1;
@@ -81,16 +83,17 @@ partial class InstructorMainPage
         lbWelcome.AutoSize = true;
         lbWelcome.Font = new Font("Segoe UI Symbol", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
         lbWelcome.ForeColor = SystemColors.InactiveCaptionText;
-        lbWelcome.Location = new Point(28, 20);
+        lbWelcome.Location = new Point(19, 14);
         lbWelcome.Name = "lbWelcome";
         lbWelcome.Size = new Size(196, 46);
         lbWelcome.TabIndex = 0;
         lbWelcome.Text = "Welcome , ";
+        lbWelcome.Click += lbWelcome_Click;
         // 
         // panel2
         // 
-        panel2.Controls.Add(button1);
-        panel2.Controls.Add(button3);
+        panel2.Controls.Add(btnMngStud);
+        panel2.Controls.Add(btnMngExam);
         panel2.Dock = DockStyle.Fill;
         panel2.Location = new Point(0, 0);
         panel2.Name = "panel2";
@@ -98,25 +101,25 @@ partial class InstructorMainPage
         panel2.Size = new Size(882, 553);
         panel2.TabIndex = 3;
         // 
-        // button3
+        // btnMngExam
         // 
-        button3.Font = new Font("Segoe UI Symbol", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        button3.Location = new Point(64, 216);
-        button3.Name = "button3";
-        button3.Size = new Size(346, 141);
-        button3.TabIndex = 2;
-        button3.Text = "Manage Exams";
-        button3.UseVisualStyleBackColor = true;
+        btnMngExam.Font = new Font("Segoe UI Symbol", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        btnMngExam.Location = new Point(64, 216);
+        btnMngExam.Name = "btnMngExam";
+        btnMngExam.Size = new Size(346, 141);
+        btnMngExam.TabIndex = 2;
+        btnMngExam.Text = "Manage Exams";
+        btnMngExam.UseVisualStyleBackColor = true;
         // 
-        // button1
+        // btnMngStud
         // 
-        button1.Font = new Font("Segoe UI Symbol", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        button1.Location = new Point(458, 216);
-        button1.Name = "button1";
-        button1.Size = new Size(346, 141);
-        button1.TabIndex = 3;
-        button1.Text = "Manage Students";
-        button1.UseVisualStyleBackColor = true;
+        btnMngStud.Font = new Font("Segoe UI Symbol", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        btnMngStud.Location = new Point(458, 216);
+        btnMngStud.Name = "btnMngStud";
+        btnMngStud.Size = new Size(346, 141);
+        btnMngStud.TabIndex = 3;
+        btnMngStud.Text = "Manage Students";
+        btnMngStud.UseVisualStyleBackColor = true;
         // 
         // button2
         // 
@@ -128,6 +131,19 @@ partial class InstructorMainPage
         button2.TabIndex = 3;
         button2.Text = "Logout";
         button2.UseVisualStyleBackColor = true;
+        // 
+        // btnProfile
+        // 
+        btnProfile.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        btnProfile.BackColor = SystemColors.HotTrack;
+        btnProfile.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        btnProfile.ForeColor = SystemColors.ControlLightLight;
+        btnProfile.Location = new Point(633, 20);
+        btnProfile.Name = "btnProfile";
+        btnProfile.Size = new Size(107, 34);
+        btnProfile.TabIndex = 5;
+        btnProfile.Text = "Profile";
+        btnProfile.UseVisualStyleBackColor = false;
         // 
         // InstructorMainPage
         // 
@@ -155,7 +171,8 @@ partial class InstructorMainPage
     private Label label1;
     private Label lbWelcome;
     private Panel panel2;
-    private Button button3;
-    private Button button1;
+    private Button btnMngExam;
+    private Button btnMngStud;
     private Button button2;
+    private Button btnProfile;
 }

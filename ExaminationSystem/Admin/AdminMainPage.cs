@@ -8,17 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ExaminationSystem.Instructor;
-public partial class InstructorMainPage : Form
+namespace ExaminationSystem.Admin;
+public partial class AdminMainPage : Form
 {
-    public InstructorMainPage()
+    public AdminMainPage()
     {
         InitializeComponent();
-    }
-
-    private void label2_Click(object sender, EventArgs e)
-    {
-
     }
 
     private void lbWelcome_Click(object sender, EventArgs e)
