@@ -33,4 +33,24 @@ public partial class AdminMainPage : Form
     {
         lbAdminName.Text = _user.FullName;
     }
+
+    private void btnLogou_Click(object sender, EventArgs e)
+    {
+        var result = MessageBox.Show("Are you sure you want to logout?",
+                                     "Logout",
+                                     MessageBoxButtons.YesNo,
+                                     MessageBoxIcon.Question);
+        
+
+        if (result == DialogResult.Yes)
+        {
+            this.Hide();
+
+            var loginForm = new LoginForm();
+
+            loginForm.FormClosed += (s, args) => this.Close();
+
+            loginForm.Show();
+        }
+    }
 }
