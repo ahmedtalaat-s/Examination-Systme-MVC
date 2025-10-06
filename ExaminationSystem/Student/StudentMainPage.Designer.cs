@@ -28,17 +28,170 @@ partial class StudentMainPage
     /// </summary>
     private void InitializeComponent()
     {
+        panel1 = new Panel();
+        lbWelcome = new Label();
+        label1 = new Label();
+        btnLogout = new Button();
+        panel2 = new Panel();
+        btnFinalExam = new Button();
+        btnReports = new Button();
+        btnPracticeExam = new Button();
+        label2 = new Label();
+        btnProfile = new Button();
+        panel1.SuspendLayout();
+        panel2.SuspendLayout();
         SuspendLayout();
+        // 
+        // panel1
+        // 
+        panel1.BackColor = SystemColors.ButtonHighlight;
+        panel1.Controls.Add(btnProfile);
+        panel1.Controls.Add(btnLogout);
+        panel1.Controls.Add(label1);
+        panel1.Controls.Add(lbWelcome);
+        panel1.Dock = DockStyle.Top;
+        panel1.Location = new Point(0, 0);
+        panel1.Name = "panel1";
+        panel1.Padding = new Padding(16, 10, 16, 10);
+        panel1.Size = new Size(882, 70);
+        panel1.TabIndex = 0;
+        // 
+        // lbWelcome
+        // 
+        lbWelcome.AutoSize = true;
+        lbWelcome.Font = new Font("Segoe UI Symbol", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        lbWelcome.ForeColor = SystemColors.InactiveCaptionText;
+        lbWelcome.Location = new Point(12, 10);
+        lbWelcome.Name = "lbWelcome";
+        lbWelcome.Size = new Size(196, 46);
+        lbWelcome.TabIndex = 0;
+        lbWelcome.Text = "Welcome , ";
+        // 
+        // label1
+        // 
+        label1.AutoSize = true;
+        label1.Font = new Font("Segoe UI Symbol", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        label1.ForeColor = SystemColors.HotTrack;
+        label1.Location = new Point(193, 16);
+        label1.Name = "label1";
+        label1.Size = new Size(195, 38);
+        label1.TabIndex = 1;
+        label1.Text = "Student Name";
+        // 
+        // btnLogout
+        // 
+        btnLogout.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        btnLogout.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        btnLogout.Location = new Point(756, 20);
+        btnLogout.Name = "btnLogout";
+        btnLogout.Size = new Size(107, 34);
+        btnLogout.TabIndex = 2;
+        btnLogout.Text = "Logout";
+        btnLogout.UseVisualStyleBackColor = true;
+        // 
+        // panel2
+        // 
+        panel2.Controls.Add(label2);
+        panel2.Controls.Add(btnPracticeExam);
+        panel2.Controls.Add(btnReports);
+        panel2.Controls.Add(btnFinalExam);
+        panel2.Dock = DockStyle.Fill;
+        panel2.Location = new Point(0, 70);
+        panel2.Name = "panel2";
+        panel2.Padding = new Padding(32);
+        panel2.Size = new Size(882, 483);
+        panel2.TabIndex = 1;
+        panel2.Paint += panel2_Paint;
+        // 
+        // btnFinalExam
+        // 
+        btnFinalExam.Location = new Point(592, 184);
+        btnFinalExam.Name = "btnFinalExam";
+        btnFinalExam.Size = new Size(254, 121);
+        btnFinalExam.TabIndex = 0;
+        btnFinalExam.Text = "Final Exams";
+        btnFinalExam.UseVisualStyleBackColor = true;
+        // 
+        // btnReports
+        // 
+        btnReports.BackColor = SystemColors.HotTrack;
+        btnReports.Font = new Font("Segoe UI Symbol", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        btnReports.ForeColor = SystemColors.ControlLightLight;
+        btnReports.Location = new Point(318, 184);
+        btnReports.Name = "btnReports";
+        btnReports.Size = new Size(254, 121);
+        btnReports.TabIndex = 1;
+        btnReports.Text = "Reports";
+        btnReports.UseVisualStyleBackColor = false;
+        // 
+        // btnPracticeExam
+        // 
+        btnPracticeExam.Location = new Point(44, 184);
+        btnPracticeExam.Name = "btnPracticeExam";
+        btnPracticeExam.Size = new Size(254, 121);
+        btnPracticeExam.TabIndex = 2;
+        btnPracticeExam.Text = "Practice Exams";
+        btnPracticeExam.UseVisualStyleBackColor = true;
+        // 
+        // label2
+        // 
+        label2.AutoSize = true;
+        label2.BackColor = SystemColors.HotTrack;
+        label2.Font = new Font("Segoe UI Symbol", 9F);
+        label2.ForeColor = Color.Snow;
+        label2.Location = new Point(342, 264);
+        label2.Name = "label2";
+        label2.Size = new Size(208, 20);
+        label2.TabIndex = 3;
+        label2.Text = "View and export exam reports";
+        // 
+        // btnProfile
+        // 
+        btnProfile.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        btnProfile.BackColor = SystemColors.HotTrack;
+        btnProfile.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        btnProfile.ForeColor = SystemColors.ControlLightLight;
+        btnProfile.Location = new Point(630, 20);
+        btnProfile.Name = "btnProfile";
+        btnProfile.Size = new Size(107, 34);
+        btnProfile.TabIndex = 4;
+        btnProfile.Text = "Profile";
+        btnProfile.UseVisualStyleBackColor = false;
         // 
         // StudentMainPage
         // 
-        AutoScaleDimensions = new SizeF(8F, 20F);
+        AutoScaleDimensions = new SizeF(11F, 28F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(1050, 706);
+        BackColor = SystemColors.Control;
+        ClientSize = new Size(882, 553);
+        Controls.Add(panel2);
+        Controls.Add(panel1);
+        Font = new Font("Segoe UI Symbol", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        FormBorderStyle = FormBorderStyle.FixedDialog;
+        Margin = new Padding(4, 4, 4, 4);
+        MaximizeBox = false;
+        MaximumSize = new Size(900, 600);
+        MinimumSize = new Size(900, 600);
         Name = "StudentMainPage";
-        Text = "StudentMainPage";
+        StartPosition = FormStartPosition.CenterScreen;
+        Text = "Student Page";
+        panel1.ResumeLayout(false);
+        panel1.PerformLayout();
+        panel2.ResumeLayout(false);
+        panel2.PerformLayout();
         ResumeLayout(false);
     }
 
     #endregion
+
+    private Panel panel1;
+    private Label lbWelcome;
+    private Label label1;
+    private Button btnLogout;
+    private Panel panel2;
+    private Button btnPracticeExam;
+    private Button btnReports;
+    private Button btnFinalExam;
+    private Label label2;
+    private Button btnProfile;
 }
