@@ -5,7 +5,7 @@ using Domains;
 
 namespace BL.Services;
 
-public class AuthenticationService : IAuthenticationservices
+public class AuthenticationService : IAuthentications
 {
     private readonly ExaminationContext _context;
     public AuthenticationService(ExaminationContext context) {  _context = context; }

@@ -1,4 +1,5 @@
-﻿using BL.Services;
+﻿using BL.Contracts;
+using BL.Services;
 using DAL.ExaminationnContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,12 +17,13 @@ namespace ExaminationSystem
         {
             var services = new ServiceCollection();
 
-            // Register DbContext
-            services.AddDbContext<ExaminationContext>(options =>
-                options.UseSqlServer("Data Source=.;Initial Catalog=EduDB;Integrated Security=True;Trust Server Certificate=True"));
-
+            
             // Register Services
-            services.AddScoped<StudentService>();
+            services.AddScoped<IStudent, StudentService>();
+            services.AddScoped<IAdmin, AdminService>();
+            services.AddScoped<ITeacher, TeacherService>();
+            services.AddScoped<IAuthentications, AuthenticationService>();
+            
 
             return services.BuildServiceProvider();
         }

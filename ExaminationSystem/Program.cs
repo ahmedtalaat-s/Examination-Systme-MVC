@@ -17,7 +17,7 @@ namespace ExaminationSystem
             // Configure Dependency Injection
             //var serviceProvider = DependencyContainer.Configure();
 
-            // Resolve the main form
+            //Resolve the main form
             //var form = serviceProvider.GetRequiredService<StudentExamForm>();
             Application.Run(new LoginForm());
         }
