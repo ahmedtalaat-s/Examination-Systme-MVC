@@ -20,14 +20,23 @@ public partial class AddSubject : Form
 
     public AddSubject(IAdmin context, IServiceProvider serviceProvider)
     {
-        _context = context;
         InitializeComponent();
+        _context = context;
         _serviceProvider = serviceProvider;
     }
 
     private void button1_Click(object sender, EventArgs e)
     {
-       
+        string subjectName = txtSubject.Text.Trim();
+
+        // ✅ 1️⃣ التحقق إن الاسم مش فاضي
+        if (string.IsNullOrWhiteSpace(subjectName))
+        {
+            MessageBox.Show("Please enter a subject name.", "Validation Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+
         var newSubject = new Subject
         {
             SubjectName = txtSubject.Text  
@@ -35,7 +44,9 @@ public partial class AddSubject : Form
 
         try
         {
-           
+            
+            
+            // 2️⃣ نضيف الـ Subject في الـ Database
             _context.AddSubject(newSubject);
 
             MessageBox.Show("Subject added successfully!", "Success",
@@ -43,6 +54,8 @@ public partial class AddSubject : Form
 
            
             txtSubject.Clear();
+            backPressed = true;
+            Close();
         }
         catch (Exception ex)
         {

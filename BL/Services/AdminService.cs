@@ -159,7 +159,7 @@ namespace BL.Services
         {
             try
             {
-                return _context.User.ToList();
+                return _context.User.Where(n=>n.Role.ToLower()!="admin").ToList();
             }
             catch (Exception ex) 
             {

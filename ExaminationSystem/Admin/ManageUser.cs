@@ -1,5 +1,6 @@
 ﻿using BL.Contracts;
 using Domains;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,20 +16,29 @@ namespace ExaminationSystem.Admin
     public partial class ManageUser : Form
     {
         private readonly IAdmin _context;
+        private IServiceProvider _serviceProvider;
+
         private User _user;
         public bool backPressed = false;
 
 
-        public ManageUser(IAdmin context, User user)
+        public ManageUser(IAdmin context, User user, IServiceProvider serviceProvider  )
         {
             _context = context;
             InitializeComponent();
             _user = user;
+            _serviceProvider = serviceProvider;
         }
 
         private void ManageUser_Load(object sender, EventArgs e)
         {
-            var exams = _context.GetAllUsers();
+           
+            LoadUsers();
+        }
+
+        private void LoadUsers()
+        {
+            var Users = _context.GetAllUsers();
 
             // Make sure the DataGridView does not auto-generate columns
             lstStudent.AutoGenerateColumns = false;
@@ -36,37 +46,31 @@ namespace ExaminationSystem.Admin
 
             // Define columns manually
 
-            // ExamName
+            // Full Name
             lstStudent.Columns.Add(new DataGridViewTextBoxColumn
             {
-                DataPropertyName = "ExamName",
-                HeaderText = "Exam Name",
+                DataPropertyName = "FullName",
+                HeaderText = "Full name",
                 Width = 150
             });
 
             // Status
             lstStudent.Columns.Add(new DataGridViewTextBoxColumn
             {
-                DataPropertyName = "Status",
-                HeaderText = "Status",
+                DataPropertyName = "Email",
+                HeaderText = "Email",
                 Width = 100
             });
 
             // Subject
             lstStudent.Columns.Add(new DataGridViewTextBoxColumn
             {
-                HeaderText = "Subject",
+                HeaderText = "Role",
                 Width = 150,
-                Name = "SubjectName"
+                DataPropertyName = "Role"
             });
 
-            // ExamType
-            lstStudent.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "ExamType",
-                HeaderText = "Exam Type",
-                Width = 100
-            });
+
 
             // Edit Button
             DataGridViewButtonColumn editButton = new DataGridViewButtonColumn
@@ -89,17 +93,10 @@ namespace ExaminationSystem.Admin
             lstStudent.Columns.Add(deleteButton);
 
             // Bind data
-            lstStudent.DataSource = exams;
+            lstStudent.DataSource = Users;
 
             // Handle displaying Subject name manually
-            foreach (DataGridViewRow row in lstStudent.Rows)
-            {
-                var exam = row.DataBoundItem as Exam;
-                if (exam != null && exam.Subject != null)
-                {
-                    row.Cells["SubjectName"].Value = exam.Subject.SubjectName;
-                }
-            }
+
 
             lstStudent.ReadOnly = true;
             foreach (DataGridViewColumn col in lstStudent.Columns)
@@ -116,13 +113,25 @@ namespace ExaminationSystem.Admin
             lstStudent.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
             lstStudent.DefaultCellStyle.SelectionBackColor = Color.SteelBlue;
             //// Handle button clicks
-
         }
-
         private void btnBack_Click(object sender, EventArgs e)
         {
             backPressed = true;
             Close();
+        }
+
+        private void btnBack_Click_1(object sender, EventArgs e)
+        {
+            backPressed = true;
+            Close();
+        }
+
+        private void btnAddExam_Click(object sender, EventArgs e)
+        {
+            var addSubject = ActivatorUtilities.CreateInstance<AddUser>(_serviceProvider);
+            addSubject.Owner = this;
+            addSubject.FormClosed += (s, args) => this.LoadUsers();
+            addSubject.ShowDialog();
         }
     }
 }

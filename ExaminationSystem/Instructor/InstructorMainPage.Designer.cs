@@ -132,7 +132,7 @@ partial class InstructorMainPage
         btnMngStud.Name = "btnMngStud";
         btnMngStud.Size = new Size(346, 141);
         btnMngStud.TabIndex = 3;
-        btnMngStud.Text = "Manage Students";
+        btnMngStud.Text = "Students Reports";
         btnMngStud.UseVisualStyleBackColor = true;
         // 
         // btnMngExam

@@ -33,20 +33,20 @@ namespace ExaminationSystem
             
 
             // 4?? ????? ??? Forms ???? ????????
-            services.AddTransient<LoginForm>();
-            services.AddTransient<ExamList>();
-            services.AddTransient<ManageUser>();
-            services.AddTransient<AdminMainPage>();
-            services.AddTransient<SubjectManagement>();
-            services.AddTransient<StudentMainPage>();
-            services.AddTransient<AddSubject>();
+            services.AddScoped<LoginForm>();
+            services.AddScoped<ExamList>();
+            services.AddScoped<ManageUser>();
+            services.AddScoped<AdminMainPage>();
+            services.AddScoped<SubjectManagement>();
+            services.AddScoped<StudentMainPage>();
+            services.AddScoped<AddSubject>();
 
 
             // 5?? ???? ServiceProvider (???? ????? ???? ??????? ????????)
             var serviceProvider = services.BuildServiceProvider();
 
             // 6?? ??????? ??? Form ??????? (LoginForm) ?? ???? ??? DI
-            var loginForm = serviceProvider.GetRequiredService<AddSubject>();
+            var loginForm = serviceProvider.GetRequiredService<LoginForm>();
             Application.Run(loginForm);
         }
     }
