@@ -1,4 +1,5 @@
-﻿using BL.Services;
+﻿using BL.Contracts;
+using BL.Services;
 using DAL.ExaminationnContext;
 using Domains;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,10 +12,12 @@ namespace ExaminationSystem.Admin
     {
         private readonly User _user;
         private readonly IServiceProvider _serviceProvider;
+        private readonly IAdmin _context;
 
-        public AdminMainPage(User user, IServiceProvider serviceProvider)
+        public AdminMainPage(User user, IServiceProvider serviceProvider,IAdmin context)
         {
             _user = user ?? throw new ArgumentNullException(nameof(user));
+            _context = context;
             _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
             InitializeComponent();
         }
@@ -49,7 +52,7 @@ namespace ExaminationSystem.Admin
         private void btnMngSubject_Click(object sender, EventArgs e)
         {
             Hide();
-            var mngSubject = new SubjectManagement(_user,_serviceProvider);
+            var mngSubject = new SubjectManagement(_user,_serviceProvider,_context);
             mngSubject.Owner = this;
             mngSubject.FormClosed += (s, args) =>
             {
