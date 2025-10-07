@@ -38,7 +38,7 @@ partial class EditStudent
         txtPassword = new TextBox();
         label3 = new Label();
         btnEditStudent = new Button();
-        btnBack = new Button();
+        button1 = new Button();
         SuspendLayout();
         // 
         // txtEmail
@@ -131,29 +131,29 @@ partial class EditStudent
         btnEditStudent.BackColor = SystemColors.HotTrack;
         btnEditStudent.Font = new Font("Segoe UI Symbol", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
         btnEditStudent.ForeColor = SystemColors.Control;
-        btnEditStudent.Location = new Point(313, 445);
+        btnEditStudent.Location = new Point(195, 445);
         btnEditStudent.Name = "btnEditStudent";
         btnEditStudent.Size = new Size(245, 50);
         btnEditStudent.TabIndex = 16;
         btnEditStudent.Text = "Edit";
         btnEditStudent.UseVisualStyleBackColor = false;
         // 
-        // btnBack
+        // button1
         // 
-        btnBack.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        btnBack.Location = new Point(39, 30);
-        btnBack.Name = "btnBack";
-        btnBack.Size = new Size(94, 29);
-        btnBack.TabIndex = 17;
-        btnBack.Text = "Back";
-        btnBack.UseVisualStyleBackColor = true;
+        button1.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        button1.Location = new Point(494, 445);
+        button1.Name = "button1";
+        button1.Size = new Size(242, 50);
+        button1.TabIndex = 18;
+        button1.Text = "Cancle";
+        button1.UseVisualStyleBackColor = true;
         // 
         // EditStudent
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(882, 553);
-        Controls.Add(btnBack);
+        Controls.Add(button1);
         Controls.Add(btnEditStudent);
         Controls.Add(lbRole);
         Controls.Add(cbRole);
@@ -186,5 +186,5 @@ partial class EditStudent
     private TextBox txtPassword;
     private Label label3;
     private Button btnEditStudent;
-    private Button btnBack;
+    private Button button1;
 }
