@@ -15,10 +15,13 @@ namespace ExaminationSystem.Admin
     public partial class ManageUser : Form
     {
         private readonly IAdmin _context;
-        public ManageUser(IAdmin context)
+        private User _user;
+
+        public ManageUser(IAdmin context, User user)
         {
             _context = context;
             InitializeComponent();
+            _user = user;
         }
 
         private void ManageUser_Load(object sender, EventArgs e)

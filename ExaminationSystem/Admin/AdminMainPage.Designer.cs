@@ -110,6 +110,7 @@ partial class AdminMainPage
         btnMngUser.TabIndex = 6;
         btnMngUser.Text = "Manage User";
         btnMngUser.UseVisualStyleBackColor = true;
+        btnMngUser.Click += btnMngUser_Click;
         // 
         // btnMngSubject
         // 

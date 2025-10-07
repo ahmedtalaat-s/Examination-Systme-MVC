@@ -60,7 +60,15 @@ public partial class AdminMainPage : Form
     {
         Hide();
         var mngSubject = new SubjectManagement(_user);
-        mngSubject.FormClosed += (s, args) =>  this.Show() ;
+        mngSubject.FormClosed += (s, args) => this.Show();
+        mngSubject.Show();
+    }
+
+    private void btnMngUser_Click(object sender, EventArgs e)
+    {
+        Hide();
+        var mngSubject = new ManageUser(new AdminService(new ExaminationContext()),_user);
+        mngSubject.FormClosed += (s, args) => this.Show();
         mngSubject.Show();
     }
 }
