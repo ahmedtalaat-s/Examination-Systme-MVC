@@ -110,11 +110,11 @@ partial class AddUser
         // btnBack
         // 
         btnBack.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        btnBack.Location = new Point(30, 29);
+        btnBack.Location = new Point(484, 425);
         btnBack.Name = "btnBack";
-        btnBack.Size = new Size(94, 29);
+        btnBack.Size = new Size(242, 50);
         btnBack.TabIndex = 9;
-        btnBack.Text = "Back";
+        btnBack.Text = "Cancle";
         btnBack.UseVisualStyleBackColor = true;
         // 
         // cbRole
@@ -141,7 +141,7 @@ partial class AddUser
         btnAddStudent.BackColor = SystemColors.HotTrack;
         btnAddStudent.Font = new Font("Segoe UI Symbol", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
         btnAddStudent.ForeColor = SystemColors.Control;
-        btnAddStudent.Location = new Point(314, 442);
+        btnAddStudent.Location = new Point(167, 425);
         btnAddStudent.Name = "btnAddStudent";
         btnAddStudent.Size = new Size(245, 50);
         btnAddStudent.TabIndex = 12;
