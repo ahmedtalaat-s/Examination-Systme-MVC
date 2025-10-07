@@ -60,15 +60,39 @@ public partial class AdminMainPage : Form
     {
         Hide();
         var mngSubject = new SubjectManagement(_user);
-        mngSubject.FormClosed += (s, args) => this.Show();
+        mngSubject.Owner=this;
+        mngSubject.FormClosed += (s, args) => {
+            var child = s as SubjectManagement;
+            if (!child.backPressed)
+            {
+                Application.Exit(); // close entire app
+            }
+            else
+            {
+                // show parent again (Back button pressed)
+                this.Show();
+            }
+        };
         mngSubject.Show();
     }
 
     private void btnMngUser_Click(object sender, EventArgs e)
     {
         Hide();
-        var mngSubject = new ManageUser(new AdminService(new ExaminationContext()),_user);
-        mngSubject.FormClosed += (s, args) => this.Show();
-        mngSubject.Show();
+        var mngUser = new ManageUser(new AdminService(new ExaminationContext()),_user);
+        mngUser.Owner = this;
+        mngUser.FormClosed += (s, args) => {
+            var child = s as ManageUser;
+            if (!child.backPressed)
+            {
+                Application.Exit(); // close entire app
+            }
+            else
+            {
+                // show parent again (Back button pressed)
+                this.Show();
+            }
+        };
+        mngUser.Show();
     }
 }

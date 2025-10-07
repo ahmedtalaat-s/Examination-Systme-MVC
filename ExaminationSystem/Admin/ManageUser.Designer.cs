@@ -31,6 +31,7 @@
             lstStudent = new DataGridView();
             btnAddExam = new Button();
             label1 = new Label();
+            btnBack = new Button();
             ((System.ComponentModel.ISupportInitialize)lstStudent).BeginInit();
             SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             btnAddExam.BackColor = SystemColors.HotTrack;
             btnAddExam.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddExam.ForeColor = SystemColors.Control;
-            btnAddExam.Location = new Point(12, 84);
+            btnAddExam.Location = new Point(12, 96);
             btnAddExam.Name = "btnAddExam";
             btnAddExam.Size = new Size(185, 41);
             btnAddExam.TabIndex = 5;
@@ -70,11 +71,23 @@
             label1.TabIndex = 4;
             label1.Text = "Student Management";
             // 
+            // btnBack
+            // 
+            btnBack.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBack.Location = new Point(30, 30);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(94, 29);
+            btnBack.TabIndex = 8;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
+            // 
             // ManageUser
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(882, 553);
+            Controls.Add(btnBack);
             Controls.Add(lstStudent);
             Controls.Add(btnAddExam);
             Controls.Add(label1);
@@ -94,5 +107,6 @@
         private DataGridView lstStudent;
         private Button btnAddExam;
         private Label label1;
+        private Button btnBack;
     }
 }

@@ -13,7 +13,8 @@ namespace ExaminationSystem.Admin;
 public partial class SubjectManagement : Form
 {
     private User _user;
-    
+    public bool backPressed = false;
+
     public SubjectManagement(User user)
     {
         _user = user;
@@ -27,6 +28,12 @@ public partial class SubjectManagement : Form
 
     private void btnBack_Click(object sender, EventArgs e)
     {
+        backPressed = true;
         Close();
+    }
+
+    private void SubjectManagement_Load(object sender, EventArgs e)
+    {
+
     }
 }
