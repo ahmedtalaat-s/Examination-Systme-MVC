@@ -39,7 +39,8 @@ namespace ExaminationSystem
             services.AddTransient<AdminMainPage>();
             services.AddTransient<SubjectManagement>();
             services.AddTransient<StudentMainPage>();
-            
+            services.AddTransient<AddSubject>();
+
 
             // 5?? ???? ServiceProvider (???? ????? ???? ??????? ????????)
             var serviceProvider = services.BuildServiceProvider();
