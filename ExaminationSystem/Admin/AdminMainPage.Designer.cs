@@ -51,7 +51,7 @@ partial class AdminMainPage
         panel1.Padding = new Padding(16, 10, 16, 10);
         panel1.Size = new Size(882, 70);
         panel1.TabIndex = 4;
-        panel1.Paint += panel1_Paint;
+        //panel1.Paint += panel1_Paint;
         // 
         // btnLogou
         // 
@@ -99,7 +99,7 @@ partial class AdminMainPage
         lbWelcome.Size = new Size(196, 46);
         lbWelcome.TabIndex = 0;
         lbWelcome.Text = "Welcome , ";
-        lbWelcome.Click += lbWelcome_Click;
+        //lbWelcome.Click += lbWelcome_Click;
         // 
         // btnMngUser
         // 

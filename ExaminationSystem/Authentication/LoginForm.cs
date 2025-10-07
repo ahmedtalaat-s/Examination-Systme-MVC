@@ -1,4 +1,9 @@
-﻿using System;
+﻿using BL.Services;
+using DAL.ExaminationnContext;
+using ExaminationSystem.Instructor;
+using ExaminationSystem.Student;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,18 +12,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BL.Services;
-using DAL.ExaminationnContext;
-using ExaminationSystem.Instructor;
-using ExaminationSystem.Student;
 
 namespace ExaminationSystem.Admin;
 public partial class LoginForm : Form
 {
     private readonly IAuthentications _context;
-    public LoginForm(IAuthentications context)
+    private readonly IServiceProvider _serviceProvider;
+    public LoginForm(IAuthentications context, IServiceProvider serviceProvider)
     {
         _context = context;
+        _serviceProvider = serviceProvider;
         InitializeComponent();
 
     }
@@ -39,9 +42,9 @@ public partial class LoginForm : Form
             Hide();
             if (user.Role.ToLower() == "admin")
             {
-                var admindashboard = new AdminMainPage(user);
-                admindashboard.Show();
-                admindashboard.FormClosed += (s, args) => this.Close();
+                var adminDashboard = ActivatorUtilities.CreateInstance<AdminMainPage>(_serviceProvider, user);
+                adminDashboard.Show();
+                adminDashboard.FormClosed += (s, args) => this.Close();
 
             }
             else if (user.Role.ToLower() == "admin")
