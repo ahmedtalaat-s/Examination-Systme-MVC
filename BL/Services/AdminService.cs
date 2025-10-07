@@ -22,12 +22,16 @@ namespace BL.Services
         {
             try
             {
-                if (subject != null) 
-                {
-                    _context.Add(subject);
-                    _context.SaveChanges();
-                }
                 
+                var existing = _context.Subject
+                    .FirstOrDefault(s => s.SubjectName.ToLower() == subject.SubjectName.ToLower());
+
+                if (existing != null)
+                    throw new Exception("This subject already exists.");
+
+                _context.Subject.Add(subject);
+                _context.SaveChanges();
+
             }
             catch (Exception ex)
             {
@@ -99,6 +103,10 @@ namespace BL.Services
                 
             }
         }
+
+
+
+
 
 
 

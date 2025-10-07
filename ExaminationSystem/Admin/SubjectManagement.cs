@@ -1,4 +1,6 @@
-﻿using Domains;
+﻿using BL.Contracts;
+using Domains;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,11 +15,13 @@ namespace ExaminationSystem.Admin;
 public partial class SubjectManagement : Form
 {
     private User _user;
+    private IServiceProvider _serviceProvider;
     public bool backPressed = false;
 
-    public SubjectManagement(User user)
+    public SubjectManagement(User user, IServiceProvider serviceProvider)
     {
         _user = user;
+        _serviceProvider = serviceProvider;
         InitializeComponent();
     }
 
@@ -35,5 +39,23 @@ public partial class SubjectManagement : Form
     private void SubjectManagement_Load(object sender, EventArgs e)
     {
 
+    }
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+        var addSubject = ActivatorUtilities.CreateInstance<AddSubject>(_serviceProvider);
+        addSubject.Owner = this;
+        addSubject.FormClosed += (s, args) => {
+            if (!addSubject.backPressed)
+            {
+                Application.Exit(); // close entire app
+            }
+            else
+            {
+                // show parent again (Back button pressed)
+                this.Show();
+            }
+        };
+        addSubject.Show();
     }
 }

@@ -59,6 +59,7 @@ partial class SubjectManagement
         button1.TabIndex = 5;
         button1.Text = "Add Subject";
         button1.UseVisualStyleBackColor = false;
+        button1.Click += button1_Click;
         // 
         // lbSubjectMng
         // 
