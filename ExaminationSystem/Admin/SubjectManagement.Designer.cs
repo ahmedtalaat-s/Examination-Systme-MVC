@@ -97,6 +97,7 @@ partial class SubjectManagement
         Name = "SubjectManagement";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "SubjectManagement";
+        Load += SubjectManagement_Load;
         ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
         ResumeLayout(false);
         PerformLayout();
