@@ -27,7 +27,7 @@ public partial class EditSubject : Form
     {
         try
         {
-            _subject.SubjectName = btnEdit.Text.Trim();
+            _subject.SubjectName = textBox1.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(_subject.SubjectName))
             {
@@ -50,15 +50,16 @@ public partial class EditSubject : Form
 
     }
 
-       
 
-        private void EditSubject_Load(object sender, EventArgs e)
-        {
+
+    private void EditSubject_Load(object sender, EventArgs e)
+    {
         btnBack.Text = _subject.SubjectName;
-        }
-
-
-
-
     }
+
+    private void EditSubject_Load_1(object sender, EventArgs e)
+    {
+        textBox1.Text = _subject.SubjectName;
+    }
+}
 

@@ -103,6 +103,7 @@ partial class EditSubject
         Name = "EditSubject";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "EditSubject";
+        Load += EditSubject_Load_1;
         ResumeLayout(false);
         PerformLayout();
     }
