@@ -28,7 +28,7 @@ namespace ExaminationSystem.Admin
 
         private void ManageUser_Load(object sender, EventArgs e)
         {
-            var exams = _context.GetAllUsers();
+            var Users = _context.GetAllUsers();
 
             // Make sure the DataGridView does not auto-generate columns
             lstStudent.AutoGenerateColumns = false;
@@ -36,37 +36,31 @@ namespace ExaminationSystem.Admin
 
             // Define columns manually
 
-            // ExamName
+            // Full Name
             lstStudent.Columns.Add(new DataGridViewTextBoxColumn
             {
-                DataPropertyName = "ExamName",
-                HeaderText = "Exam Name",
+                DataPropertyName = "FullName",
+                HeaderText = "Full name",
                 Width = 150
             });
 
             // Status
             lstStudent.Columns.Add(new DataGridViewTextBoxColumn
             {
-                DataPropertyName = "Status",
-                HeaderText = "Status",
+                DataPropertyName = "Email",
+                HeaderText = "Email",
                 Width = 100
             });
 
             // Subject
             lstStudent.Columns.Add(new DataGridViewTextBoxColumn
             {
-                HeaderText = "Subject",
+                HeaderText = "Role",
                 Width = 150,
-                Name = "SubjectName"
+                DataPropertyName = "Role"
             });
 
-            // ExamType
-            lstStudent.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "ExamType",
-                HeaderText = "Exam Type",
-                Width = 100
-            });
+
 
             // Edit Button
             DataGridViewButtonColumn editButton = new DataGridViewButtonColumn
@@ -89,17 +83,10 @@ namespace ExaminationSystem.Admin
             lstStudent.Columns.Add(deleteButton);
 
             // Bind data
-            lstStudent.DataSource = exams;
+            lstStudent.DataSource = Users;
 
             // Handle displaying Subject name manually
-            foreach (DataGridViewRow row in lstStudent.Rows)
-            {
-                var exam = row.DataBoundItem as Exam;
-                if (exam != null && exam.Subject != null)
-                {
-                    row.Cells["SubjectName"].Value = exam.Subject.SubjectName;
-                }
-            }
+
 
             lstStudent.ReadOnly = true;
             foreach (DataGridViewColumn col in lstStudent.Columns)
@@ -120,6 +107,12 @@ namespace ExaminationSystem.Admin
         }
 
         private void btnBack_Click(object sender, EventArgs e)
+        {
+            backPressed = true;
+            Close();
+        }
+
+        private void btnBack_Click_1(object sender, EventArgs e)
         {
             backPressed = true;
             Close();

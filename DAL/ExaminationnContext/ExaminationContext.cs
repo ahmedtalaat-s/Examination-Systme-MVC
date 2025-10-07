@@ -28,7 +28,7 @@ namespace DAL.ExaminationnContext
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-I33LVHG\\SQLEXPRESS;Initial Catalog=ExaminationProject;Integrated Security=True;Encrypt=True;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=ExaminationProject;Integrated Security=True;Encrypt=True;TrustServerCertificate=True");
         }
 
 
