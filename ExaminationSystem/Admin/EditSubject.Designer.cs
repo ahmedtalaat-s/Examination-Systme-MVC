@@ -66,11 +66,11 @@ partial class EditSubject
         // btnBack
         // 
         btnBack.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        btnBack.Location = new Point(22, 26);
+        btnBack.Location = new Point(325, 264);
         btnBack.Name = "btnBack";
-        btnBack.Size = new Size(94, 29);
+        btnBack.Size = new Size(121, 47);
         btnBack.TabIndex = 9;
-        btnBack.Text = "Back";
+        btnBack.Text = "Cancle";
         btnBack.UseVisualStyleBackColor = true;
         // 
         // btnEdit
@@ -78,7 +78,7 @@ partial class EditSubject
         btnEdit.BackColor = SystemColors.HotTrack;
         btnEdit.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
         btnEdit.ForeColor = SystemColors.Control;
-        btnEdit.Location = new Point(222, 264);
+        btnEdit.Location = new Point(141, 264);
         btnEdit.Name = "btnEdit";
         btnEdit.Size = new Size(128, 47);
         btnEdit.TabIndex = 10;

@@ -31,8 +31,8 @@ partial class AddSubject
         label1 = new Label();
         label2 = new Label();
         txtSubject = new TextBox();
-        btnBack = new Button();
         btnAddSubject = new Button();
+        btnBack = new Button();
         SuspendLayout();
         // 
         // label1
@@ -63,29 +63,29 @@ partial class AddSubject
         txtSubject.Size = new Size(270, 38);
         txtSubject.TabIndex = 2;
         // 
-        // btnBack
-        // 
-        btnBack.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        btnBack.Location = new Point(12, 20);
-        btnBack.Name = "btnBack";
-        btnBack.Size = new Size(94, 29);
-        btnBack.TabIndex = 8;
-        btnBack.Text = "Back";
-        btnBack.UseVisualStyleBackColor = true;
-        btnBack.Click += btnBack_Click;
-        // 
         // btnAddSubject
         // 
         btnAddSubject.BackColor = SystemColors.HotTrack;
         btnAddSubject.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
         btnAddSubject.ForeColor = SystemColors.Control;
-        btnAddSubject.Location = new Point(231, 269);
+        btnAddSubject.Location = new Point(138, 267);
         btnAddSubject.Name = "btnAddSubject";
         btnAddSubject.Size = new Size(128, 47);
         btnAddSubject.TabIndex = 9;
         btnAddSubject.Text = "Save";
         btnAddSubject.UseVisualStyleBackColor = false;
         btnAddSubject.Click += button1_Click;
+        // 
+        // btnBack
+        // 
+        btnBack.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        btnBack.Location = new Point(326, 267);
+        btnBack.Name = "btnBack";
+        btnBack.Size = new Size(128, 47);
+        btnBack.TabIndex = 8;
+        btnBack.Text = "Cancle";
+        btnBack.UseVisualStyleBackColor = true;
+        btnBack.Click += btnBack_Click;
         // 
         // AddSubject
         // 
@@ -112,6 +112,6 @@ partial class AddSubject
     private Label label1;
     private Label label2;
     private TextBox txtSubject;
-    private Button btnBack;
     private Button btnAddSubject;
+    private Button btnBack;
 }

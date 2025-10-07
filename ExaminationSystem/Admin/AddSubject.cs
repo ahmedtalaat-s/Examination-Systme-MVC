@@ -35,7 +35,9 @@ public partial class AddSubject : Form
 
         try
         {
-           
+            backPressed = true;
+            Close();
+            // 2️⃣ نضيف الـ Subject في الـ Database
             _context.AddSubject(newSubject);
 
             MessageBox.Show("Subject added successfully!", "Success",
