@@ -1,4 +1,6 @@
-﻿using Domains;
+﻿using BL.Services;
+using DAL.ExaminationnContext;
+using Domains;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Forms;
@@ -40,8 +42,23 @@ namespace ExaminationSystem.Admin
                 // لما تتقفل صفحة اللوجن، تتقفل الفورم دي كمان
                 loginForm.FormClosed += (s, args) => Close();
 
-                loginForm.Show();
-            }
+            loginForm.Show();
         }
+    }
+
+    private void btnMngSubject_Click(object sender, EventArgs e)
+    {
+        Hide();
+        var mngSubject = new SubjectManagement(_user);
+        mngSubject.FormClosed += (s, args) => this.Show();
+        mngSubject.Show();
+    }
+
+    private void btnMngUser_Click(object sender, EventArgs e)
+    {
+        Hide();
+        var mngSubject = new ManageUser(new AdminService(new ExaminationContext()),_user);
+        mngSubject.FormClosed += (s, args) => this.Show();
+        mngSubject.Show();
     }
 }
