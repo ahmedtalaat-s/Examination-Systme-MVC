@@ -85,6 +85,7 @@ partial class AddSubject
         btnBack.TabIndex = 8;
         btnBack.Text = "Cancle";
         btnBack.UseVisualStyleBackColor = true;
+        btnBack.Click += btnBack_Click;
         // 
         // AddSubject
         // 

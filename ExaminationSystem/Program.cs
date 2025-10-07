@@ -46,7 +46,7 @@ namespace ExaminationSystem
             var serviceProvider = services.BuildServiceProvider();
 
             // 6?? ??????? ??? Form ??????? (LoginForm) ?? ???? ??? DI
-            var loginForm = serviceProvider.GetRequiredService<AddSubject>();
+            var loginForm = serviceProvider.GetRequiredService<LoginForm>();
             Application.Run(loginForm);
         }
     }
