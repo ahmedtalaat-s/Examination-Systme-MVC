@@ -51,7 +51,7 @@
             button1.BackColor = SystemColors.HotTrack;
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(12, 90);
+            button1.Location = new Point(25, 133);
             button1.Name = "button1";
             button1.Size = new Size(185, 41);
             button1.TabIndex = 2;
@@ -94,6 +94,7 @@
             Controls.Add(button1);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             MaximumSize = new Size(900, 600);
             MinimumSize = new Size(900, 600);
             Name = "ExamList";

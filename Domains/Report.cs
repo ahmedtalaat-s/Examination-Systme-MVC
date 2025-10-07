@@ -18,7 +18,6 @@ namespace Domains
         [ForeignKey("Exam")]
         public int ExamId { get; set; }
         public virtual Exam Exam { get; set; }
-
         public virtual List<StudentAnswers> StudentAnswers { get; set; } = new List<StudentAnswers>();
     }
 }

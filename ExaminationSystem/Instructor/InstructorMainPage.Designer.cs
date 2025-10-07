@@ -51,7 +51,7 @@ partial class InstructorMainPage
         panel1.Location = new Point(0, 0);
         panel1.Name = "panel1";
         panel1.Padding = new Padding(16, 10, 16, 10);
-        panel1.Size = new Size(882, 70);
+        panel1.Size = new Size(882, 79);
         panel1.TabIndex = 2;
         // 
         // btnProfile1
