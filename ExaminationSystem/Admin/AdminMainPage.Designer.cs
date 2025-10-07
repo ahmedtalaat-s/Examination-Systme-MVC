@@ -51,7 +51,6 @@ partial class AdminMainPage
         panel1.Padding = new Padding(16, 10, 16, 10);
         panel1.Size = new Size(882, 70);
         panel1.TabIndex = 4;
-        //panel1.Paint += panel1_Paint;
         // 
         // btnLogou
         // 
@@ -99,16 +98,15 @@ partial class AdminMainPage
         lbWelcome.Size = new Size(196, 46);
         lbWelcome.TabIndex = 0;
         lbWelcome.Text = "Welcome , ";
-        //lbWelcome.Click += lbWelcome_Click;
         // 
         // btnMngUser
         // 
         btnMngUser.Font = new Font("Segoe UI Symbol", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
         btnMngUser.Location = new Point(458, 263);
         btnMngUser.Name = "btnMngUser";
-        btnMngUser.Size = new Size(346, 141);
+        btnMngUser.Size = new Size(346, 82);
         btnMngUser.TabIndex = 6;
-        btnMngUser.Text = "Manage User";
+        btnMngUser.Text = "Manage Users";
         btnMngUser.UseVisualStyleBackColor = true;
         btnMngUser.Click += btnMngUser_Click;
         // 
@@ -117,9 +115,9 @@ partial class AdminMainPage
         btnMngSubject.Font = new Font("Segoe UI Symbol", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
         btnMngSubject.Location = new Point(62, 263);
         btnMngSubject.Name = "btnMngSubject";
-        btnMngSubject.Size = new Size(346, 141);
+        btnMngSubject.Size = new Size(346, 82);
         btnMngSubject.TabIndex = 5;
-        btnMngSubject.Text = "Manage Subject";
+        btnMngSubject.Text = "Manage Subjects";
         btnMngSubject.UseVisualStyleBackColor = true;
         btnMngSubject.Click += btnMngSubject_Click;
         // 

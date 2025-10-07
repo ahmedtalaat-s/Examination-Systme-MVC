@@ -137,6 +137,7 @@ partial class EditStudent
         btnEditStudent.TabIndex = 16;
         btnEditStudent.Text = "Edit";
         btnEditStudent.UseVisualStyleBackColor = false;
+        btnEditStudent.Click += btnEditStudent_Click;
         // 
         // button1
         // 
@@ -147,6 +148,7 @@ partial class EditStudent
         button1.TabIndex = 18;
         button1.Text = "Cancle";
         button1.UseVisualStyleBackColor = true;
+        button1.Click += button1_Click;
         // 
         // EditStudent
         // 
@@ -170,6 +172,7 @@ partial class EditStudent
         Name = "EditStudent";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "EditStudent";
+        Load += EditStudent_Load;
         ResumeLayout(false);
         PerformLayout();
     }

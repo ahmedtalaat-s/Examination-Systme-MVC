@@ -49,7 +49,7 @@ public partial class LoginForm : Form
             }
             else if (user.Role.ToLower() == "instructor")
             {
-                var instructordashboard = new InstructorMainPage(user);
+                var instructordashboard = ActivatorUtilities.CreateInstance<InstructorMainPage>(_serviceProvider,user);
                 instructordashboard.Show();
                 instructordashboard.FormClosed += (s, args) => this.Close();
             }

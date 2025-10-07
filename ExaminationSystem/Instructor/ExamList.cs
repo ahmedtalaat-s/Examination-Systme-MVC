@@ -16,17 +16,27 @@ namespace ExaminationSystem.Instructor
 
     public partial class ExamList : Form
     {
+        private readonly IServiceProvider _serviceProvider;
+
         private readonly ITeacher _context;
-        public ExamList(ITeacher context)
+        private readonly User _user;
+        public bool backPressed = false;
+
+        public ExamList(ITeacher context, IServiceProvider serviceProvider, User user)
         {
             _context = context;
             InitializeComponent();
+            _serviceProvider = serviceProvider;
+            _user = user;
         }
 
         private void ExamList_Load(object sender, EventArgs e)
         {
+            LoadExams();
+        }
+        private void LoadExams() {
             var exams = _context.GetAllExams();
- 
+
             // Make sure the DataGridView does not auto-generate columns
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.Columns.Clear();
@@ -124,6 +134,12 @@ namespace ExaminationSystem.Instructor
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            backPressed = true;
+            Close();
         }
     }
 }
