@@ -72,6 +72,7 @@ partial class AddSubject
         btnBack.TabIndex = 8;
         btnBack.Text = "Back";
         btnBack.UseVisualStyleBackColor = true;
+        btnBack.Click += btnBack_Click;
         // 
         // btnAddSubject
         // 

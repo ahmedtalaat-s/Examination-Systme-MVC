@@ -14,10 +14,15 @@ namespace ExaminationSystem.Admin;
 public partial class AddSubject : Form
 {
     private readonly IAdmin _context;
-    public AddSubject(IAdmin context)
+    private readonly IServiceProvider _serviceProvider;
+
+    public bool backPressed = false;
+
+    public AddSubject(IAdmin context, IServiceProvider serviceProvider)
     {
         _context = context;
         InitializeComponent();
+        _serviceProvider = serviceProvider;
     }
 
     private void button1_Click(object sender, EventArgs e)
@@ -44,5 +49,11 @@ public partial class AddSubject : Form
             MessageBox.Show($"Error adding subject: {ex.Message}", "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+    }
+
+    private void btnBack_Click(object sender, EventArgs e)
+    {
+        backPressed = true;
+        Close();
     }
 }
