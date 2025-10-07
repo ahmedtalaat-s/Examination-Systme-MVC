@@ -1,6 +1,6 @@
 ﻿namespace ExaminationSystem.Admin;
 
-partial class AddSubject
+partial class EditSubject
 {
     /// <summary>
     /// Required designer variable.
@@ -28,90 +28,87 @@ partial class AddSubject
     /// </summary>
     private void InitializeComponent()
     {
-        label1 = new Label();
+        textBox1 = new TextBox();
         label2 = new Label();
-        txtSubject = new TextBox();
+        lbEditSubject = new Label();
         btnBack = new Button();
-        btnAddSubject = new Button();
+        btnEdit = new Button();
         SuspendLayout();
         // 
-        // label1
+        // textBox1
         // 
-        label1.AutoSize = true;
-        label1.Font = new Font("Segoe UI Symbol", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        label1.Location = new Point(159, 20);
-        label1.Name = "label1";
-        label1.Size = new Size(271, 60);
-        label1.TabIndex = 0;
-        label1.Text = "Add Subject";
+        textBox1.Font = new Font("Segoe UI Symbol", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        textBox1.Location = new Point(164, 188);
+        textBox1.Name = "textBox1";
+        textBox1.Size = new Size(270, 38);
+        textBox1.TabIndex = 5;
         // 
         // label2
         // 
         label2.AutoSize = true;
         label2.Font = new Font("Segoe UI Symbol", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        label2.Location = new Point(205, 148);
+        label2.Location = new Point(210, 154);
         label2.Name = "label2";
         label2.Size = new Size(169, 31);
-        label2.TabIndex = 1;
+        label2.TabIndex = 4;
         label2.Text = "Subject Name";
         // 
-        // txtSubject
+        // lbEditSubject
         // 
-        txtSubject.Font = new Font("Segoe UI Symbol", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        txtSubject.Location = new Point(159, 182);
-        txtSubject.Name = "txtSubject";
-        txtSubject.Size = new Size(270, 38);
-        txtSubject.TabIndex = 2;
+        lbEditSubject.AutoSize = true;
+        lbEditSubject.Font = new Font("Segoe UI Symbol", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        lbEditSubject.Location = new Point(164, 26);
+        lbEditSubject.Name = "lbEditSubject";
+        lbEditSubject.Size = new Size(266, 60);
+        lbEditSubject.TabIndex = 3;
+        lbEditSubject.Text = "Edit Subject";
         // 
         // btnBack
         // 
         btnBack.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        btnBack.Location = new Point(12, 20);
+        btnBack.Location = new Point(22, 26);
         btnBack.Name = "btnBack";
         btnBack.Size = new Size(94, 29);
-        btnBack.TabIndex = 8;
+        btnBack.TabIndex = 9;
         btnBack.Text = "Back";
         btnBack.UseVisualStyleBackColor = true;
-        btnBack.Click += btnBack_Click;
         // 
-        // btnAddSubject
+        // btnEdit
         // 
-        btnAddSubject.BackColor = SystemColors.HotTrack;
-        btnAddSubject.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        btnAddSubject.ForeColor = SystemColors.Control;
-        btnAddSubject.Location = new Point(231, 269);
-        btnAddSubject.Name = "btnAddSubject";
-        btnAddSubject.Size = new Size(128, 47);
-        btnAddSubject.TabIndex = 9;
-        btnAddSubject.Text = "Save";
-        btnAddSubject.UseVisualStyleBackColor = false;
-        btnAddSubject.Click += button1_Click;
+        btnEdit.BackColor = SystemColors.HotTrack;
+        btnEdit.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        btnEdit.ForeColor = SystemColors.Control;
+        btnEdit.Location = new Point(222, 264);
+        btnEdit.Name = "btnEdit";
+        btnEdit.Size = new Size(128, 47);
+        btnEdit.TabIndex = 10;
+        btnEdit.Text = "Edit";
+        btnEdit.UseVisualStyleBackColor = false;
         // 
-        // AddSubject
+        // EditSubject
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(582, 353);
-        Controls.Add(btnAddSubject);
+        Controls.Add(btnEdit);
         Controls.Add(btnBack);
-        Controls.Add(txtSubject);
+        Controls.Add(textBox1);
         Controls.Add(label2);
-        Controls.Add(label1);
+        Controls.Add(lbEditSubject);
         MaximizeBox = false;
         MaximumSize = new Size(600, 400);
         MinimumSize = new Size(600, 400);
-        Name = "AddSubject";
-        StartPosition = FormStartPosition.CenterScreen;
-        Text = "AddSubject";
+        Name = "EditSubject";
+        Text = "EditSubject";
         ResumeLayout(false);
         PerformLayout();
     }
 
     #endregion
 
-    private Label label1;
+    private TextBox textBox1;
     private Label label2;
-    private TextBox txtSubject;
+    private Label lbEditSubject;
     private Button btnBack;
-    private Button btnAddSubject;
+    private Button btnEdit;
 }

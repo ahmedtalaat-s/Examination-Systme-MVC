@@ -49,7 +49,7 @@ namespace ExaminationSystem.Admin
         private void btnMngSubject_Click(object sender, EventArgs e)
         {
             Hide();
-            var mngSubject = new SubjectManagement(_user);
+            var mngSubject = new SubjectManagement(_user,_serviceProvider);
             mngSubject.Owner = this;
             mngSubject.FormClosed += (s, args) =>
             {

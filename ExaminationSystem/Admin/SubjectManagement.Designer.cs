@@ -59,6 +59,7 @@ partial class SubjectManagement
         button1.TabIndex = 5;
         button1.Text = "Add Subject";
         button1.UseVisualStyleBackColor = false;
+        button1.Click += button1_Click;
         // 
         // lbSubjectMng
         // 
@@ -74,7 +75,7 @@ partial class SubjectManagement
         // btnBack
         // 
         btnBack.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        btnBack.Location = new Point(35, 20);
+        btnBack.Location = new Point(35, 32);
         btnBack.Name = "btnBack";
         btnBack.Size = new Size(94, 29);
         btnBack.TabIndex = 7;

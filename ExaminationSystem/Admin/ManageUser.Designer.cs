@@ -53,7 +53,7 @@
             btnAddExam.BackColor = SystemColors.HotTrack;
             btnAddExam.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddExam.ForeColor = SystemColors.Control;
-            btnAddExam.Location = new Point(12, 96);
+            btnAddExam.Location = new Point(34, 127);
             btnAddExam.Name = "btnAddExam";
             btnAddExam.Size = new Size(185, 41);
             btnAddExam.TabIndex = 5;
@@ -74,13 +74,12 @@
             // btnBack
             // 
             btnBack.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnBack.Location = new Point(30, 30);
+            btnBack.Location = new Point(34, 30);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(94, 29);
             btnBack.TabIndex = 8;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = true;
-            btnBack.Click += btnBack_Click;
             // 
             // ManageUser
             // 
