@@ -1,6 +1,7 @@
 using DAL.ExaminationnContext;
 using Microsoft.EntityFrameworkCore;
 using Domains;
+using DAL.Dtos;
 
 namespace BL.Services;
 
@@ -82,11 +83,11 @@ public class TeacherService : ITeacher
             
         }
     }
-    public List<Exam> GetAllExams()
+    public List<Exam> GetAllExams(int instructorId)
     {
         try
         {
-            return _context.Exams.ToList();
+            return _context.Exams.Where(m=>m.UserId == instructorId).ToList();
         }
         catch (Exception ex) 
         {
@@ -94,5 +95,26 @@ public class TeacherService : ITeacher
         }
     }
 
-   
+    public List<InstructorExamResultDto> GetInstructorExamResults(int instructorId)
+    {
+        var result = (from exam in _context.Exams
+                      join studentExam in _context.UserExams on exam.ExamId equals studentExam.ExamId
+                      join student in _context.User on studentExam.UserId equals student.UserId
+                      join reports in _context.Report on exam.ExamId equals reports.ExamId
+                      join subject in _context.Subject on exam.SubjectId equals subject.SubjectId
+                      where exam.UserId == instructorId
+                      select new InstructorExamResultDto
+                      {
+
+                          ExamName=exam.ExamName,
+                          StudentName =student.FullName,
+                          SubjectName =subject.SubjectName,
+                          Score = reports.Score,
+                      }).ToList();
+
+        return result;
+
+    }
+
+  
 }
