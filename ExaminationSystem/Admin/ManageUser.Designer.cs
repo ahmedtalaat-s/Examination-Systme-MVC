@@ -57,7 +57,7 @@
             btnAddExam.Name = "btnAddExam";
             btnAddExam.Size = new Size(185, 41);
             btnAddExam.TabIndex = 5;
-            btnAddExam.Text = "Add Exam";
+            btnAddExam.Text = "Add User";
             btnAddExam.UseVisualStyleBackColor = false;
             // 
             // label1
@@ -67,9 +67,9 @@
             label1.Location = new Point(292, 18);
             label1.MaximumSize = new Size(900, 600);
             label1.Name = "label1";
-            label1.Size = new Size(324, 41);
+            label1.Size = new Size(276, 41);
             label1.TabIndex = 4;
-            label1.Text = "Student Management";
+            label1.Text = "User Management";
             // 
             // btnBack
             // 
@@ -80,6 +80,7 @@
             btnBack.TabIndex = 8;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click_1;
             // 
             // ManageUser
             // 

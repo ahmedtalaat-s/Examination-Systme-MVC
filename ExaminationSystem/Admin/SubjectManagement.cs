@@ -65,7 +65,7 @@ public partial class SubjectManagement : Form
     {
         var addSubject = ActivatorUtilities.CreateInstance<AddSubject>(_serviceProvider);
         addSubject.Owner = this;
-         
+        addSubject.FormClosed +=(s,args)=> LoadSubjects();
         addSubject.ShowDialog();
     }
 
