@@ -45,17 +45,7 @@ public partial class SubjectManagement : Form
     {
         var addSubject = ActivatorUtilities.CreateInstance<AddSubject>(_serviceProvider);
         addSubject.Owner = this;
-        addSubject.FormClosed += (s, args) => {
-            if (!addSubject.backPressed)
-            {
-                Application.Exit(); // close entire app
-            }
-            else
-            {
-                // show parent again (Back button pressed)
-                this.Show();
-            }
-        };
-        addSubject.Show();
+         
+        addSubject.ShowDialog();
     }
 }
