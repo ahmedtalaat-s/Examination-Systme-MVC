@@ -27,7 +27,16 @@ public partial class AddSubject : Form
 
     private void button1_Click(object sender, EventArgs e)
     {
-       
+        string subjectName = txtSubject.Text.Trim();
+
+        // ✅ 1️⃣ التحقق إن الاسم مش فاضي
+        if (string.IsNullOrWhiteSpace(subjectName))
+        {
+            MessageBox.Show("Please enter a subject name.", "Validation Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+
         var newSubject = new Subject
         {
             SubjectName = txtSubject.Text  
