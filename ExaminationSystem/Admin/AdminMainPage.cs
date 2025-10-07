@@ -73,7 +73,7 @@ namespace ExaminationSystem.Admin
         private void btnMngUser_Click(object sender, EventArgs e)
         {
             Hide();
-            var mngUser = new ManageUser(new AdminService(new ExaminationContext()), _user);
+            var mngUser = ActivatorUtilities.CreateInstance<ManageUser>(_serviceProvider, _user);
             mngUser.Owner = this;
             mngUser.FormClosed += (s, args) =>
             {

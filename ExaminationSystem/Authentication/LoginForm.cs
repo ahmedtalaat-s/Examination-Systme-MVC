@@ -47,7 +47,7 @@ public partial class LoginForm : Form
                 adminDashboard.FormClosed += (s, args) => this.Close();
 
             }
-            else if (user.Role.ToLower() == "admin")
+            else if (user.Role.ToLower() == "instructor")
             {
                 var instructordashboard = new InstructorMainPage(user);
                 instructordashboard.Show();

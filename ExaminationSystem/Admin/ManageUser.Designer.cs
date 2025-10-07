@@ -59,6 +59,7 @@
             btnAddExam.TabIndex = 5;
             btnAddExam.Text = "Add User";
             btnAddExam.UseVisualStyleBackColor = false;
+            btnAddExam.Click += btnAddExam_Click;
             // 
             // label1
             // 

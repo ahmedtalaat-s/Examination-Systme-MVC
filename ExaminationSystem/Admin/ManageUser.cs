@@ -1,5 +1,6 @@
 ﻿using BL.Contracts;
 using Domains;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,18 +16,27 @@ namespace ExaminationSystem.Admin
     public partial class ManageUser : Form
     {
         private readonly IAdmin _context;
+        private IServiceProvider _serviceProvider;
+
         private User _user;
         public bool backPressed = false;
 
 
-        public ManageUser(IAdmin context, User user)
+        public ManageUser(IAdmin context, User user, IServiceProvider serviceProvider  )
         {
             _context = context;
             InitializeComponent();
             _user = user;
+            _serviceProvider = serviceProvider;
         }
 
         private void ManageUser_Load(object sender, EventArgs e)
+        {
+           
+            LoadUsers();
+        }
+
+        private void LoadUsers()
         {
             var Users = _context.GetAllUsers();
 
@@ -103,9 +113,7 @@ namespace ExaminationSystem.Admin
             lstStudent.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
             lstStudent.DefaultCellStyle.SelectionBackColor = Color.SteelBlue;
             //// Handle button clicks
-
         }
-
         private void btnBack_Click(object sender, EventArgs e)
         {
             backPressed = true;
@@ -116,6 +124,14 @@ namespace ExaminationSystem.Admin
         {
             backPressed = true;
             Close();
+        }
+
+        private void btnAddExam_Click(object sender, EventArgs e)
+        {
+            var addSubject = ActivatorUtilities.CreateInstance<AddUser>(_serviceProvider);
+            addSubject.Owner = this;
+            addSubject.FormClosed += (s, args) => this.LoadUsers();
+            addSubject.ShowDialog();
         }
     }
 }

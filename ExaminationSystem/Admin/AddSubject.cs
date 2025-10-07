@@ -20,8 +20,8 @@ public partial class AddSubject : Form
 
     public AddSubject(IAdmin context, IServiceProvider serviceProvider)
     {
-        _context = context;
         InitializeComponent();
+        _context = context;
         _serviceProvider = serviceProvider;
     }
 
@@ -36,8 +36,7 @@ public partial class AddSubject : Form
         try
         {
             
-            backPressed = true;
-            Close();
+            
             // 2️⃣ نضيف الـ Subject في الـ Database
             _context.AddSubject(newSubject);
 
@@ -46,6 +45,8 @@ public partial class AddSubject : Form
 
            
             txtSubject.Clear();
+            backPressed = true;
+            Close();
         }
         catch (Exception ex)
         {
