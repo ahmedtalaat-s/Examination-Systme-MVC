@@ -30,9 +30,9 @@ partial class AddSubject
     {
         label1 = new Label();
         label2 = new Label();
-        textBox1 = new TextBox();
+        txtSubject = new TextBox();
         btnBack = new Button();
-        button1 = new Button();
+        btnAddSubject = new Button();
         SuspendLayout();
         // 
         // label1
@@ -55,13 +55,13 @@ partial class AddSubject
         label2.TabIndex = 1;
         label2.Text = "Subject Name";
         // 
-        // textBox1
+        // txtSubject
         // 
-        textBox1.Font = new Font("Segoe UI Symbol", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        textBox1.Location = new Point(159, 182);
-        textBox1.Name = "textBox1";
-        textBox1.Size = new Size(270, 38);
-        textBox1.TabIndex = 2;
+        txtSubject.Font = new Font("Segoe UI Symbol", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        txtSubject.Location = new Point(159, 182);
+        txtSubject.Name = "txtSubject";
+        txtSubject.Size = new Size(270, 38);
+        txtSubject.TabIndex = 2;
         // 
         // btnBack
         // 
@@ -73,26 +73,27 @@ partial class AddSubject
         btnBack.Text = "Back";
         btnBack.UseVisualStyleBackColor = true;
         // 
-        // button1
+        // btnAddSubject
         // 
-        button1.BackColor = SystemColors.HotTrack;
-        button1.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        button1.ForeColor = SystemColors.Control;
-        button1.Location = new Point(231, 269);
-        button1.Name = "button1";
-        button1.Size = new Size(128, 47);
-        button1.TabIndex = 9;
-        button1.Text = "Save";
-        button1.UseVisualStyleBackColor = false;
+        btnAddSubject.BackColor = SystemColors.HotTrack;
+        btnAddSubject.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        btnAddSubject.ForeColor = SystemColors.Control;
+        btnAddSubject.Location = new Point(231, 269);
+        btnAddSubject.Name = "btnAddSubject";
+        btnAddSubject.Size = new Size(128, 47);
+        btnAddSubject.TabIndex = 9;
+        btnAddSubject.Text = "Save";
+        btnAddSubject.UseVisualStyleBackColor = false;
+        btnAddSubject.Click += button1_Click;
         // 
         // AddSubject
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(582, 353);
-        Controls.Add(button1);
+        Controls.Add(btnAddSubject);
         Controls.Add(btnBack);
-        Controls.Add(textBox1);
+        Controls.Add(txtSubject);
         Controls.Add(label2);
         Controls.Add(label1);
         MaximizeBox = false;
@@ -109,7 +110,7 @@ partial class AddSubject
 
     private Label label1;
     private Label label2;
-    private TextBox textBox1;
+    private TextBox txtSubject;
     private Button btnBack;
-    private Button button1;
+    private Button btnAddSubject;
 }

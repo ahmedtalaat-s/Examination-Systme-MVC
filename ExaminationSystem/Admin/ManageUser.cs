@@ -16,6 +16,8 @@ namespace ExaminationSystem.Admin
     {
         private readonly IAdmin _context;
         private User _user;
+        public bool backPressed = false;
+
 
         public ManageUser(IAdmin context, User user)
         {
@@ -115,6 +117,12 @@ namespace ExaminationSystem.Admin
             lstStudent.DefaultCellStyle.SelectionBackColor = Color.SteelBlue;
             //// Handle button clicks
 
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            backPressed = true;
+            Close();
         }
     }
 }
