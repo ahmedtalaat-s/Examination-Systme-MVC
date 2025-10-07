@@ -72,6 +72,7 @@ partial class EditSubject
         btnBack.TabIndex = 9;
         btnBack.Text = "Cancle";
         btnBack.UseVisualStyleBackColor = true;
+        btnBack.Click += btnBack_Click;
         // 
         // btnEdit
         // 
@@ -84,6 +85,7 @@ partial class EditSubject
         btnEdit.TabIndex = 10;
         btnEdit.Text = "Edit";
         btnEdit.UseVisualStyleBackColor = false;
+        btnEdit.Click += btnEdit_Click;
         // 
         // EditSubject
         // 
@@ -99,6 +101,7 @@ partial class EditSubject
         MaximumSize = new Size(600, 400);
         MinimumSize = new Size(600, 400);
         Name = "EditSubject";
+        StartPosition = FormStartPosition.CenterScreen;
         Text = "EditSubject";
         ResumeLayout(false);
         PerformLayout();
