@@ -1,6 +1,8 @@
 ﻿using BL.Contracts;
 using BL.Services;
 using Domains;
+using ExaminationSystem.Admin;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -132,6 +134,14 @@ namespace ExaminationSystem.Instructor
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            var addExam = ActivatorUtilities.CreateInstance<AddExam>(_serviceProvider,_user);
+            addExam.Owner = this;
+            addExam.FormClosed += (s, args) => this.LoadUsers();
+            addExam.ShowDialog();
+        }
+
+        private void LoadUsers()
         {
 
         }
