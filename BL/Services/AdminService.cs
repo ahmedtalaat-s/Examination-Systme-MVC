@@ -86,7 +86,7 @@ namespace BL.Services
                 throw new Exception(ex.Message);
             }
         }
-        public void UpdateSubject(Subject subject, List<int> subjectId)
+        public void UpdateSubject(Subject subject)
         {
             try
             {
