@@ -47,7 +47,6 @@ partial class SubjectManagement
         dataGridView1.RowHeadersWidth = 51;
         dataGridView1.Size = new Size(879, 400);
         dataGridView1.TabIndex = 6;
-        
         // 
         // button1
         // 

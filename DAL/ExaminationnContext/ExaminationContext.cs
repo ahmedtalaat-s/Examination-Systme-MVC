@@ -29,7 +29,8 @@ namespace DAL.ExaminationnContext
             optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=ExaminationProject;Integrated Security=True;Encrypt=True;TrustServerCertificate=True");
         }
 
-        //DESKTOP-I33LVHG\\SQLEXPRESS
+        //DESKTOP-I33LVHG\\SQLEXPRESS hamdy
+        //DESKTOP-321OUT6\SQLEXPRESS hamza
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
         {
             

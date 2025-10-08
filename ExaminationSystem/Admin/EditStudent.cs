@@ -64,6 +64,7 @@ public partial class EditStudent : Form
             _user.Role = cbRole.SelectedItem.ToString();
 
             _context.UpdateUser(_user);
+            _context.UpdateUserSubjects(_user,GetSelectedSubjectIds());
             MessageBox.Show("User updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();
         }
