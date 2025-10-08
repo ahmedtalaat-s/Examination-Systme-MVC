@@ -178,6 +178,7 @@ partial class EditExam
         btnCancle.TabIndex = 24;
         btnCancle.Text = "Cancle";
         btnCancle.UseVisualStyleBackColor = false;
+        //btnCancle.Click += btnCancle_Click;
         // 
         // btnSave
         // 
@@ -190,6 +191,7 @@ partial class EditExam
         btnSave.TabIndex = 23;
         btnSave.Text = "Edit";
         btnSave.UseVisualStyleBackColor = false;
+        btnSave.Click += btnSave_Click;
         // 
         // EditExam
         // 
@@ -216,6 +218,7 @@ partial class EditExam
         MinimumSize = new Size(900, 600);
         Name = "EditExam";
         Text = "EditExam";
+        Load += EditExam_Load;
         ResumeLayout(false);
         PerformLayout();
     }
