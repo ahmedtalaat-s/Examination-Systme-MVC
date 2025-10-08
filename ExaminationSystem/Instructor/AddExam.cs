@@ -17,11 +17,13 @@ namespace ExaminationSystem.Instructor;
 public partial class AddExam : Form
 {
     private readonly ITeacher _teacher;
+    private readonly User _user;
 
-    public AddExam(ITeacher teacher)
+    public AddExam(ITeacher teacher,User user)
     {
         InitializeComponent();
         _teacher = teacher;
+        _user = user;
     }
 
     private void AddExam_Load(object sender, EventArgs e)
@@ -50,7 +52,7 @@ public partial class AddExam : Form
         }
 
         // ✅ التحقق من الـ Subject
-        if (comboBoxSubject.SelectedValue == null)
+        if (comboBox3.SelectedValue == null)
         {
             MessageBox.Show("Please select a subject.", "Validation Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -66,7 +68,7 @@ public partial class AddExam : Form
         }
 
         // ✅ التحقق من نوع الامتحان
-        if (string.IsNullOrWhiteSpace(txtExamType.Text))
+        if (string.IsNullOrWhiteSpace(comboBox1.Text))
         {
             MessageBox.Show("Please enter exam type.", "Validation Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -74,7 +76,7 @@ public partial class AddExam : Form
         }
 
         // ✅ التحقق من الـ Status
-        if (comboBoxStatus.SelectedItem == null)
+        if (comboBox2.SelectedItem == null)
         {
             MessageBox.Show("Please select exam status.", "Validation Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -84,17 +86,17 @@ public partial class AddExam : Form
         try
         {
             // 🧠 تحويل القيمة من ComboBox إلى Enum
-            Status examStatus = (Status)Enum.Parse(typeof(Status), comboBoxStatus.SelectedItem.ToString());
+            Domains.Status examStatus = (Domains.Status)Enum.Parse(typeof(Domains.Status), comboBox2.SelectedItem.ToString());
 
             var newExam = new Exam
             {
                 ExamName = txtExamName.Text.Trim(),
                 Duration = duration,
-                ExamType = txtExamType.Text.Trim(),
-                StartTime = dateTimePickerStartTime.Value,
+                ExamType = comboBox1.Text.Trim(),
+                StartTime = dateTimePicker1.Value,
                 Status = examStatus,
-                SubjectId = (int)comboBoxSubject.SelectedValue,
-                UserId = CurrentInstructorId // لو عندك متغير يمثل المدرس الحالي
+                SubjectId = (int)comboBox3.SelectedValue,
+                UserId =  _user.UserId,
             };
 
             // 🧩 إضافة الامتحان
@@ -106,9 +108,9 @@ public partial class AddExam : Form
             // ✅ تنظيف الحقول
             txtExamName.Clear();
             txtDuration.Clear();
-            txtExamType.Clear();
-            comboBoxSubject.SelectedIndex = -1;
-            comboBoxStatus.SelectedIndex = -1;
+            comboBox1.SelectedIndex = -1;
+            comboBox2.SelectedIndex = -1;
+            comboBox3.SelectedIndex = -1;
         }
         catch (Exception ex)
         {
