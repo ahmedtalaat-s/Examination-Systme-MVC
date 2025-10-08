@@ -13,7 +13,6 @@ public class TeacherService : ITeacher
     {
         _context = context;
     }
-
     public void CreateExam(Exam exam)
     {
         try
@@ -29,7 +28,6 @@ public class TeacherService : ITeacher
             throw new Exception(ex.Message);
         }
     }
-
     public Exam GetExamById(int id)
     {
         try
@@ -115,5 +113,16 @@ public class TeacherService : ITeacher
 
     }
 
-  
+    public List<Subject> GetInstructorSubjects(int instructorId)
+    {
+        var subjects = (from userSubject in _context.UserSubjects.Where(m=>m.UserId == instructorId)
+                        join subject in _context.Subject on userSubject.SubjectId equals subject.SubjectId
+                        select new Subject 
+                        {
+                            SubjectName = subject.SubjectName,
+                            SubjectId = subject.SubjectId,
+
+                        }).ToList();
+        return subjects;
+    }
 }

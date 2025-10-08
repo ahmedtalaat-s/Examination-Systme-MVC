@@ -55,6 +55,7 @@ partial class StudentReports
         btnBack.TabIndex = 10;
         btnBack.Text = "Back";
         btnBack.UseVisualStyleBackColor = true;
+        btnBack.Click += btnBack_Click;
         // 
         // dataGridView1
         // 
@@ -68,6 +69,7 @@ partial class StudentReports
         dataGridView1.RowHeadersWidth = 51;
         dataGridView1.Size = new Size(881, 395);
         dataGridView1.TabIndex = 11;
+        dataGridView1.CellContentClick += dataGridView1_CellContentClick;
         // 
         // StudentReports
         // 
@@ -83,6 +85,7 @@ partial class StudentReports
         Name = "StudentReports";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Student Reports";
+        Load += StudentReports_Load;
         ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
         ResumeLayout(false);
         PerformLayout();

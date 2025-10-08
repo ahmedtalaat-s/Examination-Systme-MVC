@@ -12,6 +12,8 @@ public interface ITeacher
     List<Exam> GetAllExams(int instructorId);
     public List<InstructorExamResultDto> GetInstructorExamResults(int instructorId);
 
+    public List<Subject> GetInstructorSubjects(int instructorId);
+
 
 
 }

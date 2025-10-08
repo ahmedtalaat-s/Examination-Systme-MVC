@@ -73,11 +73,11 @@ public partial class InstructorMainPage : Form
 
     private void btnMngExam_Click(object sender, EventArgs e)
     {
-        var mngExam = ActivatorUtilities.CreateInstance<ExamList>(_serviceProvider,_user);
-        mngExam.Owner = this;
-        mngExam.FormClosed += (s, args) =>
+        var studentreports = ActivatorUtilities.CreateInstance<ExamList>(_serviceProvider, _user);
+        studentreports.Owner = this;
+        studentreports.FormClosed += (s, args) =>
         {
-            if (!mngExam.backPressed)
+            if (!studentreports.backPressed)
             {
                 Application.Exit(); // close entire app
             }
@@ -87,6 +87,25 @@ public partial class InstructorMainPage : Form
                 this.Show();
             }
         };
-        mngExam.Show();
+        studentreports.Show();
+    }
+
+    private void btnMngStud_Click(object sender, EventArgs e)
+    {
+        var studentreports = ActivatorUtilities.CreateInstance<StudentReports>(_serviceProvider, _user);
+        studentreports.Owner = this;
+        studentreports.FormClosed += (s, args) =>
+        {
+            if (!studentreports.backPressed)
+            {
+                Application.Exit(); // close entire app
+            }
+            else
+            {
+                // show parent again (Back button pressed)
+                this.Show();
+            }
+        };
+        studentreports.Show();
     }
 }
