@@ -72,6 +72,7 @@ partial class AddExam
         txtExamName.Name = "txtExamName";
         txtExamName.Size = new Size(199, 34);
         txtExamName.TabIndex = 2;
+        txtExamName.TextChanged += txtExamName_TextChanged;
         // 
         // txtDuration
         // 
