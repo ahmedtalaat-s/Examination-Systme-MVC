@@ -108,7 +108,7 @@ partial class AddExam
         lbType.Size = new Size(67, 31);
         lbType.TabIndex = 6;
         lbType.Text = "Type";
-        lbType.Click += label4_Click;
+
         // 
         // lbStatus
         // 
@@ -220,7 +220,7 @@ partial class AddExam
         MinimumSize = new Size(900, 600);
         Name = "AddExam";
         Text = "AddExam";
-        Load += AddExam_Load;
+
         ResumeLayout(false);
         PerformLayout();
     }

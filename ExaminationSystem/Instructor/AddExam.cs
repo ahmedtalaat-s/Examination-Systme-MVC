@@ -46,18 +46,9 @@ public partial class AddExam : Form
         cbsubjects.ValueMember = "SubjectId";     // the actual ID
     }
 
-    private void label4_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-    }
-
     private void btnSave_Click(object sender, EventArgs e)
     {
+
         // ✅ التحقق من الاسم
         if (string.IsNullOrWhiteSpace(txtExamName.Text))
         {
