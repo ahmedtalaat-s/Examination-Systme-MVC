@@ -24,8 +24,6 @@ namespace DAL.ExaminationnContext
         public virtual DbSet<UserSubject> UserSubjects { get; set; }
         public virtual DbSet<UserTakeExam> UserExams { get; set; }
 
-
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=ExaminationProject;Integrated Security=True;Encrypt=True;TrustServerCertificate=True");
@@ -36,7 +34,6 @@ namespace DAL.ExaminationnContext
         {
             
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ExaminationContext).Assembly);
