@@ -77,7 +77,7 @@ partial class AddUser
         // txtPassword
         // 
         txtPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        txtPassword.Location = new Point(112, 275);
+        txtPassword.Location = new Point(113, 373);
         txtPassword.Name = "txtPassword";
         txtPassword.PasswordChar = '*';
         txtPassword.Size = new Size(244, 34);
@@ -88,7 +88,7 @@ partial class AddUser
         // 
         label3.AutoSize = true;
         label3.Font = new Font("Segoe UI Symbol", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        label3.Location = new Point(112, 241);
+        label3.Location = new Point(113, 339);
         label3.Name = "label3";
         label3.Size = new Size(119, 31);
         label3.TabIndex = 3;
@@ -97,7 +97,7 @@ partial class AddUser
         // txtEmail
         // 
         txtEmail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        txtEmail.Location = new Point(112, 369);
+        txtEmail.Location = new Point(113, 275);
         txtEmail.Name = "txtEmail";
         txtEmail.Size = new Size(244, 34);
         txtEmail.TabIndex = 6;
@@ -106,7 +106,7 @@ partial class AddUser
         // 
         lbEmail.AutoSize = true;
         lbEmail.Font = new Font("Segoe UI Symbol", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        lbEmail.Location = new Point(111, 335);
+        lbEmail.Location = new Point(113, 229);
         lbEmail.Name = "lbEmail";
         lbEmail.Size = new Size(75, 31);
         lbEmail.TabIndex = 5;
