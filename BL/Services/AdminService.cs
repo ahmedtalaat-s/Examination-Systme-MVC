@@ -1,6 +1,7 @@
 ﻿using BL.Contracts;
 using DAL.ExaminationnContext;
 using Domains;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -111,7 +112,7 @@ namespace BL.Services
 
 
 
-        public void AddUser(User user)
+        public User AddUser(User user)
         {
             try
             {
@@ -119,7 +120,9 @@ namespace BL.Services
                 {
                     _context.Add(user);
                     _context.SaveChanges();
+                    return _context.User.FirstOrDefault(u => u.Email == user.Email);
                 }
+                return new User();
             }
             catch (Exception ex) 
             {
@@ -147,7 +150,7 @@ namespace BL.Services
         {
             if(id != 0)
             {
-                return _context.User.FirstOrDefault(k => k.UserId == id);
+                return _context.User.Include(u => u.UserSubjects).FirstOrDefault(k => k.UserId == id);
             }
             else
             {
@@ -171,6 +174,8 @@ namespace BL.Services
             try
             {
                 var user = GetUserById(userId);
+                _context.UserSubjects.RemoveRange(user.UserSubjects);
+
                 _context.Remove(user);
                 _context.SaveChanges();
             }
@@ -180,6 +185,21 @@ namespace BL.Services
             }
         }
 
-       
+        public void AddSubjectsForUser(List<int> subjectsIds, User user)
+        {
+            try
+            {
+                foreach (var subjectId in subjectsIds)
+                {
+                    var userSubject = new UserSubject  { UserId = user.UserId, SubjectId = subjectId };
+                    _context.UserSubjects.Add(userSubject);
+                    _context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

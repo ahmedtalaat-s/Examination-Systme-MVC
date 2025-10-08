@@ -47,6 +47,7 @@
             lstStudent.RowHeadersWidth = 51;
             lstStudent.Size = new Size(858, 361);
             lstStudent.TabIndex = 6;
+            lstStudent.CellContentClick += lstStudent_CellContentClick;
             // 
             // btnAddExam
             // 

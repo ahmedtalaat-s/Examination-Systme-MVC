@@ -10,7 +10,7 @@ namespace BL.Contracts
     public interface IAdmin
     {
        
-        void AddUser(User user);
+        User AddUser(User user);
         void UpdateUser(User user);
         void DeleteUser(int userId);
         List<User> GetAllUsers();
@@ -22,5 +22,8 @@ namespace BL.Contracts
         void DeleteSubject(int subjectId);
         List<Subject> GetAllSubjects();
         Subject GetSubjectById(int subjectId);
+
+
+        void AddSubjectsForUser(List<int> subjectsIds , User user);
     }
 }
