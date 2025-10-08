@@ -30,4 +30,9 @@ public partial class AddExam : Form
     {
 
     }
+
+    private void txtExamName_TextChanged(object sender, EventArgs e)
+    {
+
+    }
 }
