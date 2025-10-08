@@ -135,7 +135,9 @@ namespace ExaminationSystem.Instructor
         {
             var addExam = ActivatorUtilities.CreateInstance<AddExam>(_serviceProvider,_user);
             addExam.Owner = this;
+            Hide();
             addExam.FormClosed += (s, args) => this.LoadUsers();
+            addExam.FormClosed += (s, args) => this.Show();
             addExam.ShowDialog();
         }
 

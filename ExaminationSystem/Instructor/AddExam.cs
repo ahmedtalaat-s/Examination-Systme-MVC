@@ -19,8 +19,9 @@ public partial class AddExam : Form
 {
     private readonly ITeacher _teacher;
     private readonly User _user;
+    public bool backPressed = false;
 
-    public AddExam(ITeacher teacher,User user)
+    public AddExam(ITeacher teacher, User user)
     {
         InitializeComponent();
         _teacher = teacher;
@@ -37,7 +38,7 @@ public partial class AddExam : Form
         cbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
         // cb subjects
         //render combobox subjects
-        List<Subject> subjects = _teacher;
+        List<Subject> subjects = _teacher.GetInstructorSubjects(_user.UserId);
         cbsubjects.DropDownStyle = ComboBoxStyle.DropDownList;
         // ✅ Bind ComboBox
         cbsubjects.DataSource = subjects;
@@ -110,7 +111,7 @@ public partial class AddExam : Form
                 StartTime = dateTimePicker1.Value,
                 Status = examStatus,
                 SubjectId = (int)cbsubjects.SelectedValue,
-                UserId =  _user.UserId,
+                UserId = _user.UserId,
             };
 
             // 🧩 إضافة الامتحان
@@ -125,6 +126,8 @@ public partial class AddExam : Form
             cbType.SelectedIndex = -1;
             cbStatus.SelectedIndex = -1;
             cbsubjects.SelectedIndex = -1;
+            backPressed = true;
+            Close();
         }
         catch (Exception ex)
         {
@@ -133,5 +136,9 @@ public partial class AddExam : Form
         }
     }
 
-
+    private void btnCancle_Click(object sender, EventArgs e)
+    {
+        backPressed = true;
+        Close();
+    }
 }
