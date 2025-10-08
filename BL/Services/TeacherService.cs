@@ -94,7 +94,6 @@ public class TeacherService : ITeacher
             throw new Exception(ex.Message);
         }
     }
-
     public List<InstructorExamResultDto> GetInstructorExamResults(int instructorId)
     {
         var result = (from exam in _context.Exams

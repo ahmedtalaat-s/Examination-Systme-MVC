@@ -10,7 +10,6 @@ public interface ITeacher
     void DeleteExam(int id);
     Exam GetExamById(int id);
     List<Exam> GetAllExams(int instructorId);
-
     public List<InstructorExamResultDto> GetInstructorExamResults(int instructorId);
 
 

@@ -17,11 +17,14 @@ namespace BL.Contracts
         User GetUserById(int userId);
 
 
+
         void AddSubject(Subject subject);
         void UpdateSubject(Subject subject);
         void DeleteSubject(int subjectId);
         List<Subject> GetAllSubjects();
         Subject GetSubjectById(int subjectId);
+
+        public void UpdateUserSubjects(User user, List<int> subjectIds);
 
 
         void AddSubjectsForUser(List<int> subjectsIds , User user);
