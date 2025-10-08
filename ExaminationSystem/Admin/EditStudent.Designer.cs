@@ -32,7 +32,7 @@ partial class EditStudent
         lbEmail = new Label();
         txtFullName = new TextBox();
         label2 = new Label();
-        label1 = new Label();
+        lbEditUser = new Label();
         lbRole = new Label();
         cbRole = new ComboBox();
         txtPassword = new TextBox();
@@ -82,15 +82,15 @@ partial class EditStudent
         label2.TabIndex = 8;
         label2.Text = "Full Name";
         // 
-        // label1
+        // lbEditUser
         // 
-        label1.AutoSize = true;
-        label1.Font = new Font("Segoe UI Symbol", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        label1.Location = new Point(268, 30);
-        label1.Name = "label1";
-        label1.Size = new Size(295, 62);
-        label1.TabIndex = 7;
-        label1.Text = "Edit Student";
+        lbEditUser.AutoSize = true;
+        lbEditUser.Font = new Font("Segoe UI Symbol", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        lbEditUser.Location = new Point(268, 30);
+        lbEditUser.Name = "lbEditUser";
+        lbEditUser.Size = new Size(221, 62);
+        lbEditUser.TabIndex = 7;
+        lbEditUser.Text = "Edit User";
         // 
         // lbRole
         // 
@@ -218,7 +218,7 @@ partial class EditStudent
         Controls.Add(lbEmail);
         Controls.Add(txtFullName);
         Controls.Add(label2);
-        Controls.Add(label1);
+        Controls.Add(lbEditUser);
         MaximizeBox = false;
         MaximumSize = new Size(900, 600);
         MinimumSize = new Size(900, 600);
@@ -237,7 +237,7 @@ partial class EditStudent
     private Label lbEmail;
     private TextBox txtFullName;
     private Label label2;
-    private Label label1;
+    private Label lbEditUser;
     private Label lbRole;
     private ComboBox cbRole;
     private TextBox txtPassword;

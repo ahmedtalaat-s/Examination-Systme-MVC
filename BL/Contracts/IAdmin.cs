@@ -18,7 +18,7 @@ namespace BL.Contracts
 
 
         void AddSubject(Subject subject);
-        void UpdateSubject(Subject subject);
+        void UpdateSubject(Subject subject, List<int> subjectId);
         void DeleteSubject(int subjectId);
         List<Subject> GetAllSubjects();
         Subject GetSubjectById(int subjectId);
