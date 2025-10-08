@@ -34,14 +34,12 @@ namespace ExaminationSystem.Instructor
         {
             LoadExams();
         }
-        private void LoadExams() {
-            //var exams = _context.GetAllExams();
+        private void LoadExams()
+        {
+            var exams = _context.GetAllExams(_user.UserId);
 
-            // Make sure the DataGridView does not auto-generate columns
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.Columns.Clear();
-
-            // Define columns manually
 
             // ExamName
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
@@ -95,10 +93,10 @@ namespace ExaminationSystem.Instructor
             };
             dataGridView1.Columns.Add(deleteButton);
 
-            // Bind data
-            //dataGridView1.DataSource = exams;
+            // 🔹 أهم خطوة: ربط الـ DataSource
+            dataGridView1.DataSource = exams.ToList();
 
-            // Handle displaying Subject name manually
+            // 🔹 بعد الربط نملأ عمود الـ Subject يدوي
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 var exam = row.DataBoundItem as Exam;
@@ -116,15 +114,15 @@ namespace ExaminationSystem.Instructor
                     col.ReadOnly = false;
                 }
             }
+
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.HotTrack;
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
             dataGridView1.DefaultCellStyle.SelectionBackColor = Color.SteelBlue;
-            //// Handle button clicks
-            //dataGridView1.CellContentClick += DataGridView1_CellContentClick;
         }
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
