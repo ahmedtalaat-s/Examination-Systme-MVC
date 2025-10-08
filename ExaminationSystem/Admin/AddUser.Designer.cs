@@ -28,7 +28,7 @@ partial class AddUser
     /// </summary>
     private void InitializeComponent()
     {
-        label1 = new Label();
+        lbAddUser = new Label();
         label2 = new Label();
         txtFullName = new TextBox();
         txtPassword = new TextBox();
@@ -41,15 +41,15 @@ partial class AddUser
         btnAddStudent = new Button();
         SuspendLayout();
         // 
-        // label1
+        // lbAddUser
         // 
-        label1.AutoSize = true;
-        label1.Font = new Font("Segoe UI Symbol", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        label1.Location = new Point(272, 29);
-        label1.Name = "label1";
-        label1.Size = new Size(301, 62);
-        label1.TabIndex = 0;
-        label1.Text = "Add Student";
+        lbAddUser.AutoSize = true;
+        lbAddUser.Font = new Font("Segoe UI Symbol", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        lbAddUser.Location = new Point(272, 29);
+        lbAddUser.Name = "lbAddUser";
+        lbAddUser.Size = new Size(227, 62);
+        lbAddUser.TabIndex = 0;
+        lbAddUser.Text = "Add User";
         // 
         // label2
         // 
@@ -165,7 +165,7 @@ partial class AddUser
         Controls.Add(label3);
         Controls.Add(txtFullName);
         Controls.Add(label2);
-        Controls.Add(label1);
+        Controls.Add(lbAddUser);
         MaximizeBox = false;
         MaximumSize = new Size(900, 600);
         MinimumSize = new Size(900, 600);
@@ -179,7 +179,7 @@ partial class AddUser
 
     #endregion
 
-    private Label label1;
+    private Label lbAddUser;
     private Label label2;
     private TextBox txtFullName;
     private TextBox txtPassword;
