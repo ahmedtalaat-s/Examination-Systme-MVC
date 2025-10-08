@@ -47,6 +47,7 @@ namespace ExaminationSystem
 
             // 6?? ??????? ??? Form ??????? (LoginForm) ?? ???? ??? DI
             var loginForm = serviceProvider.GetRequiredService<LoginForm>();
+            //var loginForm = serviceProvider.GetRequiredService<AddUser>();
             //var loginForm = new AddExam();
             Application.Run(loginForm);
         }

@@ -30,6 +30,46 @@ public partial class AddUser : Form
     {
         cbRole.Items.AddRange(new string[] { "instructor", "student" });
         cbRole.DropDownStyle = ComboBoxStyle.DropDownList;
+        //render combobox subjects
+        List<Subject> subjects = _context.GetAllSubjects();
+        cbsubjects.DropDownStyle = ComboBoxStyle.DropDownList;
+        dgvSubjects.AllowUserToAddRows = false;
+        // ✅ Bind ComboBox
+        cbsubjects.DataSource = subjects;
+        cbsubjects.DisplayMember = "SubjectName"; // what user sees
+        cbsubjects.ValueMember = "SubjectId";     // the actual ID
+
+        // ✅ Setup DataGridView
+        dgvSubjects.AutoGenerateColumns = false;
+        dgvSubjects.Columns.Clear();
+
+        // Hidden ID column
+        dgvSubjects.Columns.Add(new DataGridViewTextBoxColumn
+        {
+            Name = "SubjectId",
+            HeaderText = "ID",
+            Visible = false // hide from user
+        });
+
+        // Visible name column
+        dgvSubjects.Columns.Add(new DataGridViewTextBoxColumn
+        {
+            Name = "SubjectName",
+            HeaderText = "Subject Name",
+            AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        });
+
+        // Delete button column
+        var btnDelete = new DataGridViewButtonColumn
+        {
+            HeaderText = "Action",
+            Text = "Delete",
+            UseColumnTextForButtonValue = true
+        };
+        dgvSubjects.Columns.Add(btnDelete);
+
+        dgvSubjects.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        dgvSubjects.ReadOnly = true;
     }
 
     private void btnBack_Click(object sender, EventArgs e)
@@ -40,8 +80,6 @@ public partial class AddUser : Form
 
     private void btnAddStudent_Click(object sender, EventArgs e)
     {
-        
-
         try
         {
 
@@ -75,6 +113,13 @@ public partial class AddUser : Form
                 cbRole.Focus();
                 return;
             }
+            if (dgvSubjects.Rows.Count == 0)
+            {
+                MessageBox.Show("Please select at least one subject.", "Validation Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cbsubjects.Focus();
+                return;
+            }
             var newuser = new User
             {
                 FullName = txtFullName.Text,
@@ -83,7 +128,8 @@ public partial class AddUser : Form
                 Role = cbRole.SelectedItem.ToString()
             };
             // 2️⃣ نضيف الـ Subject في الـ Database
-            _context.AddUser(newuser);
+            User registeredUser =  _context.AddUser(newuser);
+            _context.AddSubjectsForUser(GetSelectedSubjectIds(),registeredUser);
 
             MessageBox.Show("user added successfully!", "Success",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -101,5 +147,59 @@ public partial class AddUser : Form
             MessageBox.Show($"Error adding subject: {ex.Message}", "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+    }
+
+    private void dgvSubjects_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    {
+        // If Delete button clicked
+        if (e.ColumnIndex == 2 && e.RowIndex >= 0)
+        {
+            string subjectName = dgvSubjects.Rows[e.RowIndex].Cells["SubjectName"].Value.ToString();
+            var confirm = MessageBox.Show($"Are you sure you want to remove '{subjectName}'?",
+                                          "Confirm Delete",
+                                          MessageBoxButtons.YesNo,
+                                          MessageBoxIcon.Question);
+            if (confirm == DialogResult.Yes)
+            {
+                dgvSubjects.Rows.RemoveAt(e.RowIndex);
+            }
+        }
+    }
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+        if (cbsubjects.SelectedItem == null)
+        {
+            MessageBox.Show("Please select a subject first.", "Validation Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+
+        int selectedId = (int)cbsubjects.SelectedValue;
+        string selectedName = cbsubjects.Text;
+
+        // 🔒 Prevent duplicates
+        foreach (DataGridViewRow row in dgvSubjects.Rows)
+        {
+            if ((int)row.Cells["SubjectId"].Value == selectedId)
+            {
+                MessageBox.Show("This subject is already added.", "Duplicate Subject",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+        }
+
+        // ✅ Add to grid
+        dgvSubjects.Rows.Add(selectedId, selectedName);
+    }
+
+    public List<int> GetSelectedSubjectIds()
+    {
+        List<int> ids = new List<int>();
+        foreach (DataGridViewRow row in dgvSubjects.Rows)
+        {
+            ids.Add((int)row.Cells["SubjectId"].Value);
+        }
+        return ids;
     }
 }

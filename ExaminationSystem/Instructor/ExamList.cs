@@ -35,7 +35,7 @@ namespace ExaminationSystem.Instructor
             LoadExams();
         }
         private void LoadExams() {
-            var exams = _context.GetAllExams();
+            //var exams = _context.GetAllExams();
 
             // Make sure the DataGridView does not auto-generate columns
             dataGridView1.AutoGenerateColumns = false;
@@ -96,7 +96,7 @@ namespace ExaminationSystem.Instructor
             dataGridView1.Columns.Add(deleteButton);
 
             // Bind data
-            dataGridView1.DataSource = exams;
+            //dataGridView1.DataSource = exams;
 
             // Handle displaying Subject name manually
             foreach (DataGridViewRow row in dataGridView1.Rows)
