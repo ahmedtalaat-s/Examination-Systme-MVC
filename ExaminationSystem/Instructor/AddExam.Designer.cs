@@ -72,7 +72,6 @@ partial class AddExam
         txtExamName.Name = "txtExamName";
         txtExamName.Size = new Size(199, 34);
         txtExamName.TabIndex = 2;
-        //txtExamName.TextChanged += txtExamName_TextChanged;
         // 
         // txtDuration
         // 
@@ -109,7 +108,6 @@ partial class AddExam
         lbType.Size = new Size(67, 31);
         lbType.TabIndex = 6;
         lbType.Text = "Type";
-
         // 
         // lbStatus
         // 
@@ -146,7 +144,6 @@ partial class AddExam
         comboBox3.Name = "comboBox3";
         comboBox3.Size = new Size(199, 28);
         comboBox3.TabIndex = 9;
-     
         // 
         // label4
         // 
@@ -220,7 +217,7 @@ partial class AddExam
         MinimumSize = new Size(900, 600);
         Name = "AddExam";
         Text = "AddExam";
-
+        Load += AddExam_Load;
         ResumeLayout(false);
         PerformLayout();
     }

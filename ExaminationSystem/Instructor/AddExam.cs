@@ -19,7 +19,7 @@ public partial class AddExam : Form
     private readonly ITeacher _teacher;
     private readonly User _user;
 
-    public AddExam(ITeacher teacher,User user)
+    public AddExam(ITeacher teacher, User user)
     {
         InitializeComponent();
         _teacher = teacher;
@@ -84,7 +84,7 @@ public partial class AddExam : Form
                 StartTime = dateTimePicker1.Value,
                 Status = examStatus,
                 SubjectId = (int)comboBox3.SelectedValue,
-                UserId =  _user.UserId,
+                UserId = _user.UserId,
             };
 
             // 🧩 إضافة الامتحان
@@ -107,5 +107,8 @@ public partial class AddExam : Form
         }
     }
 
+    private void AddExam_Load(object sender, EventArgs e)
+    {
 
+    }
 }
