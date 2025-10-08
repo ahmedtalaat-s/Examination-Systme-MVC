@@ -93,7 +93,17 @@ namespace ExaminationSystem.Instructor
                 UseColumnTextForButtonValue = true,
                 Width = 80
             };
+
             dataGridView1.Columns.Add(deleteButton);
+            // View Exam Btn
+            DataGridViewButtonColumn viewButton = new DataGridViewButtonColumn
+            {
+                HeaderText = "View",
+                Text = "View",
+                UseColumnTextForButtonValue = true,
+                Width = 80
+            };
+            dataGridView1.Columns.Add(viewButton);
 
             // 🔹 أهم خطوة: ربط الـ DataSource
             dataGridView1.DataSource = exams.ToList();
@@ -145,6 +155,15 @@ namespace ExaminationSystem.Instructor
                 editForm.ShowDialog();
                 LoadExams();
             }
+            // تأكد إن اللي اتداس عليه زرار "View"
+            if (e.RowIndex >= 0 && dataGridView1.Columns[e.ColumnIndex].HeaderText == "View")
+            {
+                // هنا بنجيب الـ ExamId من العمود اللي فيه الـ Id
+                int examId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["ExamId"].Value);
+
+                // نفتح فورم الأسئلة ونبعتلها الـ ExamId
+                var questionListForm = ActivatorUtilities.CreateInstance<QuestionList>(_serviceProvider, _user, selectedExam);
+            }
 
             // زرار الـ Delete (اختياري لو هتعمله بعدين)
             else if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Delete")
@@ -156,6 +175,7 @@ namespace ExaminationSystem.Instructor
                     LoadExams();
                 }
             }
+
         }
 
 

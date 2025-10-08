@@ -22,6 +22,11 @@ namespace ExaminationSystem.Instructor
 
         private void EditExam_Load(object sender, EventArgs e)
         {
+            //load combox Type
+            comboBox1.Items.AddRange(new string[] { "final", "practise" });
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
             // تحميل البيانات داخل الـ TextBoxes
             txtExamName.Text = _exam.ExamName;
             txtDuration.Text = _exam.Duration.ToString();
@@ -33,7 +38,9 @@ namespace ExaminationSystem.Instructor
             comboBox3.DataSource = subjects;
             comboBox3.DisplayMember = "SubjectName";
             comboBox3.ValueMember = "SubjectId";
-            comboBox3.SelectedIndex = -1;
+            //_exam.SubjectId = (int)comboBox3.SelectedValue;
+            comboBox3.SelectedValue = _exam.SubjectId;
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -45,6 +52,8 @@ namespace ExaminationSystem.Instructor
                 _exam.Duration = int.Parse(txtDuration.Text);
                 _exam.ExamType = comboBox1.Text;
                 _exam.Status = (Status)comboBox2.SelectedItem;
+                _exam.SubjectId = (int)comboBox3.SelectedValue;
+
 
                 _teacher.EditExam(_exam);
 

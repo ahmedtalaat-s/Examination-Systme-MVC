@@ -125,5 +125,9 @@ public class TeacherService : ITeacher
         return subjects;
     }
 
-
+    public List<Questions> GetAllQuestion(int examId)
+    {
+        return _context.Questions.Where(j => j.ExamId == examId).ToList();
+        
+    }
 }
