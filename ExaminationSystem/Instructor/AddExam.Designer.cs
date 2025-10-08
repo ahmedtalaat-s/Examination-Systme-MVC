@@ -144,7 +144,7 @@ partial class AddExam
         cbsubjects.Name = "cbsubjects";
         cbsubjects.Size = new Size(258, 28);
         cbsubjects.TabIndex = 9;
-        cbsubjects.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
+        //cbsubjects.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
         // 
         // label4
         // 

@@ -28,6 +28,12 @@ namespace ExaminationSystem.Instructor
             comboBox1.Text = _exam.ExamType;
             comboBox2.DataSource = Enum.GetValues(typeof(Status));
             comboBox2.SelectedItem = _exam.Status;
+            //List<Subject> subjects = _teacher.GetInstructorSubjects(_user.UserId);
+            var subjects = _teacher.GetInstructorSubjects(_user.UserId);
+            comboBox3.DataSource = subjects;
+            comboBox3.DisplayMember = "SubjectName";
+            comboBox3.ValueMember = "SubjectId";
+            comboBox3.SelectedIndex = -1;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
