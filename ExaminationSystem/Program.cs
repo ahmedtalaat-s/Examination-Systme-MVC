@@ -22,17 +22,14 @@ namespace ExaminationSystem
             // 1?? ????? ServiceCollection (?? ??? Container ???? ????? ???? ??? Dependencies)
             var services = new ServiceCollection();
 
-            // 2?? ????? ??? DbContext (ExaminationContext)
+
             services.AddDbContext<ExaminationContext>();
 
-            // 3?? ????? ??????? (Services)
             services.AddScoped<IAuthentications, AuthenticationService>();
             services.AddScoped<IAdmin, AdminService>();
             services.AddScoped<ITeacher, TeacherService>();
             services.AddScoped<IStudent, StudentService>();
-            
 
-            // 4?? ????? ??? Forms ???? ????????
             services.AddScoped<LoginForm>();
             services.AddScoped<ExamList>();
             services.AddScoped<ManageUser>();
@@ -41,14 +38,10 @@ namespace ExaminationSystem
             services.AddScoped<StudentMainPage>();
             services.AddScoped<AddSubject>();
 
-
-            // 5?? ???? ServiceProvider (???? ????? ???? ??????? ????????)
             var serviceProvider = services.BuildServiceProvider();
 
-            // 6?? ??????? ??? Form ??????? (LoginForm) ?? ???? ??? DI
             var loginForm = serviceProvider.GetRequiredService<LoginForm>();
-            //var loginForm = serviceProvider.GetRequiredService<AddUser>();
-            //var loginForm = new AddExam();
+
             Application.Run(loginForm);
         }
     }

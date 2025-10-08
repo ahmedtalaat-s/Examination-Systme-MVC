@@ -11,7 +11,7 @@ public class AuthenticationService : IAuthentications
     public AuthenticationService(ExaminationContext context) {  _context = context; }
     public User login(string email, string password)
     {
-        var user = _context.User.FirstOrDefault(u=>u.Email==email);
+        var user = _context.User.Include(u => u.UserExams).FirstOrDefault(u=>u.Email==email);
         return user;
     }
 

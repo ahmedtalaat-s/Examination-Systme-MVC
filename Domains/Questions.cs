@@ -15,7 +15,7 @@ namespace Domains
         public string Body { get; set; }
         public QusetionType QusetionType { get; set; }
         public int Marks { get; set; }
-        public string Header { get; set; }
+        public string? Header { get; set; }
 
         [ForeignKey("Exam")]
         public int ExamId { get; set; }

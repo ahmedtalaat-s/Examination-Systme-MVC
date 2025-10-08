@@ -7,13 +7,12 @@ namespace BL.Services;
 
 public class TeacherService : ITeacher
 {
-    private readonly ExaminationContext _context;
 
+    private readonly ExaminationContext _context;
     public TeacherService(ExaminationContext context)
     {
         _context = context;
     }
-
     public void CreateExam(Exam exam)
     {
         try
@@ -29,7 +28,6 @@ public class TeacherService : ITeacher
             throw new Exception(ex.Message);
         }
     }
-
     public Exam GetExamById(int id)
     {
         try
@@ -94,7 +92,6 @@ public class TeacherService : ITeacher
             throw new Exception(ex.Message);
         }
     }
-
     public List<InstructorExamResultDto> GetInstructorExamResults(int instructorId)
     {
         var result = (from exam in _context.Exams
@@ -115,6 +112,18 @@ public class TeacherService : ITeacher
         return result;
 
     }
+    public List<Subject> GetInstructorSubjects(int instructorId)
+    {
+        var subjects = (from userSubject in _context.UserSubjects.Where(m=>m.UserId == instructorId)
+                        join subject in _context.Subject on userSubject.SubjectId equals subject.SubjectId
+                        select new Subject 
+                        {
+                            SubjectName = subject.SubjectName,
+                            SubjectId = subject.SubjectId,
 
-  
+                        }).ToList();
+        return subjects;
+    }
+
+
 }

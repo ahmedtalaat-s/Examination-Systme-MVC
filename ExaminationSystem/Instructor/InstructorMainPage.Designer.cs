@@ -123,6 +123,7 @@ partial class InstructorMainPage
         btnMngStud.TabIndex = 3;
         btnMngStud.Text = "Students Reports";
         btnMngStud.UseVisualStyleBackColor = true;
+        btnMngStud.Click += btnMngStud_Click;
         // 
         // btnMngExam
         // 

@@ -99,13 +99,24 @@ namespace BL.Services
             }
             catch (Exception ex)
             {
-                
+
                 throw new Exception(ex.Message);
-                
+
             }
         }
-
-
+        public void UpdateUserSubjects(User user, List<int> subjectIds)
+        {
+            try
+            {
+                _context.UserSubjects.RemoveRange(user.UserSubjects);
+                AddSubjectsForUser(subjectIds, user);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error updating user subjects: {ex.Message}");
+            }
+        }
 
 
 
@@ -184,7 +195,6 @@ namespace BL.Services
                 throw new Exception(ex.Message);
             }
         }
-
         public void AddSubjectsForUser(List<int> subjectsIds, User user)
         {
             try
@@ -193,8 +203,9 @@ namespace BL.Services
                 {
                     var userSubject = new UserSubject  { UserId = user.UserId, SubjectId = subjectId };
                     _context.UserSubjects.Add(userSubject);
-                    _context.SaveChanges();
+                    
                 }
+                _context.SaveChanges();
             }
             catch (Exception ex)
             {

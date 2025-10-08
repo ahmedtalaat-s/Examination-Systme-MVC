@@ -9,16 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ExaminationSystem.Instructor;
-public partial class TrueOrFalseQuestion : Form
+public partial class ChoiceQuestion : Form
 {
-    public TrueOrFalseQuestion()
+    public ChoiceQuestion()
     {
         InitializeComponent();
-    }
-
-    private void textBox1_TextChanged(object sender, EventArgs e)
-    {
-
     }
 
     private void lbBodyQuestion_Click(object sender, EventArgs e)
