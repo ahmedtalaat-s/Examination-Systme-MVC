@@ -7,8 +7,8 @@ namespace BL.Services;
 
 public class TeacherService : ITeacher
 {
-    private readonly ExaminationContext _context;
 
+    private readonly ExaminationContext _context;
     public TeacherService(ExaminationContext context)
     {
         _context = context;
@@ -112,7 +112,6 @@ public class TeacherService : ITeacher
         return result;
 
     }
-
     public List<Subject> GetInstructorSubjects(int instructorId)
     {
         var subjects = (from userSubject in _context.UserSubjects.Where(m=>m.UserId == instructorId)
@@ -125,4 +124,6 @@ public class TeacherService : ITeacher
                         }).ToList();
         return subjects;
     }
+
+
 }
