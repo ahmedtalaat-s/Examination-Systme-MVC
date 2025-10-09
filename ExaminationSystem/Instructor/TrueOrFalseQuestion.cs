@@ -41,10 +41,16 @@ namespace ExaminationSystem.Instructor
                     MessageBox.Show("Please choose the correct answer (True or False).", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+                if (numMarks.Value <= 0)
+                {
+                    MessageBox.Show("Marks must be greater than 0.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
                 // 2️⃣ Create the Question
                 var question = new Questions
                 {
+                    Header = "Choose True Or False",
                     Body = txtQuestionBody.Text.Trim(),
                     Marks = (int)numMarks.Value,
                     QusetionType = QusetionType.trueorFalse,

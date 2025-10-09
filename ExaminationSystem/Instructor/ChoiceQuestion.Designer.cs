@@ -30,18 +30,18 @@ partial class ChoiceQuestion
     {
         label1 = new Label();
         lbBodyQuestion = new Label();
-        txtBodyQuestion = new TextBox();
-        btnAddQuestion = new Button();
-        btnBack = new Button();
+        txtQuestionBody = new TextBox();
+        btnSave = new Button();
+        btnCancel = new Button();
         groupBox1 = new GroupBox();
         dgvChoices = new DataGridView();
         btnAddChoice = new Button();
-        textBox1 = new TextBox();
-        nudMark = new NumericUpDown();
+        txtChoice = new TextBox();
+        numMark = new NumericUpDown();
         lbMark = new Label();
         groupBox1.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)dgvChoices).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)nudMark).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)numMark).BeginInit();
         SuspendLayout();
         // 
         // label1
@@ -66,43 +66,45 @@ partial class ChoiceQuestion
         lbBodyQuestion.Text = "Question :";
         lbBodyQuestion.Click += lbBodyQuestion_Click;
         // 
-        // txtBodyQuestion
+        // txtQuestionBody
         // 
-        txtBodyQuestion.Font = new Font("Segoe UI Symbol", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        txtBodyQuestion.Location = new Point(36, 106);
-        txtBodyQuestion.Multiline = true;
-        txtBodyQuestion.Name = "txtBodyQuestion";
-        txtBodyQuestion.PlaceholderText = "Add Question Here";
-        txtBodyQuestion.Size = new Size(777, 103);
-        txtBodyQuestion.TabIndex = 4;
+        txtQuestionBody.Font = new Font("Segoe UI Symbol", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        txtQuestionBody.Location = new Point(36, 106);
+        txtQuestionBody.Multiline = true;
+        txtQuestionBody.Name = "txtQuestionBody";
+        txtQuestionBody.PlaceholderText = "Add Question Here";
+        txtQuestionBody.Size = new Size(777, 103);
+        txtQuestionBody.TabIndex = 4;
         // 
-        // btnAddQuestion
+        // btnSave
         // 
-        btnAddQuestion.BackColor = SystemColors.HotTrack;
-        btnAddQuestion.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        btnAddQuestion.ForeColor = SystemColors.Control;
-        btnAddQuestion.Location = new Point(299, 474);
-        btnAddQuestion.Name = "btnAddQuestion";
-        btnAddQuestion.Size = new Size(128, 47);
-        btnAddQuestion.TabIndex = 20;
-        btnAddQuestion.Text = "Save";
-        btnAddQuestion.UseVisualStyleBackColor = false;
+        btnSave.BackColor = SystemColors.HotTrack;
+        btnSave.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        btnSave.ForeColor = SystemColors.Control;
+        btnSave.Location = new Point(299, 474);
+        btnSave.Name = "btnSave";
+        btnSave.Size = new Size(128, 47);
+        btnSave.TabIndex = 20;
+        btnSave.Text = "Save";
+        btnSave.UseVisualStyleBackColor = false;
+        btnSave.Click += btnSave_Click;
         // 
-        // btnBack
+        // btnCancel
         // 
-        btnBack.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        btnBack.Location = new Point(487, 474);
-        btnBack.Name = "btnBack";
-        btnBack.Size = new Size(128, 47);
-        btnBack.TabIndex = 19;
-        btnBack.Text = "Cancle";
-        btnBack.UseVisualStyleBackColor = true;
+        btnCancel.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        btnCancel.Location = new Point(487, 474);
+        btnCancel.Name = "btnCancel";
+        btnCancel.Size = new Size(128, 47);
+        btnCancel.TabIndex = 19;
+        btnCancel.Text = "Cancle";
+        btnCancel.UseVisualStyleBackColor = true;
+        btnCancel.Click += btnCancel_Click;
         // 
         // groupBox1
         // 
         groupBox1.Controls.Add(dgvChoices);
         groupBox1.Controls.Add(btnAddChoice);
-        groupBox1.Controls.Add(textBox1);
+        groupBox1.Controls.Add(txtChoice);
         groupBox1.Location = new Point(36, 227);
         groupBox1.Name = "groupBox1";
         groupBox1.Size = new Size(680, 220);
@@ -119,6 +121,7 @@ partial class ChoiceQuestion
         dgvChoices.RowHeadersWidth = 51;
         dgvChoices.Size = new Size(336, 188);
         dgvChoices.TabIndex = 21;
+        dgvChoices.CellContentClick += dgvChoices_CellContentClick;
         // 
         // btnAddChoice
         // 
@@ -129,24 +132,25 @@ partial class ChoiceQuestion
         btnAddChoice.TabIndex = 20;
         btnAddChoice.Text = "Add Choice";
         btnAddChoice.UseVisualStyleBackColor = true;
+        btnAddChoice.Click += btnAddChoice_Click;
         // 
-        // textBox1
+        // txtChoice
         // 
-        textBox1.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        textBox1.Location = new Point(6, 26);
-        textBox1.Multiline = true;
-        textBox1.Name = "textBox1";
-        textBox1.PlaceholderText = "Add Choices Here ";
-        textBox1.Size = new Size(326, 135);
-        textBox1.TabIndex = 0;
+        txtChoice.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        txtChoice.Location = new Point(6, 26);
+        txtChoice.Multiline = true;
+        txtChoice.Name = "txtChoice";
+        txtChoice.PlaceholderText = "Add Choices Here ";
+        txtChoice.Size = new Size(326, 135);
+        txtChoice.TabIndex = 0;
         // 
-        // nudMark
+        // numMark
         // 
-        nudMark.Font = new Font("Segoe UI Symbol", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        nudMark.Location = new Point(722, 291);
-        nudMark.Name = "nudMark";
-        nudMark.Size = new Size(150, 34);
-        nudMark.TabIndex = 23;
+        numMark.Font = new Font("Segoe UI Symbol", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        numMark.Location = new Point(722, 291);
+        numMark.Name = "numMark";
+        numMark.Size = new Size(150, 34);
+        numMark.TabIndex = 23;
         // 
         // lbMark
         // 
@@ -163,23 +167,24 @@ partial class ChoiceQuestion
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(882, 553);
-        Controls.Add(nudMark);
+        Controls.Add(numMark);
         Controls.Add(lbMark);
         Controls.Add(groupBox1);
-        Controls.Add(btnAddQuestion);
-        Controls.Add(btnBack);
+        Controls.Add(btnSave);
+        Controls.Add(btnCancel);
         Controls.Add(lbBodyQuestion);
-        Controls.Add(txtBodyQuestion);
+        Controls.Add(txtQuestionBody);
         Controls.Add(label1);
         MaximizeBox = false;
         MaximumSize = new Size(900, 600);
         MinimumSize = new Size(900, 600);
         Name = "ChoiceQuestion";
         Text = "ChoiceQuestion";
+        Load += ChoiceQuestion_Load;
         groupBox1.ResumeLayout(false);
         groupBox1.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)dgvChoices).EndInit();
-        ((System.ComponentModel.ISupportInitialize)nudMark).EndInit();
+        ((System.ComponentModel.ISupportInitialize)numMark).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -188,13 +193,13 @@ partial class ChoiceQuestion
 
     private Label label1;
     private Label lbBodyQuestion;
-    private TextBox txtBodyQuestion;
-    private Button btnAddQuestion;
-    private Button btnBack;
+    private TextBox txtQuestionBody;
+    private Button btnSave;
+    private Button btnCancel;
     private GroupBox groupBox1;
     private DataGridView dgvChoices;
     private Button btnAddChoice;
-    private TextBox textBox1;
-    private NumericUpDown nudMark;
+    private TextBox txtChoice;
+    private NumericUpDown numMark;
     private Label lbMark;
 }
