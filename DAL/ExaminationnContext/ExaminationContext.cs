@@ -38,6 +38,19 @@ namespace DAL.ExaminationnContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ExaminationContext).Assembly);
+
+            modelBuilder.Entity<Questions>()
+                .HasOne(q => q.Exam)
+                .WithMany(e => e.Questions)
+                .HasForeignKey(q => q.ExamId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+           
+            modelBuilder.Entity<Choices>()
+                .HasOne(c => c.Questions)
+                .WithMany(q => q.Choices)
+                .HasForeignKey(c => c.QuestionId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
 
     }

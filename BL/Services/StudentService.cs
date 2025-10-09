@@ -89,5 +89,17 @@ namespace BL.Services
 
             return false;
         }
+
+        public List<Exam> GetAllPracticeExam()
+        {
+
+           return _context.Exams
+                .Include(l=>l.Subject)
+                .Include(k=>k.Questions)
+                .ThenInclude(o=>o.Choices)
+                .Where(v=>v.ExamType == "practise")
+                .ToList();
+
+        }
     }
 }

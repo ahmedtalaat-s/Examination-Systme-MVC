@@ -11,11 +11,14 @@ public interface ITeacher
     Exam GetExamById(int id);
     List<Exam> GetAllExams(int instructorId);
     public List<InstructorExamResultDto> GetInstructorExamResults(int instructorId);
-
     public List<Subject> GetInstructorSubjects(int instructorId);
-
-
     public List<Questions> GetAllQuestion(int examId);
+
+    void  AddQuestion(int examId, Questions question, List<Choices> choices);
+    void DeleteQuestion(int examId);
+
+
+
 
 
     
