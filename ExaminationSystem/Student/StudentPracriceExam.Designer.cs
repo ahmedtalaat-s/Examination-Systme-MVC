@@ -32,6 +32,8 @@
             lbSubjectMng = new Label();
             SubjectFilterationBox = new ComboBox();
             FilterationLB = new Label();
+            dgvPracticeExam = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgvPracticeExam).BeginInit();
             SuspendLayout();
             // 
             // btnBack
@@ -57,10 +59,11 @@
             // 
             // SubjectFilterationBox
             // 
+            SubjectFilterationBox.Font = new Font("Segoe UI Symbol", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             SubjectFilterationBox.FormattingEnabled = true;
-            SubjectFilterationBox.Location = new Point(234, 137);
+            SubjectFilterationBox.Location = new Point(212, 134);
             SubjectFilterationBox.Name = "SubjectFilterationBox";
-            SubjectFilterationBox.Size = new Size(183, 28);
+            SubjectFilterationBox.Size = new Size(203, 39);
             SubjectFilterationBox.TabIndex = 13;
             // 
             // FilterationLB
@@ -73,11 +76,22 @@
             FilterationLB.TabIndex = 14;
             FilterationLB.Text = "Filter By Subject";
             // 
+            // dgvPracticeExam
+            // 
+            dgvPracticeExam.BackgroundColor = SystemColors.Control;
+            dgvPracticeExam.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPracticeExam.Location = new Point(-1, 225);
+            dgvPracticeExam.Name = "dgvPracticeExam";
+            dgvPracticeExam.RowHeadersWidth = 51;
+            dgvPracticeExam.Size = new Size(882, 328);
+            dgvPracticeExam.TabIndex = 15;
+            // 
             // StudentPracriceExam
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(882, 553);
+            Controls.Add(dgvPracticeExam);
             Controls.Add(FilterationLB);
             Controls.Add(SubjectFilterationBox);
             Controls.Add(btnBack);
@@ -89,6 +103,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "StudentPracriceExam";
             Load += StudentPracriceExam_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvPracticeExam).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -99,5 +114,6 @@
         private Label lbSubjectMng;
         private ComboBox SubjectFilterationBox;
         private Label FilterationLB;
+        private DataGridView dgvPracticeExam;
     }
 }
