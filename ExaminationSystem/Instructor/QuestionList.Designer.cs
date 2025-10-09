@@ -46,6 +46,7 @@ partial class QuestionList
         button1.TabIndex = 4;
         button1.Text = "Add Question";
         button1.UseVisualStyleBackColor = false;
+        button1.Click += button1_Click;
         // 
         // label1
         // 
@@ -67,6 +68,7 @@ partial class QuestionList
         btnBack.TabIndex = 9;
         btnBack.Text = "Back";
         btnBack.UseVisualStyleBackColor = true;
+        btnBack.Click += btnBack_Click;
         // 
         // dataGridView1
         // 

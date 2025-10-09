@@ -151,7 +151,8 @@ public class TeacherService : ITeacher
         }
         catch (Exception ex) 
         {
-            throw new Exception(ex.Message);
+            var msg = ex.InnerException?.Message ?? ex.Message;
+            throw new Exception(msg);
         }
        
 
