@@ -108,6 +108,7 @@ partial class EditExam
         comboBox2.Name = "comboBox2";
         comboBox2.Size = new Size(199, 28);
         comboBox2.TabIndex = 17;
+        comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
         // 
         // txtDuration
         // 
