@@ -34,7 +34,7 @@ public class TeacherService : ITeacher
         {
             if (id != 0)
             {
-                return _context.Exams.FirstOrDefault(j => j.ExamId == id);
+                return _context.Exams.Include(j=>j.Questions).ThenInclude(k=>k.Choices).FirstOrDefault(j => j.ExamId == id);
             }
             return null;
         }
