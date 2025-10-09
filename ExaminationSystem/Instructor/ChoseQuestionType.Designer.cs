@@ -30,9 +30,9 @@ partial class ChoseQuestionType
     {
         label1 = new Label();
         groupBox1 = new GroupBox();
-        rbTrueOrFalse = new RadioButton();
-        rbChoice = new RadioButton();
         rbMultiChoice = new RadioButton();
+        rbChoice = new RadioButton();
+        rbTrueOrFalse = new RadioButton();
         btnCancle = new Button();
         btnNext = new Button();
         groupBox1.SuspendLayout();
@@ -61,6 +61,31 @@ partial class ChoseQuestionType
         groupBox1.TabIndex = 5;
         groupBox1.TabStop = false;
         groupBox1.Text = "Type";
+        groupBox1.Enter += groupBox1_Enter;
+        // 
+        // rbMultiChoice
+        // 
+        rbMultiChoice.AutoSize = true;
+        rbMultiChoice.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        rbMultiChoice.Location = new Point(405, 36);
+        rbMultiChoice.Name = "rbMultiChoice";
+        rbMultiChoice.Size = new Size(127, 27);
+        rbMultiChoice.TabIndex = 2;
+        rbMultiChoice.Text = "Multi Choice";
+        rbMultiChoice.UseVisualStyleBackColor = true;
+        rbMultiChoice.CheckedChanged += rbMultiChoice_CheckedChanged;
+        // 
+        // rbChoice
+        // 
+        rbChoice.AutoSize = true;
+        rbChoice.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        rbChoice.Location = new Point(214, 36);
+        rbChoice.Name = "rbChoice";
+        rbChoice.Size = new Size(83, 27);
+        rbChoice.TabIndex = 1;
+        rbChoice.Text = "Choice";
+        rbChoice.UseVisualStyleBackColor = true;
+        rbChoice.CheckedChanged += rbChoice_CheckedChanged;
         // 
         // rbTrueOrFalse
         // 
@@ -76,28 +101,6 @@ partial class ChoseQuestionType
         rbTrueOrFalse.UseVisualStyleBackColor = true;
         rbTrueOrFalse.CheckedChanged += rbTrueOrFalse_CheckedChanged;
         // 
-        // rbChoice
-        // 
-        rbChoice.AutoSize = true;
-        rbChoice.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        rbChoice.Location = new Point(214, 36);
-        rbChoice.Name = "rbChoice";
-        rbChoice.Size = new Size(83, 27);
-        rbChoice.TabIndex = 1;
-        rbChoice.Text = "Choice";
-        rbChoice.UseVisualStyleBackColor = true;
-        // 
-        // rbMultiChoice
-        // 
-        rbMultiChoice.AutoSize = true;
-        rbMultiChoice.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        rbMultiChoice.Location = new Point(405, 36);
-        rbMultiChoice.Name = "rbMultiChoice";
-        rbMultiChoice.Size = new Size(127, 27);
-        rbMultiChoice.TabIndex = 2;
-        rbMultiChoice.Text = "Multi Choice";
-        rbMultiChoice.UseVisualStyleBackColor = true;
-        // 
         // btnCancle
         // 
         btnCancle.BackColor = SystemColors.Control;
@@ -109,6 +112,7 @@ partial class ChoseQuestionType
         btnCancle.TabIndex = 16;
         btnCancle.Text = "Cancle";
         btnCancle.UseVisualStyleBackColor = false;
+        btnCancle.Click += btnCancle_Click;
         // 
         // btnNext
         // 
@@ -121,6 +125,7 @@ partial class ChoseQuestionType
         btnNext.TabIndex = 15;
         btnNext.Text = "Next";
         btnNext.UseVisualStyleBackColor = false;
+        btnNext.Click += btnNext_Click;
         // 
         // ChoseQuestionType
         // 
@@ -135,6 +140,7 @@ partial class ChoseQuestionType
         MaximumSize = new Size(600, 400);
         MinimumSize = new Size(600, 400);
         Name = "ChoseQuestionType";
+        StartPosition = FormStartPosition.CenterScreen;
         Text = "ChoseQuestionType";
         groupBox1.ResumeLayout(false);
         groupBox1.PerformLayout();

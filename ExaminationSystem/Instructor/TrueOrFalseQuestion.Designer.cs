@@ -29,17 +29,17 @@ partial class TrueOrFalseQuestion
     private void InitializeComponent()
     {
         label1 = new Label();
-        txtBodyQuestion = new TextBox();
+        txtQuestionBody = new TextBox();
         lbBodyQuestion = new Label();
-        groupBox1 = new GroupBox();
-        radioButton1 = new RadioButton();
-        radioButton2 = new RadioButton();
-        btnAddQuestion = new Button();
+        grpAnswers = new GroupBox();
+        rbFalse = new RadioButton();
+        rbTrue = new RadioButton();
+        btnSave = new Button();
         btnBack = new Button();
         lbMark = new Label();
-        nudMark = new NumericUpDown();
-        groupBox1.SuspendLayout();
-        ((System.ComponentModel.ISupportInitialize)nudMark).BeginInit();
+        numMarks = new NumericUpDown();
+        grpAnswers.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)numMarks).BeginInit();
         SuspendLayout();
         // 
         // label1
@@ -53,15 +53,14 @@ partial class TrueOrFalseQuestion
         label1.TabIndex = 1;
         label1.Text = "Add True Or False Question";
         // 
-        // txtBodyQuestion
+        // txtQuestionBody
         // 
-        txtBodyQuestion.Font = new Font("Segoe UI Symbol", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        txtBodyQuestion.Location = new Point(134, 141);
-        txtBodyQuestion.Multiline = true;
-        txtBodyQuestion.Name = "txtBodyQuestion";
-        txtBodyQuestion.Size = new Size(603, 102);
-        txtBodyQuestion.TabIndex = 2;
-        txtBodyQuestion.TextChanged += textBox1_TextChanged;
+        txtQuestionBody.Font = new Font("Segoe UI Symbol", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        txtQuestionBody.Location = new Point(134, 141);
+        txtQuestionBody.Multiline = true;
+        txtQuestionBody.Name = "txtQuestionBody";
+        txtQuestionBody.Size = new Size(603, 102);
+        txtQuestionBody.TabIndex = 2;
         // 
         // lbBodyQuestion
         // 
@@ -72,54 +71,54 @@ partial class TrueOrFalseQuestion
         lbBodyQuestion.Size = new Size(127, 31);
         lbBodyQuestion.TabIndex = 3;
         lbBodyQuestion.Text = "Question :";
-        lbBodyQuestion.Click += lbBodyQuestion_Click;
         // 
-        // groupBox1
+        // grpAnswers
         // 
-        groupBox1.Controls.Add(radioButton2);
-        groupBox1.Controls.Add(radioButton1);
-        groupBox1.Location = new Point(134, 261);
-        groupBox1.Name = "groupBox1";
-        groupBox1.Size = new Size(285, 94);
-        groupBox1.TabIndex = 4;
-        groupBox1.TabStop = false;
-        groupBox1.Text = "Is Correct";
+        grpAnswers.Controls.Add(rbFalse);
+        grpAnswers.Controls.Add(rbTrue);
+        grpAnswers.Location = new Point(134, 261);
+        grpAnswers.Name = "grpAnswers";
+        grpAnswers.Size = new Size(285, 94);
+        grpAnswers.TabIndex = 4;
+        grpAnswers.TabStop = false;
+        grpAnswers.Text = "Is Correct";
         // 
-        // radioButton1
+        // rbFalse
         // 
-        radioButton1.AutoSize = true;
-        radioButton1.Font = new Font("Segoe UI Symbol", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        radioButton1.Location = new Point(15, 38);
-        radioButton1.Name = "radioButton1";
-        radioButton1.Size = new Size(71, 32);
-        radioButton1.TabIndex = 0;
-        radioButton1.TabStop = true;
-        radioButton1.Text = "True";
-        radioButton1.UseVisualStyleBackColor = true;
+        rbFalse.AutoSize = true;
+        rbFalse.Font = new Font("Segoe UI Symbol", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        rbFalse.Location = new Point(194, 38);
+        rbFalse.Name = "rbFalse";
+        rbFalse.Size = new Size(76, 32);
+        rbFalse.TabIndex = 1;
+        rbFalse.TabStop = true;
+        rbFalse.Text = "False";
+        rbFalse.UseVisualStyleBackColor = true;
         // 
-        // radioButton2
+        // rbTrue
         // 
-        radioButton2.AutoSize = true;
-        radioButton2.Font = new Font("Segoe UI Symbol", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        radioButton2.Location = new Point(194, 38);
-        radioButton2.Name = "radioButton2";
-        radioButton2.Size = new Size(76, 32);
-        radioButton2.TabIndex = 1;
-        radioButton2.TabStop = true;
-        radioButton2.Text = "False";
-        radioButton2.UseVisualStyleBackColor = true;
+        rbTrue.AutoSize = true;
+        rbTrue.Font = new Font("Segoe UI Symbol", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        rbTrue.Location = new Point(15, 38);
+        rbTrue.Name = "rbTrue";
+        rbTrue.Size = new Size(71, 32);
+        rbTrue.TabIndex = 0;
+        rbTrue.TabStop = true;
+        rbTrue.Text = "True";
+        rbTrue.UseVisualStyleBackColor = true;
         // 
-        // btnAddQuestion
+        // btnSave
         // 
-        btnAddQuestion.BackColor = SystemColors.HotTrack;
-        btnAddQuestion.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        btnAddQuestion.ForeColor = SystemColors.Control;
-        btnAddQuestion.Location = new Point(287, 413);
-        btnAddQuestion.Name = "btnAddQuestion";
-        btnAddQuestion.Size = new Size(128, 47);
-        btnAddQuestion.TabIndex = 11;
-        btnAddQuestion.Text = "Save";
-        btnAddQuestion.UseVisualStyleBackColor = false;
+        btnSave.BackColor = SystemColors.HotTrack;
+        btnSave.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        btnSave.ForeColor = SystemColors.Control;
+        btnSave.Location = new Point(287, 413);
+        btnSave.Name = "btnSave";
+        btnSave.Size = new Size(128, 47);
+        btnSave.TabIndex = 11;
+        btnSave.Text = "Save";
+        btnSave.UseVisualStyleBackColor = false;
+        btnSave.Click += btnSave_Click;
         // 
         // btnBack
         // 
@@ -130,6 +129,7 @@ partial class TrueOrFalseQuestion
         btnBack.TabIndex = 10;
         btnBack.Text = "Cancle";
         btnBack.UseVisualStyleBackColor = true;
+        btnBack.Click += btnBack_Click_1;
         // 
         // lbMark
         // 
@@ -141,26 +141,26 @@ partial class TrueOrFalseQuestion
         lbMark.TabIndex = 12;
         lbMark.Text = "Mark :";
         // 
-        // nudMark
+        // numMarks
         // 
-        nudMark.Font = new Font("Segoe UI Symbol", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        nudMark.Location = new Point(587, 297);
-        nudMark.Name = "nudMark";
-        nudMark.Size = new Size(150, 34);
-        nudMark.TabIndex = 14;
+        numMarks.Font = new Font("Segoe UI Symbol", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        numMarks.Location = new Point(587, 297);
+        numMarks.Name = "numMarks";
+        numMarks.Size = new Size(150, 34);
+        numMarks.TabIndex = 14;
         // 
         // TrueOrFalseQuestion
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(882, 553);
-        Controls.Add(nudMark);
+        Controls.Add(numMarks);
         Controls.Add(lbMark);
-        Controls.Add(btnAddQuestion);
+        Controls.Add(btnSave);
         Controls.Add(btnBack);
-        Controls.Add(groupBox1);
+        Controls.Add(grpAnswers);
         Controls.Add(lbBodyQuestion);
-        Controls.Add(txtBodyQuestion);
+        Controls.Add(txtQuestionBody);
         Controls.Add(label1);
         MaximizeBox = false;
         MaximumSize = new Size(900, 600);
@@ -168,9 +168,9 @@ partial class TrueOrFalseQuestion
         Name = "TrueOrFalseQuestion";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "TrueOrFalseQuestion";
-        groupBox1.ResumeLayout(false);
-        groupBox1.PerformLayout();
-        ((System.ComponentModel.ISupportInitialize)nudMark).EndInit();
+        grpAnswers.ResumeLayout(false);
+        grpAnswers.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)numMarks).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -178,13 +178,13 @@ partial class TrueOrFalseQuestion
     #endregion
 
     private Label label1;
-    private TextBox txtBodyQuestion;
+    private TextBox txtQuestionBody;
     private Label lbBodyQuestion;
-    private GroupBox groupBox1;
-    private RadioButton radioButton2;
-    private RadioButton radioButton1;
-    private Button btnAddQuestion;
+    private GroupBox grpAnswers;
+    private RadioButton rbFalse;
+    private RadioButton rbTrue;
+    private Button btnSave;
     private Button btnBack;
     private Label lbMark;
-    private NumericUpDown nudMark;
+    private NumericUpDown numMarks;
 }

@@ -73,6 +73,7 @@ public partial class InstructorMainPage : Form
 
     private void btnMngExam_Click(object sender, EventArgs e)
     {
+        Hide();
         var studentreports = ActivatorUtilities.CreateInstance<ExamList>(_serviceProvider, _user);
         studentreports.Owner = this;
         studentreports.FormClosed += (s, args) =>
@@ -92,6 +93,8 @@ public partial class InstructorMainPage : Form
 
     private void btnMngStud_Click(object sender, EventArgs e)
     {
+        Hide();
+
         var studentreports = ActivatorUtilities.CreateInstance<StudentReports>(_serviceProvider, _user);
         studentreports.Owner = this;
         studentreports.FormClosed += (s, args) =>
