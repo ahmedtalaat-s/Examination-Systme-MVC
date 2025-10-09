@@ -191,6 +191,7 @@ partial class EditExam
         btnSave.TabIndex = 23;
         btnSave.Text = "Edit";
         btnSave.UseVisualStyleBackColor = false;
+        btnSave.Click += btnSave_Click;
         // 
         // EditExam
         // 
@@ -216,7 +217,9 @@ partial class EditExam
         MaximumSize = new Size(900, 600);
         MinimumSize = new Size(900, 600);
         Name = "EditExam";
+        StartPosition = FormStartPosition.CenterScreen;
         Text = "EditExam";
+        Load += EditExam_Load;
         ResumeLayout(false);
         PerformLayout();
     }

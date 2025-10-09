@@ -33,12 +33,12 @@ partial class AddExam
         txtExamName = new TextBox();
         txtDuration = new TextBox();
         label3 = new Label();
-        comboBox1 = new ComboBox();
+        cbType = new ComboBox();
         lbType = new Label();
         lbStatus = new Label();
-        comboBox2 = new ComboBox();
+        cbStatus = new ComboBox();
         lbSubject = new Label();
-        comboBox3 = new ComboBox();
+        cbsubjects = new ComboBox();
         label4 = new Label();
         btnSave = new Button();
         btnCancle = new Button();
@@ -70,16 +70,15 @@ partial class AddExam
         txtExamName.Font = new Font("Segoe UI Symbol", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
         txtExamName.Location = new Point(128, 159);
         txtExamName.Name = "txtExamName";
-        txtExamName.Size = new Size(199, 34);
+        txtExamName.Size = new Size(258, 34);
         txtExamName.TabIndex = 2;
-        //txtExamName.TextChanged += txtExamName_TextChanged;
         // 
         // txtDuration
         // 
         txtDuration.Font = new Font("Segoe UI Symbol", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
         txtDuration.Location = new Point(128, 248);
         txtDuration.Name = "txtDuration";
-        txtDuration.Size = new Size(199, 34);
+        txtDuration.Size = new Size(258, 34);
         txtDuration.TabIndex = 4;
         // 
         // label3
@@ -92,13 +91,13 @@ partial class AddExam
         label3.TabIndex = 3;
         label3.Text = "Duration";
         // 
-        // comboBox1
+        // cbType
         // 
-        comboBox1.FormattingEnabled = true;
-        comboBox1.Location = new Point(128, 341);
-        comboBox1.Name = "comboBox1";
-        comboBox1.Size = new Size(199, 28);
-        comboBox1.TabIndex = 5;
+        cbType.FormattingEnabled = true;
+        cbType.Location = new Point(128, 341);
+        cbType.Name = "cbType";
+        cbType.Size = new Size(258, 28);
+        cbType.TabIndex = 5;
         // 
         // lbType
         // 
@@ -109,7 +108,6 @@ partial class AddExam
         lbType.Size = new Size(67, 31);
         lbType.TabIndex = 6;
         lbType.Text = "Type";
-
         // 
         // lbStatus
         // 
@@ -121,13 +119,13 @@ partial class AddExam
         lbStatus.TabIndex = 8;
         lbStatus.Text = "Status";
         // 
-        // comboBox2
+        // cbStatus
         // 
-        comboBox2.FormattingEnabled = true;
-        comboBox2.Location = new Point(491, 248);
-        comboBox2.Name = "comboBox2";
-        comboBox2.Size = new Size(199, 28);
-        comboBox2.TabIndex = 7;
+        cbStatus.FormattingEnabled = true;
+        cbStatus.Location = new Point(491, 248);
+        cbStatus.Name = "cbStatus";
+        cbStatus.Size = new Size(258, 28);
+        cbStatus.TabIndex = 7;
         // 
         // lbSubject
         // 
@@ -139,14 +137,13 @@ partial class AddExam
         lbSubject.TabIndex = 10;
         lbSubject.Text = "Subject";
         // 
-        // comboBox3
+        // cbsubjects
         // 
-        comboBox3.FormattingEnabled = true;
-        comboBox3.Location = new Point(491, 159);
-        comboBox3.Name = "comboBox3";
-        comboBox3.Size = new Size(199, 28);
-        comboBox3.TabIndex = 9;
-     
+        cbsubjects.FormattingEnabled = true;
+        cbsubjects.Location = new Point(491, 159);
+        cbsubjects.Name = "cbsubjects";
+        cbsubjects.Size = new Size(258, 28);
+        cbsubjects.TabIndex = 9;
         // 
         // label4
         // 
@@ -182,6 +179,7 @@ partial class AddExam
         btnCancle.TabIndex = 14;
         btnCancle.Text = "Cancle";
         btnCancle.UseVisualStyleBackColor = false;
+        btnCancle.Click += btnCancle_Click;
         // 
         // dateTimePicker1
         // 
@@ -191,7 +189,7 @@ partial class AddExam
         dateTimePicker1.Location = new Point(491, 342);
         dateTimePicker1.MinDate = new DateTime(2025, 10, 7, 0, 0, 0, 0);
         dateTimePicker1.Name = "dateTimePicker1";
-        dateTimePicker1.Size = new Size(199, 27);
+        dateTimePicker1.Size = new Size(258, 27);
         dateTimePicker1.TabIndex = 15;
         dateTimePicker1.Value = new DateTime(2025, 10, 7, 19, 21, 4, 0);
         // 
@@ -205,11 +203,11 @@ partial class AddExam
         Controls.Add(btnSave);
         Controls.Add(label4);
         Controls.Add(lbSubject);
-        Controls.Add(comboBox3);
+        Controls.Add(cbsubjects);
         Controls.Add(lbStatus);
-        Controls.Add(comboBox2);
+        Controls.Add(cbStatus);
         Controls.Add(lbType);
-        Controls.Add(comboBox1);
+        Controls.Add(cbType);
         Controls.Add(txtDuration);
         Controls.Add(label3);
         Controls.Add(txtExamName);
@@ -220,9 +218,14 @@ partial class AddExam
         MinimumSize = new Size(900, 600);
         Name = "AddExam";
         Text = "AddExam";
-
+        Load += AddExam_Load;
         ResumeLayout(false);
         PerformLayout();
+    }
+
+    private void txtExamName_TextChanged(object sender, EventArgs e)
+    {
+        throw new NotImplementedException();
     }
 
     #endregion
@@ -232,12 +235,12 @@ partial class AddExam
     private TextBox txtExamName;
     private TextBox txtDuration;
     private Label label3;
-    private ComboBox comboBox1;
+    private ComboBox cbType;
     private Label lbType;
     private Label lbStatus;
-    private ComboBox comboBox2;
+    private ComboBox cbStatus;
     private Label lbSubject;
-    private ComboBox comboBox3;
+    private ComboBox cbsubjects;
     private Label label4;
     private Button btnSave;
     private Button btnCancle;

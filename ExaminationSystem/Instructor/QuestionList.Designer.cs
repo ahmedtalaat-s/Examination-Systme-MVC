@@ -96,6 +96,7 @@ partial class QuestionList
         Name = "QuestionList";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Question List";
+        Load += QuestionList_Load;
         ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
         ResumeLayout(false);
         PerformLayout();

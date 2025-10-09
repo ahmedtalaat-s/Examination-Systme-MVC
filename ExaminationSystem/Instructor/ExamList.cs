@@ -1,6 +1,8 @@
 ﻿using BL.Contracts;
 using BL.Services;
 using Domains;
+using ExaminationSystem.Admin;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -91,7 +93,17 @@ namespace ExaminationSystem.Instructor
                 UseColumnTextForButtonValue = true,
                 Width = 80
             };
+
             dataGridView1.Columns.Add(deleteButton);
+            // View Exam Btn
+            DataGridViewButtonColumn viewButton = new DataGridViewButtonColumn
+            {
+                HeaderText = "View",
+                Text = "View",
+                UseColumnTextForButtonValue = true,
+                Width = 80
+            };
+            dataGridView1.Columns.Add(viewButton);
 
             // 🔹 أهم خطوة: ربط الـ DataSource
             dataGridView1.DataSource = exams.ToList();
@@ -126,12 +138,55 @@ namespace ExaminationSystem.Instructor
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            // تأكد إننا مش ضغطنا على Header
+            if (e.RowIndex < 0)
+                return;
+
+            // نجيب الـ Exam اللي ضغط عليه
+            var selectedExam = dataGridView1.Rows[e.RowIndex].DataBoundItem as Exam;
+
+            if (selectedExam == null)
+                return;
+
+            // زرار الـ Edit
+            if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Edit")
+            {
+                var editForm = ActivatorUtilities.CreateInstance<EditExam>(_serviceProvider, selectedExam, _user);
+                editForm.ShowDialog();
+                LoadExams();
+            }
+            // تأكد إن اللي اتداس عليه زرار "View"
+            if (e.RowIndex >= 0 && dataGridView1.Columns[e.ColumnIndex].HeaderText == "View")
+            {
+                // هنا بنجيب الـ ExamId من العمود اللي فيه الـ Id
+                int examId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["ExamId"].Value);
+
+                // نفتح فورم الأسئلة ونبعتلها الـ ExamId
+                var questionListForm = ActivatorUtilities.CreateInstance<QuestionList>(_serviceProvider, _user, selectedExam);
+            }
+
+            // زرار الـ Delete (اختياري لو هتعمله بعدين)
+            else if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Delete")
+            {
+                var result = MessageBox.Show("Are you sure you want to delete this exam?", "Confirm Delete", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    _context.DeleteExam(selectedExam.ExamId);
+                    LoadExams();
+                }
+            }
 
         }
 
+
         private void button1_Click(object sender, EventArgs e)
         {
-
+            var addExam = ActivatorUtilities.CreateInstance<AddExam>(_serviceProvider, _user);
+            addExam.Owner = this;
+            Hide();
+            addExam.FormClosed += (s, args) => this.LoadExams();
+            addExam.FormClosed += (s, args) => this.Show();
+            addExam.ShowDialog();
         }
 
         private void btnBack_Click(object sender, EventArgs e)

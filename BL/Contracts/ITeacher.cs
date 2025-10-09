@@ -15,5 +15,11 @@ public interface ITeacher
     public List<Subject> GetInstructorSubjects(int instructorId);
 
 
+    public List<Questions> GetAllQuestion(int examId);
+
+
+    
+
+
 
 }

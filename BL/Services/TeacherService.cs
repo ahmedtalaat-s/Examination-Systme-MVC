@@ -85,7 +85,7 @@ public class TeacherService : ITeacher
     {
         try
         {
-            return _context.Exams.Where(m=>m.UserId == instructorId).ToList();
+            return _context.Exams.Include(n=>n.Subject).Where(m=>m.UserId == instructorId).ToList();
         }
         catch (Exception ex) 
         {
@@ -125,5 +125,9 @@ public class TeacherService : ITeacher
         return subjects;
     }
 
-
+    public List<Questions> GetAllQuestion(int examId)
+    {
+        return _context.Questions.Where(j => j.ExamId == examId).ToList();
+        
+    }
 }

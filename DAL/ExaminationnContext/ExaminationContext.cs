@@ -26,10 +26,11 @@ namespace DAL.ExaminationnContext
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=ExaminationProject;Integrated Security=True;Encrypt=True;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-I33LVHG\\SQLEXPRESS;Initial Catalog=ExaminationProject;Integrated Security=True;Encrypt=True;TrustServerCertificate=True");
         }
 
-        //DESKTOP-I33LVHG\\SQLEXPRESS
+        //DESKTOP-I33LVHG\\SQLEXPRESS hamdy
+        //DESKTOP-321OUT6\SQLEXPRESS hamza
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
         {
             
