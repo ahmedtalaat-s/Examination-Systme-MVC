@@ -43,6 +43,15 @@ namespace ExaminationSystem.Instructor
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.Columns.Clear();
 
+            // ExamId
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "ExamId",
+                Name = "ExamId",
+                Visible = false
+            });
+
+
             // ExamName
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
@@ -163,6 +172,21 @@ namespace ExaminationSystem.Instructor
 
                 // نفتح فورم الأسئلة ونبعتلها الـ ExamId
                 var questionListForm = ActivatorUtilities.CreateInstance<QuestionList>(_serviceProvider, _user, selectedExam);
+                Hide();
+                questionListForm.Owner = this;
+                questionListForm.FormClosed += (s, args) =>
+                {
+                    if (!questionListForm.backPressed)
+                    {
+                        Application.Exit(); // close entire app
+                    }
+                    else
+                    {
+                        // show parent again (Back button pressed)
+                        this.Show();
+                    }
+                };
+                questionListForm.Show();
             }
 
             // زرار الـ Delete (اختياري لو هتعمله بعدين)

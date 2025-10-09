@@ -1,5 +1,6 @@
 ﻿using BL.Services;
 using Domains;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,9 +34,25 @@ public partial class QuestionList : Form
 
     private void QuestionList_Load(object sender, EventArgs e)
     {
+        LoadQuestion();
+    }
+    public void LoadQuestion()
+    {
         var questions = _context.GetAllQuestion(_exam.ExamId);
         dataGridView1.DataSource = questions;
+    } 
+    private void btnBack_Click(object sender, EventArgs e)
+    {
+        backPressed = true;
+        Close();
     }
 
-
+    private void button1_Click(object sender, EventArgs e)
+    {
+        var addQuestion = ActivatorUtilities.CreateInstance<ChoseQuestionType>(_serviceProvider, _user,_exam);
+        addQuestion.Owner = this;
+        addQuestion.FormClosed += (s, args) => this.LoadQuestion();
+        addQuestion.FormClosed += (s, args) => this.Show();
+        addQuestion.ShowDialog();
+    }
 }
