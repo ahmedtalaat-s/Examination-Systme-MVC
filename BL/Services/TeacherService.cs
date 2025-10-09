@@ -124,10 +124,53 @@ public class TeacherService : ITeacher
                         }).ToList();
         return subjects;
     }
-
     public List<Questions> GetAllQuestion(int examId)
     {
         return _context.Questions.Where(j => j.ExamId == examId).ToList();
         
+    }
+    public void AddQuestion(int examId, Questions question, List<Choices> choices)
+    {
+        try
+        {
+            question.ExamId = examId;
+
+
+            _context.Questions.Add(question);
+            _context.SaveChanges();
+
+
+            foreach (var choice in choices)
+            {
+                choice.QuestionId = question.QuestionsId;
+            }
+
+            _context.Choices.AddRange(choices);
+            _context.SaveChanges();
+
+        }
+        catch (Exception ex) 
+        {
+            throw new Exception(ex.Message);
+        }
+       
+
+        
+    }
+    public void DeleteQuestion(int questionId)
+    {
+        try
+        {
+            if (questionId != 0)
+            {
+                var question = _context.Questions.Include(n => n.Choices).FirstOrDefault(k => k.QuestionsId == questionId);
+                _context.Remove(question);
+                _context.SaveChanges();
+            }
+        }
+        catch (Exception ex) 
+        {
+            throw new Exception(ex.Message);
+        }
     }
 }

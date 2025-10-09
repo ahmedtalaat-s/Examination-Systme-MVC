@@ -24,7 +24,6 @@ namespace Domains
         [ForeignKey("Subject")]
         public int SubjectId { get; set; }
         public virtual Subject Subject { get; set; }
-
         public virtual List<UserTakeExam> UserExams { get; set; } = new List<UserTakeExam>();
         public virtual List<Report> Reports { get; set; } = new List<Report>();
         public virtual List<Questions> Questions { get; set; } = new List<Questions>();
