@@ -15,8 +15,8 @@ namespace BL.Contracts
         List<Exam> GetAllPracticeExam();
 
         public List<Subject> GetStudentSubjects(int studentId);
-        List<Exam> GetAllPracticeExam();
 
+        public void AddStudentAnswers(List<StudentAnswers> studentAnswers);
 
     }
 }

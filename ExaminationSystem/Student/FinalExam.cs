@@ -38,7 +38,7 @@ namespace ExaminationSystem.Student
             LoadExams();
 
             // Timer to update countdown every 1s
-            _refreshTimer = new Timer { Interval = 1000 };
+            _refreshTimer = new Timer { Interval = 3000 };
             _refreshTimer.Tick += RefreshTimer_Tick;
             _refreshTimer.Start();
 
@@ -109,7 +109,13 @@ namespace ExaminationSystem.Student
         // ✅ Updates countdown each second
         private void RefreshTimer_Tick(object sender, EventArgs e)
         {
-            MessageBox.Show("show","show");
+            foreach (DataGridViewRow row in dgvExams.Rows)
+            {
+                int examId = Convert.ToInt32(row.Cells["ExamId"].Value);
+                var exam = _exams.FirstOrDefault(x => x.ExamId == examId);
+
+                row.Cells["Remaining"].Value = GetRemainingText(exam);
+            }
         }
 
         // ✅ Checks for upcoming exams (within 5 min)

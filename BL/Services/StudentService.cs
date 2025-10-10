@@ -131,5 +131,45 @@ namespace BL.Services
         //{
         //    throw new NotImplementedException();
         //}
+
+        public void SaveExamReportWithAnswers(int examId, List<StudentAnswers> answers)
+        {
+            var report = new Report
+            {
+                ExamId = examId,
+                Date = DateTime.Now,
+                Score = 0 // temporary, will be calculated
+            };
+
+            _context.Report.Add(report);
+            _context.SaveChanges(); // Get ReportId
+
+            foreach (var ans in answers)
+            {
+                ans.ReportId = report.ReportId;
+            }
+
+            _context.StudentAnswers.AddRange(answers);
+            _context.SaveChanges();
+
+            // Calculate total score based on question marks
+            int totalScore = 0;
+            foreach (var ans in answers)
+            {
+                if (ans.IsCorrect)
+                {
+                    var question = _context.Questions.FirstOrDefault(q => q.QuestionsId == ans.QuestionId);
+                    if (question != null)
+                    {
+                        totalScore += question.Marks;
+                    }
+                }
+            }
+
+            // Save final score
+            report.Score = totalScore;
+            _context.SaveChanges();
+        }
+
     }
 }
