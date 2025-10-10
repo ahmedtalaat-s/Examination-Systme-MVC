@@ -40,7 +40,7 @@
             // lblTimer
             // 
             lblTimer.AutoSize = true;
-            lblTimer.Location = new Point(683, 28);
+            lblTimer.Location = new Point(605, 28);
             lblTimer.Name = "lblTimer";
             lblTimer.Size = new Size(50, 20);
             lblTimer.TabIndex = 0;
