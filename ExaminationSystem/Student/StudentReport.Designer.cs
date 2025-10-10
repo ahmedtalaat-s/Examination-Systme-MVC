@@ -59,10 +59,10 @@
             // 
             ReportsGV.BackgroundColor = SystemColors.Control;
             ReportsGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ReportsGV.Location = new Point(3, 228);
+            ReportsGV.Location = new Point(0, 161);
             ReportsGV.Name = "ReportsGV";
             ReportsGV.RowHeadersWidth = 51;
-            ReportsGV.Size = new Size(878, 324);
+            ReportsGV.Size = new Size(881, 391);
             ReportsGV.TabIndex = 10;
             // 
             // StudentReport

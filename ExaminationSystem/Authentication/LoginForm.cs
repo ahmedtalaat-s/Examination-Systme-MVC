@@ -55,7 +55,7 @@ public partial class LoginForm : Form
             }
             else
             {
-                var studentdashboard = new StudentMainPage(user);
+                var studentdashboard = ActivatorUtilities.CreateInstance<StudentMainPage>(_serviceProvider, user);
                 studentdashboard.Show();
                 studentdashboard.FormClosed += (s, args) => this.Close();
             }

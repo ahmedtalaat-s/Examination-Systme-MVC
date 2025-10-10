@@ -37,10 +37,10 @@
             // 
             // FinishBtn
             // 
-            FinishBtn.BackColor = SystemColors.HotTrack;
+            FinishBtn.BackColor = SystemColors.ControlText;
             FinishBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             FinishBtn.ForeColor = SystemColors.Control;
-            FinishBtn.Location = new Point(695, 489);
+            FinishBtn.Location = new Point(720, 489);
             FinishBtn.Name = "FinishBtn";
             FinishBtn.Size = new Size(113, 41);
             FinishBtn.TabIndex = 23;
@@ -52,7 +52,7 @@
             NextBtn.BackColor = SystemColors.HotTrack;
             NextBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             NextBtn.ForeColor = SystemColors.Control;
-            NextBtn.Location = new Point(695, 387);
+            NextBtn.Location = new Point(720, 424);
             NextBtn.Name = "NextBtn";
             NextBtn.Size = new Size(113, 41);
             NextBtn.TabIndex = 22;
@@ -61,10 +61,10 @@
             // 
             // prevBtn
             // 
-            prevBtn.BackColor = SystemColors.ControlDark;
+            prevBtn.BackColor = SystemColors.HotTrack;
             prevBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            prevBtn.ForeColor = SystemColors.ActiveCaptionText;
-            prevBtn.Location = new Point(60, 387);
+            prevBtn.ForeColor = SystemColors.Control;
+            prevBtn.Location = new Point(34, 424);
             prevBtn.Name = "prevBtn";
             prevBtn.Size = new Size(113, 41);
             prevBtn.TabIndex = 21;
@@ -73,18 +73,18 @@
             // 
             // FExamPanel
             // 
-            FExamPanel.Location = new Point(24, 83);
+            FExamPanel.Location = new Point(12, 90);
             FExamPanel.Name = "FExamPanel";
-            FExamPanel.Size = new Size(816, 285);
+            FExamPanel.Size = new Size(858, 306);
             FExamPanel.TabIndex = 20;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Symbol", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(380, 22);
+            label1.Font = new Font("Segoe UI Symbol", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(319, 24);
             label1.Name = "label1";
-            label1.Size = new Size(145, 31);
+            label1.Size = new Size(206, 46);
             label1.TabIndex = 24;
             label1.Text = "Exam Name";
             // 

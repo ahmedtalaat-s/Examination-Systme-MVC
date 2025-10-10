@@ -57,7 +57,7 @@ namespace BL.Services
                 .ToList();
 
             return _context.Exams
-                .Include(e => e.Subject)
+                .Include(e => e.Subject).Include(e=>e.User).Include(e=>e.Questions).ThenInclude(q=>q.Choices)
                 .Where(e => subjectIds.Contains(e.SubjectId) && e.ExamType == examType)
                 .ToList();
         }
