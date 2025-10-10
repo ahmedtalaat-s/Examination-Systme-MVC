@@ -153,4 +153,24 @@ public partial class StudentMainPage : Form
         notifyIcon?.Dispose();
         notificationTimer?.Stop();
     }
+
+    private void btnReports_Click(object sender, EventArgs e)
+    {
+        Hide();
+        var reports = ActivatorUtilities.CreateInstance<StudentReport>(_serviceProvider, _user);
+        reports.Owner = this;
+        reports.FormClosed += (s, args) =>
+        {
+            if (!reports.backPressed)
+            {
+                Application.Exit(); // close entire app
+            }
+            else
+            {
+                // show parent again (Back button pressed)
+                this.Show();
+            }
+        };
+        reports.Show();
+    }
 }

@@ -30,8 +30,10 @@
         {
             btnBack = new Button();
             lbSubjectMng = new Label();
-            ReportsGV = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)ReportsGV).BeginInit();
+            dgvReports = new DataGridView();
+            button1 = new Button();
+            button2 = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvReports).BeginInit();
             SuspendLayout();
             // 
             // btnBack
@@ -43,6 +45,7 @@
             btnBack.TabIndex = 9;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
             // 
             // lbSubjectMng
             // 
@@ -55,22 +58,44 @@
             lbSubjectMng.TabIndex = 8;
             lbSubjectMng.Text = "Student Reports";
             // 
-            // ReportsGV
+            // dgvReports
             // 
-            ReportsGV.BackgroundColor = SystemColors.Control;
-            ReportsGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ReportsGV.Location = new Point(0, 161);
-            ReportsGV.Name = "ReportsGV";
-            ReportsGV.RowHeadersWidth = 51;
-            ReportsGV.Size = new Size(881, 391);
-            ReportsGV.TabIndex = 10;
+            dgvReports.BackgroundColor = SystemColors.Control;
+            dgvReports.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvReports.Location = new Point(0, 161);
+            dgvReports.Name = "dgvReports";
+            dgvReports.RowHeadersWidth = 51;
+            dgvReports.Size = new Size(881, 391);
+            dgvReports.TabIndex = 10;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(776, 114);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 11;
+            button1.Text = "refresh";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += btnRefresh_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(659, 114);
+            button2.Name = "button2";
+            button2.Size = new Size(94, 29);
+            button2.TabIndex = 12;
+            button2.Text = "Download";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += btnDownloadPdf_Click;
             // 
             // StudentReport
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(882, 553);
-            Controls.Add(ReportsGV);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Controls.Add(dgvReports);
             Controls.Add(btnBack);
             Controls.Add(lbSubjectMng);
             MaximizeBox = false;
@@ -79,7 +104,8 @@
             Name = "StudentReport";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "StudentReport";
-            ((System.ComponentModel.ISupportInitialize)ReportsGV).EndInit();
+            Load += StudentReportsForm_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvReports).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -88,6 +114,8 @@
 
         private Button btnBack;
         private Label lbSubjectMng;
-        private DataGridView ReportsGV;
+        private DataGridView dgvReports;
+        private Button button1;
+        private Button button2;
     }
 }

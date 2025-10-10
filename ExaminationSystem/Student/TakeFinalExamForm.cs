@@ -205,8 +205,10 @@ namespace ExaminationSystem.Student
 
         private void SubmitExam()
         {
-            // Evaluate all questions
+            // Evaluate all questions and collect answers
             _score = 0;
+            List<StudentAnswers> answers = new List<StudentAnswers>();
+
             foreach (var q in _questions)
             {
                 _selectedAnswers.TryGetValue(q.QuestionsId, out var selectedIds);
@@ -214,18 +216,38 @@ namespace ExaminationSystem.Student
 
                 var correctIds = q.Choices.Where(c => c.IsCorrect).Select(c => c.ChoicesId).ToList();
 
-                // sets equal -> correct
+                // Determine if the student's selection is correct
                 bool isCorrect = !correctIds.Except(selectedIds).Any() && !selectedIds.Except(correctIds).Any();
                 if (isCorrect)
                     _score += q.Marks;
+
+                // Record selected answers for database
+                foreach (var choiceId in selectedIds)
+                {
+                    var choice = q.Choices.FirstOrDefault(c => c.ChoicesId == choiceId);
+                    if (choice != null)
+                    {
+                        answers.Add(new StudentAnswers
+                        {
+                            QuestionId = q.QuestionsId,
+                            ChoiceId = choiceId,
+                            IsCorrect = choice.IsCorrect
+                        });
+                    }
+                }
             }
 
-            // Show result
-            MessageBox.Show($"Exam finished.\nYour score: {_score}", "Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // 🔥 Save the exam report and answers via IStudent service
+            _context.SaveExamReportWithAnswers(_exam.ExamId, _user.UserId, answers);
 
-            // Close exam
+            // Show local result
+            MessageBox.Show($"Exam finished.\nYour report has been saved",
+                "Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             Close();
         }
+
+
 
         private void TakeFinalExamForm_FormClosing(object sender, FormClosingEventArgs e)
         {

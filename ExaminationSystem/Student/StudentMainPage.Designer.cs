@@ -151,6 +151,7 @@ partial class StudentMainPage
         btnReports.TabIndex = 1;
         btnReports.Text = "Reports";
         btnReports.UseVisualStyleBackColor = false;
+        btnReports.Click += btnReports_Click;
         // 
         // btnFinalExam
         // 

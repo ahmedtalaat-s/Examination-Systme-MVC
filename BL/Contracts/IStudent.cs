@@ -17,8 +17,11 @@ namespace BL.Contracts
         //List<Exam> GetAllPracticeExam();
 
         void AddStudentAnswers(List<StudentAnswers> studentAnswers);
+        void SaveExamReportWithAnswers(int examId, int userId, List<StudentAnswers> answers);
+        public bool HasTakenExam(int examId, int userId);
+        public List<Report> GetReportsByUser(int userId);
+        List<StudentAnswers> GetAnswersByReport(int reportId);
 
-        public void AddStudentAnswers(List<StudentAnswers> studentAnswers);
 
     }
 }

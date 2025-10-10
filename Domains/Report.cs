@@ -13,6 +13,7 @@ namespace Domains
         [Key]
         public int ReportId { get; set; }
         public int Score { get; set; }
+        public int MaxScore { get; set; }
         public DateTime Date { get; set; }
 
         [ForeignKey("Exam")]

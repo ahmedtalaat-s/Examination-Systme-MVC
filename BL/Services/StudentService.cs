@@ -132,14 +132,19 @@ namespace BL.Services
         //    throw new NotImplementedException();
         //}
 
-        public void SaveExamReportWithAnswers(int examId, List<StudentAnswers> answers)
+        public void SaveExamReportWithAnswers(int examId,int userId, List<StudentAnswers> answers)
         {
+            
             var report = new Report
             {
                 ExamId = examId,
+                UserId = userId,
                 Date = DateTime.Now,
                 Score = 0 // temporary, will be calculated
             };
+            report.MaxScore = _context.Questions
+    .Where(q => q.ExamId == examId)
+    .Sum(q => q.Marks);
 
             _context.Report.Add(report);
             _context.SaveChanges(); // Get ReportId
@@ -168,8 +173,41 @@ namespace BL.Services
 
             // Save final score
             report.Score = totalScore;
+
+            UserTakeExam userTakeExam =new UserTakeExam {UserId=userId,ExamId=examId };
+            _context.UserExams.Add(userTakeExam);
             _context.SaveChanges();
         }
+
+        public bool HasTakenExam(int examId, int userId)
+        {
+            return _context.UserExams
+                .Any(ute => ute.ExamId == examId && ute.UserId == userId);
+        }
+
+        public List<Report> GetReportsByUser(int userId)
+        {
+            return _context.Report
+                .Where(r => r.UserId == userId)
+                .Select(r => new Report
+                {
+                    ReportId = r.ReportId,
+                    ExamId = r.ExamId,
+                    Date = r.Date,
+                    Score = r.Score,
+                    Exam = r.Exam
+                })
+                .ToList();
+        }
+        public List<StudentAnswers> GetAnswersByReport(int reportId)
+        {
+            return _context.StudentAnswers
+                .Where(a => a.ReportId == reportId)
+                .Include(a => a.Questions)
+                .Include(a => a.Choice)
+                .ToList();
+        }
+
 
     }
 }

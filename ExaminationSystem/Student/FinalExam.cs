@@ -20,8 +20,7 @@ namespace ExaminationSystem.Student
         private List<Exam> _exams = new List<Exam>();
         private readonly HashSet<int> _notifiedExamIds = new HashSet<int>();
 
-        private Timer _refreshTimer; // updates countdown
-        private Timer _notifyTimer;  // alerts about upcoming exams
+        private Timer _notifyTimer; // only for notifications
 
         public bool backPressed = false;
 
@@ -37,12 +36,7 @@ namespace ExaminationSystem.Student
         {
             LoadExams();
 
-            // Timer to update countdown every 1s
-            _refreshTimer = new Timer { Interval = 3000 };
-            _refreshTimer.Tick += RefreshTimer_Tick;
-            _refreshTimer.Start();
-
-            // Timer to check upcoming exams every 30s
+            // Start notification timer (check every 30 seconds)
             _notifyTimer = new Timer { Interval = 30_000 };
             _notifyTimer.Tick += NotifyTimer_Tick;
             _notifyTimer.Start();
@@ -56,6 +50,7 @@ namespace ExaminationSystem.Student
             var available = _context.GetAvailableExams(_user.UserId, "final") ?? new List<Exam>();
             _exams = (subjectId == 0) ? available : available.Where(e => e.SubjectId == subjectId).ToList();
 
+            // Build data for DataGridView
             var rows = _exams.Select(e => new
             {
                 e.ExamId,
@@ -63,16 +58,17 @@ namespace ExaminationSystem.Student
                 SubjectName = e.Subject?.SubjectName ?? "N/A",
                 TeacherName = e.User?.FullName ?? "N/A",
                 StartTime = e.StartTime,
-                e.Duration,
-                Remaining = GetRemainingText(e)
+                e.Duration
             }).ToList();
 
             dgvExams.Columns.Clear();
             dgvExams.DataSource = rows;
 
+            // Hide ExamId
             if (dgvExams.Columns["ExamId"] != null)
                 dgvExams.Columns["ExamId"].Visible = false;
 
+            // Format column headers
             if (dgvExams.Columns["ExamName"] != null) dgvExams.Columns["ExamName"].HeaderText = "Exam Name";
             if (dgvExams.Columns["TeacherName"] != null) dgvExams.Columns["TeacherName"].HeaderText = "Teacher";
             if (dgvExams.Columns["SubjectName"] != null) dgvExams.Columns["SubjectName"].HeaderText = "Subject";
@@ -83,8 +79,6 @@ namespace ExaminationSystem.Student
             }
             if (dgvExams.Columns["Duration"] != null)
                 dgvExams.Columns["Duration"].HeaderText = "Duration (Minutes)";
-            if (dgvExams.Columns["Remaining"] != null)
-                dgvExams.Columns["Remaining"].HeaderText = "Remaining";
 
             // Add “Take Exam” button
             var takeCol = new DataGridViewButtonColumn
@@ -97,6 +91,7 @@ namespace ExaminationSystem.Student
             };
             dgvExams.Columns.Add(takeCol);
 
+            // Style the grid
             dgvExams.ReadOnly = true;
             dgvExams.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvExams.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
@@ -106,19 +101,7 @@ namespace ExaminationSystem.Student
             dgvExams.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
-        // ✅ Updates countdown each second
-        private void RefreshTimer_Tick(object sender, EventArgs e)
-        {
-            foreach (DataGridViewRow row in dgvExams.Rows)
-            {
-                int examId = Convert.ToInt32(row.Cells["ExamId"].Value);
-                var exam = _exams.FirstOrDefault(x => x.ExamId == examId);
-
-                row.Cells["Remaining"].Value = GetRemainingText(exam);
-            }
-        }
-
-        // ✅ Checks for upcoming exams (within 5 min)
+        // ✅ Notify about exams starting within 5 minutes
         private void NotifyTimer_Tick(object sender, EventArgs e)
         {
             var now = DateTime.Now;
@@ -130,8 +113,8 @@ namespace ExaminationSystem.Student
                 if (diff > 0 && diff <= 5 && !_notifiedExamIds.Contains(exam.ExamId))
                 {
                     _notifiedExamIds.Add(exam.ExamId);
-
                     string msg = $"Exam '{exam.ExamName}' ({exam.Subject?.SubjectName ?? "N/A"}) starts in {Math.Ceiling(diff)} minute(s).";
+
                     Task.Run(() =>
                     {
                         MessageBox.Show(msg, "Upcoming Exam", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -140,33 +123,7 @@ namespace ExaminationSystem.Student
             }
         }
 
-        private string GetRemainingText(Exam exam)
-        {
-            var now = DateTime.Now;
-            var start = exam.StartTime;
-            var end = start.AddMinutes(exam.Duration);
-
-            if (now < start)
-            {
-                var ts = start - now;
-                return $"Starts in {FormatTimeSpanShort(ts)}";
-            }
-            if (now >= start && now <= end)
-            {
-                var ts = end - now;
-                return $"{FormatTimeSpanShort(ts)} left";
-            }
-            return "Ended";
-        }
-
-        private static string FormatTimeSpanShort(TimeSpan ts)
-        {
-            if (ts.TotalHours >= 1)
-                return $"{(int)ts.TotalHours:D2}:{ts.Minutes:D2}:{ts.Seconds:D2}";
-            return $"{ts.Minutes:D2}:{ts.Seconds:D2}";
-        }
-
-        // ✅ Handles the “Take Exam” button
+        // ✅ Handles “Take Exam” button click
         private void DgvExams_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -175,8 +132,8 @@ namespace ExaminationSystem.Student
 
             var row = dgvExams.Rows[e.RowIndex];
             if (row.Cells["ExamId"]?.Value == null) return;
-            int examId = Convert.ToInt32(row.Cells["ExamId"].Value);
 
+            int examId = Convert.ToInt32(row.Cells["ExamId"].Value);
             var exam = _exams.FirstOrDefault(x => x.ExamId == examId);
             if (exam == null) return;
 
@@ -197,6 +154,12 @@ namespace ExaminationSystem.Student
                     "Exam Ended", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            if (_context.HasTakenExam(examId,_user.UserId))
+            {
+                MessageBox.Show("You have already taken This exam ",
+                    "Exam Ended", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
             Hide();
             var takeForm = ActivatorUtilities.CreateInstance<TakeFinalExamForm>(_serviceProvider, exam, _user);
@@ -211,7 +174,6 @@ namespace ExaminationSystem.Student
 
         private void btnBack_Click_1(object sender, EventArgs e)
         {
-            _refreshTimer?.Stop();
             _notifyTimer?.Stop();
             backPressed = true;
             Close();
