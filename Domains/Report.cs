@@ -19,5 +19,12 @@ namespace Domains
         public int ExamId { get; set; }
         public virtual Exam Exam { get; set; }
         public virtual List<StudentAnswers> StudentAnswers { get; set; } = new List<StudentAnswers>();
+
+        [ForeignKey("User")]
+        public int UserId { get; set; }
+        public virtual User User { get; set; }
+
+
+
     }
 }
