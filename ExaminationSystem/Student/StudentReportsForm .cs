@@ -122,7 +122,7 @@ namespace ExaminationSystem.Student
                 {
                     table.AddCell(ans.Questions.Body);
                     table.AddCell(ans.Choice.Body);
-                    table.AddCell(ans.IsCorrect ? "✔️" : "❌");
+                    table.AddCell(ans.IsCorrect ? "Correct" : "Not correct");
                 }
 
                 doc.Add(table);
