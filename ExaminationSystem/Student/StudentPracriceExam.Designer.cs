@@ -30,10 +30,10 @@
         {
             btnBack = new Button();
             lbSubjectMng = new Label();
-            SubjectFilterationBox = new ComboBox();
+            cmbSubjects = new ComboBox();
             FilterationLB = new Label();
-            dgvPracticeExam = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dgvPracticeExam).BeginInit();
+            dgvExams = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgvExams).BeginInit();
             SuspendLayout();
             // 
             // btnBack
@@ -45,6 +45,7 @@
             btnBack.TabIndex = 11;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
             // 
             // lbSubjectMng
             // 
@@ -57,14 +58,15 @@
             lbSubjectMng.TabIndex = 10;
             lbSubjectMng.Text = "Practice Exam";
             // 
-            // SubjectFilterationBox
+            // cmbSubjects
             // 
-            SubjectFilterationBox.Font = new Font("Segoe UI Symbol", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            SubjectFilterationBox.FormattingEnabled = true;
-            SubjectFilterationBox.Location = new Point(212, 134);
-            SubjectFilterationBox.Name = "SubjectFilterationBox";
-            SubjectFilterationBox.Size = new Size(203, 39);
-            SubjectFilterationBox.TabIndex = 13;
+            cmbSubjects.Font = new Font("Segoe UI Symbol", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cmbSubjects.FormattingEnabled = true;
+            cmbSubjects.Location = new Point(212, 134);
+            cmbSubjects.Name = "cmbSubjects";
+            cmbSubjects.Size = new Size(203, 39);
+            cmbSubjects.TabIndex = 13;
+            cmbSubjects.SelectedIndexChanged += cmbSubjects_SelectedIndexChanged;
             // 
             // FilterationLB
             // 
@@ -76,24 +78,25 @@
             FilterationLB.TabIndex = 14;
             FilterationLB.Text = "Filter By Subject";
             // 
-            // dgvPracticeExam
+            // dgvExams
             // 
-            dgvPracticeExam.BackgroundColor = SystemColors.Control;
-            dgvPracticeExam.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPracticeExam.Location = new Point(-1, 225);
-            dgvPracticeExam.Name = "dgvPracticeExam";
-            dgvPracticeExam.RowHeadersWidth = 51;
-            dgvPracticeExam.Size = new Size(882, 328);
-            dgvPracticeExam.TabIndex = 15;
+            dgvExams.BackgroundColor = SystemColors.Control;
+            dgvExams.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvExams.Location = new Point(-1, 225);
+            dgvExams.Name = "dgvExams";
+            dgvExams.RowHeadersWidth = 51;
+            dgvExams.Size = new Size(882, 328);
+            dgvExams.TabIndex = 15;
+            dgvExams.CellContentClick += dgvExams_CellContentClick;
             // 
             // StudentPracriceExam
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(882, 553);
-            Controls.Add(dgvPracticeExam);
+            Controls.Add(dgvExams);
             Controls.Add(FilterationLB);
-            Controls.Add(SubjectFilterationBox);
+            Controls.Add(cmbSubjects);
             Controls.Add(btnBack);
             Controls.Add(lbSubjectMng);
             MaximizeBox = false;
@@ -103,7 +106,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "StudentPracriceExam";
             Load += StudentPracriceExam_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvPracticeExam).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvExams).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -112,8 +115,8 @@
 
         private Button btnBack;
         private Label lbSubjectMng;
-        private ComboBox SubjectFilterationBox;
+        private ComboBox cmbSubjects;
         private Label FilterationLB;
-        private DataGridView dgvPracticeExam;
+        private DataGridView dgvExams;
     }
 }

@@ -117,7 +117,6 @@ partial class MultiChoiceQuestion
         dgvChoices.RowHeadersWidth = 51;
         dgvChoices.Size = new Size(336, 188);
         dgvChoices.TabIndex = 21;
-        dgvChoices.CellContentClick += dgvChoices_CellContentClick;
         // 
         // numMark
         // 

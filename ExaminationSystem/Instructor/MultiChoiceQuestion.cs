@@ -34,29 +34,32 @@ public partial class MultiChoiceQuestion : Form
         dgvChoices.AutoGenerateColumns = false;
         dgvChoices.Columns.Clear();
 
-        dgvChoices.Columns.Add(new DataGridViewTextBoxColumn
+        // Choice text column
+        var colText = new DataGridViewTextBoxColumn
         {
-            HeaderText = "Choice",
+            Name = "Body",
+            HeaderText = "Choice Text",
             DataPropertyName = "Body",
-            Width = 170,
-            ReadOnly = true
-        });
-
-        var isCorrectCol = new DataGridViewCheckBoxColumn
-        {
-            HeaderText = "Is Correct",
-            DataPropertyName = "IsCorrect",
-            Width = 80,
-            Name = "IsCorrect"
+            Width = 200,
         };
+        dgvChoices.Columns.Add(colText);
 
-        dgvChoices.Columns.Add(isCorrectCol);
+        // Checkbox column for IsCorrect
+        var colIsCorrect = new DataGridViewCheckBoxColumn
+        {
+            Name = "IsCorrect",
+            HeaderText = "Correct?",
+            DataPropertyName = "IsCorrect",
+            Width = 80
+        };
+        dgvChoices.Columns.Add(colIsCorrect);
 
-        dgvChoices.DataSource = _choices;
+        dgvChoices.DataSource = new BindingList<Choices>(_choices);
 
-        // ✅ Subscribe to event
-        dgvChoices.CellContentClick += dgvChoices_CellContentClick;
+        // Event for safe checkbox updates
+        dgvChoices.CellClick += dgvChoices_CellClick;
     }
+
 
 
     private void btnAddChoice_Click(object sender, EventArgs e)
@@ -138,6 +141,7 @@ public partial class MultiChoiceQuestion : Form
             numMark.Value = 0;
             _choices.Clear();
             dgvChoices.DataSource = null;
+            Close();
         }
         catch (Exception ex)
         {
@@ -149,24 +153,25 @@ public partial class MultiChoiceQuestion : Form
     {
         this.Close();
     }
-    private void dgvChoices_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+
+
+
+    private void dgvChoices_CellClick(object sender, DataGridViewCellEventArgs e)
     {
-        // ✅ Ignore invalid clicks (like header row or out-of-range)
+        // ✅ Ignore clicks on headers
         if (e.RowIndex < 0 || e.ColumnIndex < 0)
             return;
 
-        // ✅ Ensure the click is on the checkbox column
+        // ✅ Make sure user clicked on the checkbox column
         if (dgvChoices.Columns[e.ColumnIndex].Name == "IsCorrect")
         {
-            // Commit edit (important for checkbox)
-            dgvChoices.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            // Toggle the checkbox manually
+            bool currentValue = Convert.ToBoolean(dgvChoices.Rows[e.RowIndex].Cells[e.ColumnIndex].Value ?? false);
+            dgvChoices.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = !currentValue;
 
-            // ✅ Safely get the bound object
-            if (dgvChoices.Rows[e.RowIndex].DataBoundItem is Choices choice)
-            {
-                bool newValue = Convert.ToBoolean(dgvChoices.Rows[e.RowIndex].Cells["IsCorrect"].Value);
-                choice.IsCorrect = newValue;
-            }
+            // Update your in-memory list accordingly
+            _choices[e.RowIndex].IsCorrect = !currentValue;
         }
     }
 

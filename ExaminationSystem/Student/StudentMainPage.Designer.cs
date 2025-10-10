@@ -29,15 +29,15 @@ partial class StudentMainPage
     private void InitializeComponent()
     {
         panel1 = new Panel();
-        lbWelcome = new Label();
-        label1 = new Label();
-        btnLogout = new Button();
-        panel2 = new Panel();
-        btnFinalExam = new Button();
-        btnReports = new Button();
-        btnPracticeExam = new Button();
-        label2 = new Label();
         btnProfile = new Button();
+        btnLogout = new Button();
+        label1 = new Label();
+        lbWelcome = new Label();
+        panel2 = new Panel();
+        label2 = new Label();
+        btnPracticeExam = new Button();
+        btnReports = new Button();
+        btnFinalExam = new Button();
         panel1.SuspendLayout();
         panel2.SuspendLayout();
         SuspendLayout();
@@ -56,27 +56,18 @@ partial class StudentMainPage
         panel1.Size = new Size(882, 70);
         panel1.TabIndex = 0;
         // 
-        // lbWelcome
+        // btnProfile
         // 
-        lbWelcome.AutoSize = true;
-        lbWelcome.Font = new Font("Segoe UI Symbol", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        lbWelcome.ForeColor = SystemColors.InactiveCaptionText;
-        lbWelcome.Location = new Point(12, 10);
-        lbWelcome.Name = "lbWelcome";
-        lbWelcome.Size = new Size(196, 46);
-        lbWelcome.TabIndex = 0;
-        lbWelcome.Text = "Welcome , ";
-        // 
-        // label1
-        // 
-        label1.AutoSize = true;
-        label1.Font = new Font("Segoe UI Symbol", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        label1.ForeColor = SystemColors.HotTrack;
-        label1.Location = new Point(193, 16);
-        label1.Name = "label1";
-        label1.Size = new Size(195, 38);
-        label1.TabIndex = 1;
-        label1.Text = "Student Name";
+        btnProfile.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        btnProfile.BackColor = SystemColors.HotTrack;
+        btnProfile.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        btnProfile.ForeColor = SystemColors.ControlLightLight;
+        btnProfile.Location = new Point(630, 20);
+        btnProfile.Name = "btnProfile";
+        btnProfile.Size = new Size(107, 34);
+        btnProfile.TabIndex = 4;
+        btnProfile.Text = "Profile";
+        btnProfile.UseVisualStyleBackColor = false;
         // 
         // btnLogout
         // 
@@ -88,6 +79,30 @@ partial class StudentMainPage
         btnLogout.TabIndex = 2;
         btnLogout.Text = "Logout";
         btnLogout.UseVisualStyleBackColor = true;
+        btnLogout.Click += btnLogout_Click;
+        // 
+        // label1
+        // 
+        label1.AutoSize = true;
+        label1.Font = new Font("Segoe UI Symbol", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        label1.ForeColor = SystemColors.HotTrack;
+        label1.Location = new Point(193, 16);
+        label1.Name = "label1";
+        label1.Size = new Size(195, 38);
+        label1.TabIndex = 1;
+        label1.Text = "Student Name";
+        label1.Click += label1_Click;
+        // 
+        // lbWelcome
+        // 
+        lbWelcome.AutoSize = true;
+        lbWelcome.Font = new Font("Segoe UI Symbol", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        lbWelcome.ForeColor = SystemColors.InactiveCaptionText;
+        lbWelcome.Location = new Point(12, 10);
+        lbWelcome.Name = "lbWelcome";
+        lbWelcome.Size = new Size(196, 46);
+        lbWelcome.TabIndex = 0;
+        lbWelcome.Text = "Welcome , ";
         // 
         // panel2
         // 
@@ -103,14 +118,27 @@ partial class StudentMainPage
         panel2.TabIndex = 1;
         panel2.Paint += panel2_Paint;
         // 
-        // btnFinalExam
+        // label2
         // 
-        btnFinalExam.Location = new Point(592, 184);
-        btnFinalExam.Name = "btnFinalExam";
-        btnFinalExam.Size = new Size(254, 121);
-        btnFinalExam.TabIndex = 0;
-        btnFinalExam.Text = "Final Exams";
-        btnFinalExam.UseVisualStyleBackColor = true;
+        label2.AutoSize = true;
+        label2.BackColor = SystemColors.HotTrack;
+        label2.Font = new Font("Segoe UI Symbol", 9F);
+        label2.ForeColor = Color.Snow;
+        label2.Location = new Point(342, 264);
+        label2.Name = "label2";
+        label2.Size = new Size(208, 20);
+        label2.TabIndex = 3;
+        label2.Text = "View and export exam reports";
+        // 
+        // btnPracticeExam
+        // 
+        btnPracticeExam.Location = new Point(44, 184);
+        btnPracticeExam.Name = "btnPracticeExam";
+        btnPracticeExam.Size = new Size(254, 121);
+        btnPracticeExam.TabIndex = 2;
+        btnPracticeExam.Text = "Practice Exams";
+        btnPracticeExam.UseVisualStyleBackColor = true;
+        btnPracticeExam.Click += btnPracticeExam_Click;
         // 
         // btnReports
         // 
@@ -124,39 +152,15 @@ partial class StudentMainPage
         btnReports.Text = "Reports";
         btnReports.UseVisualStyleBackColor = false;
         // 
-        // btnPracticeExam
+        // btnFinalExam
         // 
-        btnPracticeExam.Location = new Point(44, 184);
-        btnPracticeExam.Name = "btnPracticeExam";
-        btnPracticeExam.Size = new Size(254, 121);
-        btnPracticeExam.TabIndex = 2;
-        btnPracticeExam.Text = "Practice Exams";
-        btnPracticeExam.UseVisualStyleBackColor = true;
-        // 
-        // label2
-        // 
-        label2.AutoSize = true;
-        label2.BackColor = SystemColors.HotTrack;
-        label2.Font = new Font("Segoe UI Symbol", 9F);
-        label2.ForeColor = Color.Snow;
-        label2.Location = new Point(342, 264);
-        label2.Name = "label2";
-        label2.Size = new Size(208, 20);
-        label2.TabIndex = 3;
-        label2.Text = "View and export exam reports";
-        // 
-        // btnProfile
-        // 
-        btnProfile.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-        btnProfile.BackColor = SystemColors.HotTrack;
-        btnProfile.Font = new Font("Segoe UI Symbol", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        btnProfile.ForeColor = SystemColors.ControlLightLight;
-        btnProfile.Location = new Point(630, 20);
-        btnProfile.Name = "btnProfile";
-        btnProfile.Size = new Size(107, 34);
-        btnProfile.TabIndex = 4;
-        btnProfile.Text = "Profile";
-        btnProfile.UseVisualStyleBackColor = false;
+        btnFinalExam.Location = new Point(592, 184);
+        btnFinalExam.Name = "btnFinalExam";
+        btnFinalExam.Size = new Size(254, 121);
+        btnFinalExam.TabIndex = 0;
+        btnFinalExam.Text = "Final Exams";
+        btnFinalExam.UseVisualStyleBackColor = true;
+        btnFinalExam.Click += btnFinalExam_Click;
         // 
         // StudentMainPage
         // 
@@ -168,13 +172,14 @@ partial class StudentMainPage
         Controls.Add(panel1);
         Font = new Font("Segoe UI Symbol", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
         FormBorderStyle = FormBorderStyle.FixedDialog;
-        Margin = new Padding(4, 4, 4, 4);
+        Margin = new Padding(4);
         MaximizeBox = false;
         MaximumSize = new Size(900, 600);
         MinimumSize = new Size(900, 600);
         Name = "StudentMainPage";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Student Page";
+        Load += StudentMainPage_Load;
         panel1.ResumeLayout(false);
         panel1.PerformLayout();
         panel2.ResumeLayout(false);

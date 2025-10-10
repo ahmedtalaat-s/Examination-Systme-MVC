@@ -53,6 +53,7 @@ namespace ExaminationSystem.Instructor
                 _exam.ExamType = comboBox1.Text;
                 _exam.Status = (Status)comboBox2.SelectedItem;
                 _exam.SubjectId = (int)comboBox3.SelectedValue;
+                _exam.StartTime = dateTimePicker1.Value;
 
 
                 _teacher.EditExam(_exam);

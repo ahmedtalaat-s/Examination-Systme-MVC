@@ -30,7 +30,8 @@
         {
             btnBack = new Button();
             lbSubjectMng = new Label();
-            FExamPanel = new Panel();
+            dgvExams = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgvExams).BeginInit();
             SuspendLayout();
             // 
             // btnBack
@@ -42,6 +43,7 @@
             btnBack.TabIndex = 13;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click_1;
             // 
             // lbSubjectMng
             // 
@@ -54,19 +56,22 @@
             lbSubjectMng.TabIndex = 12;
             lbSubjectMng.Text = "Final Exam";
             // 
-            // FExamPanel
+            // dgvExams
             // 
-            FExamPanel.Location = new Point(1, 160);
-            FExamPanel.Name = "FExamPanel";
-            FExamPanel.Size = new Size(880, 392);
-            FExamPanel.TabIndex = 15;
+            dgvExams.BackgroundColor = SystemColors.Control;
+            dgvExams.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvExams.Location = new Point(12, 135);
+            dgvExams.Name = "dgvExams";
+            dgvExams.RowHeadersWidth = 51;
+            dgvExams.Size = new Size(858, 406);
+            dgvExams.TabIndex = 14;
             // 
             // FinalExam
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(882, 553);
-            Controls.Add(FExamPanel);
+            Controls.Add(dgvExams);
             Controls.Add(btnBack);
             Controls.Add(lbSubjectMng);
             MaximizeBox = false;
@@ -76,6 +81,8 @@
             Name = "FinalExam";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FinalExam";
+            Load += StudentFinalExamList_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvExams).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -84,6 +91,6 @@
 
         private Button btnBack;
         private Label lbSubjectMng;
-        private Panel FExamPanel;
+        private DataGridView dgvExams;
     }
 }

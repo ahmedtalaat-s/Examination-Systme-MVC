@@ -40,7 +40,7 @@
             FinishBtn.BackColor = SystemColors.ControlText;
             FinishBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             FinishBtn.ForeColor = SystemColors.Control;
-            FinishBtn.Location = new Point(366, 500);
+            FinishBtn.Location = new Point(720, 489);
             FinishBtn.Name = "FinishBtn";
             FinishBtn.Size = new Size(113, 41);
             FinishBtn.TabIndex = 23;
