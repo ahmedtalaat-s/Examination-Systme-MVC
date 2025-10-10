@@ -101,5 +101,35 @@ namespace BL.Services
                 .ToList();
 
         }
+
+        public void AddStudentAnswers(List<StudentAnswers> studentAnswers)
+        {
+            try
+            {
+                if (studentAnswers != null && studentAnswers.Any())
+                {
+                    _context.StudentAnswers.AddRange(studentAnswers);
+                    _context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error while adding student answers: " + ex.Message);
+            }
+        }
+
+
+        //public List<Subject> GetAllUserSubjects(int userId)
+        //{
+        //    return _context.Subject
+        //        .Include(s => s.UserSubjects)
+        //        .Where(s => s.UserSubjects.Any(us => us.UserId == userId))
+        //        .ToList();
+        //}
+
+        //public List<Subject> GetAllUseSubjects(int userId)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
