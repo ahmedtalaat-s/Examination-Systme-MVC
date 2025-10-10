@@ -104,7 +104,7 @@ namespace ExaminationSystem.Student
                 doc.Add(new Paragraph($"Exam Report", titleFont));
                 doc.Add(new Paragraph($"Student: {_user.FullName}", bodyFont));
                 doc.Add(new Paragraph($"Exam: {report.Exam.ExamName}", bodyFont));
-                doc.Add(new Paragraph($"Score: {report.Score}", bodyFont));
+                doc.Add(new Paragraph($"Score: {report.Score}/{report.MaxScore}", bodyFont));
                 doc.Add(new Paragraph($"Date: {report.Date:g}", bodyFont));
                 doc.Add(new Paragraph("-------------------------------------------------------"));
                 doc.Add(new Paragraph("Answers:", titleFont));
