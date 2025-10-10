@@ -13,9 +13,10 @@ namespace BL.Contracts
         Exam SelectExam(int studentId, int examId);
         bool CanEnterExam(Exam exam);
         List<Exam> GetAllPracticeExam();
-
         public List<Subject> GetStudentSubjects(int studentId);
-        List<Exam> GetAllPracticeExam();
+        //List<Exam> GetAllPracticeExam();
+
+        void AddStudentAnswers(List<StudentAnswers> studentAnswers);
 
 
     }
